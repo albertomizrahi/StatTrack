@@ -14,7 +14,7 @@
 <header class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
-      <%= link_to "StatHub.me", '#', id: "logo" %>
+      <%= link_to "StatHub.me", root_path , id: "logo" %>
       <nav>
         <ul class="nav pull-right">
           <li><%= link_to "Home",    root_path, id: "navbar-link" %></li>
@@ -28,7 +28,15 @@
 
 
 <div class="container">
+
+  <!-- Flash message container -->
+  <% flash.each do |key, value| %>
+      <%= content_tag(:div, value, class: "alert alert-#{key}") %>
+  <% end %>
+
   <%= yield %>
+
+  <%= debug(params) if Rails.env.development? %>
 </div>
 
 
