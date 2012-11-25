@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
 
+  before_filter :signed_in_user, only: [:edit, :update]
+  before_filter :correct_user,   only: [:edit, :update]
+  before_filter :signed_user_unnecessary_pages, only: [:new, :create]
+
   def new
     @user = User.new
   end
@@ -24,5 +28,39 @@ class UsersController < ApplicationController
       render 'new'
     end
   end
+
+
+  def edit
+  end
+
+  def update
+    if @user.update_attributes(params[:user])
+      flash[:success] = "Profile updated"
+      #Signs the user in again because the remember token is updated too when the update_attributes methods is applied
+      sign_in @user
+      redirect_to @user
+    else
+      render 'edit'
+    end
+  end
+
+ private
+    #Used for the before_filter in order to determine if the user is signed in so that he can edit and update his profile
+    def signed_in_user
+      redirect_to signin_url, notice: "Please sign in." unless signed_in?
+    end
+
+    #After checking that the  user is signed, we check that he is trying to update his own information not of someone else
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_path) unless current_user?(@user)
+    end
+
+    #Some views like new and create should not be viewable for users who are signed in
+    def signed_user_unnecessary_pages
+      if signed_in?
+        redirect_to(root_path)
+      end
+    end
 
 end

@@ -1,0 +1,26 @@
+<header class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <%= link_to "StatHub.me", root_path , id: "logo" %>
+      <nav>
+        <ul class="nav pull-right">
+
+
+          <% if signed_in? %>
+              <li><%= link_to "Profile", current_user, id: "navbar-link" %></li>
+              <li><%= link_to "Settings", edit_user_path(current_user), id: "navbar-link" %></li>
+              <li><%= link_to "Help", help_path, id: "navbar-link" %></li>
+              <li> <%= link_to "Sign out", signout_path, method: "delete", id: "navbar-link" %> </li>
+
+
+          <% else %>
+              <li><%= link_to "Home", root_path, id: "navbar-link" %></li>
+              <li><%= link_to "Help", help_path, id: "navbar-link" %></li>
+              <li><%= link_to "Sign in", signin_path, id: "navbar-link" %></li>
+          <% end %>
+
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>

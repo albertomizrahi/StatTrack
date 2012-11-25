@@ -17,6 +17,11 @@ module SessionsHelper
     @current_user = user
   end
 
+  #Returns a boolean value by checking if the kin if the current user matches the user passed in the parameter
+  def current_user?(user)
+    user == current_user
+  end
+
   #Calls the find_by_remember_token method the first time current_user is called but on subsequent invocations returns @current_user without hitting the database
   def current_user
     @current_user ||= User.find_by_remember_token(cookies[:remember_token])

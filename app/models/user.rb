@@ -28,9 +28,11 @@ class User < ActiveRecord::Base
 
 
   private
-  #Creates a random Base64 string that will be used as the remember token for the user
-  def create_remember_token
-    self.remember_token = SecureRandom.urlsafe_base64
-  end
+    #Creates a random Base64 string that will be used as the remember token for the user
+    def create_remember_token
+      self.remember_token = SecureRandom.urlsafe_base64
+    end
+
+
 
 end
