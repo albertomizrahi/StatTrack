@@ -45,10 +45,7 @@ class UsersController < ApplicationController
   end
 
  private
-    #Used for the before_filter in order to determine if the user is signed in so that he can edit and update his profile
-    def signed_in_user
-      redirect_to signin_url, notice: "Please sign in." unless signed_in?
-    end
+
 
     #After checking that the  user is signed, we check that he is trying to update his own information not of someone else
     def correct_user

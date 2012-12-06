@@ -12,6 +12,11 @@ module SessionsHelper
     !current_user.nil?
   end
 
+  #Used for the before_filter in order to determine if the user is signed in so that he can edit and update his profile
+  def signed_in_user
+    redirect_to signin_url, notice: "Please sign in." unless signed_in?
+  end
+
   #Defines a method current_user= expressly designed to handle assignment to current_user such as in the sign_in method
   def current_user=(user)
     @current_user = user
