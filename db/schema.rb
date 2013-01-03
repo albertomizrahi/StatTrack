@@ -11,7 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121206214000) do
+ActiveRecord::Schema.define(:version => 20121210020042) do
+
+  create_table "sportizations", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "sport_id"
+    t.string   "position"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "sportizations", ["sport_id"], :name => "index_sportizations_on_sport_id"
+  add_index "sportizations", ["user_id", "sport_id"], :name => "index_sportizations_on_user_id_and_sport_id", :unique => true
+  add_index "sportizations", ["user_id"], :name => "index_sportizations_on_user_id"
 
   create_table "sports", :force => true do |t|
     t.string   "name"

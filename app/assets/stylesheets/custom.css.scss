@@ -202,3 +202,13 @@ input {
   @extend .control-group;
   @extend .error;
 }
+
+
+
+/* Stats display */
+
+.stats {
+  border: 3px solid black;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}

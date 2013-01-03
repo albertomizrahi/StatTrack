@@ -1,13 +1,13 @@
-<% if @user.errors.any? %>
+<% if object.errors.any? %>
     <%
-       error_messages = @user.errors.full_messages
+       error_messages = object.errors.full_messages
        #Both ifs check if email and password field were blanks in order to eliminate other redundant errors about them
        if error_messages.include? ("Email can't be blank")
          error_messages.delete("Email is invalid")
        end
 
        if error_messages.include? ("Password can't be blank")
-            error_messages.delete("Password is too short (minimum is 6 characters)")
+         error_messages.delete("Password is too short (minimum is 6 characters)")
        end
     %>
     <div id="error_explanation">

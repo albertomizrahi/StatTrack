@@ -1,6 +1,6 @@
 <% provide(:title, @user.name) %>
-<div class="row">
-  <aside class="span4">
+<div class="row" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+  <aside class="span3">
     <section>
       <h1>
         <%= gravatar_for @user %>
@@ -9,7 +9,49 @@
     </section>
   </aside>
 
-  <div class="span8">
+
+  <div class="span9">
+
+    <a href="#" onclick="document.getElementById('AddSport').style.display = 'block'; return false;" >
+      Add Sport
+    </a>
+
+    <div id="AddSport" style="display: none;" >
+
+      <%= form_for(@sportization) do |f| %>
+
+          <% Sport.all.each do |sport| %>
+              <%= render 'shared/error_messages', object: f.object %>
+
+              <%= f.radio_button :sport_id, sport.id, :class => "radio", :onclick => "show_position_selection('" + sport.name + "');" %>
+              <%= f.label :name, sport.name, :value => sport.name %>
+
+          <% end %>
+
+          <div id="position_selector" style="display: none;">
+          <%= f.select :position, "", {}, :onchange => "enable_submit_button(this.value);" %>
+          </div>
+
+          <div id="submit_button_div"  style="display: none;">
+          <%= f.submit "Add Sport", class: "btn btn-large btn-primary" %>
+          </div>
+      <% end %>
+
+
+    </div>
+
+
+
+      <% @sports_already_chosen.each do |sport_chosen| %>
+          <div class="stats">
+            <% sportization_chosen = @user.sportizations.find_by_sport_id(sport_chosen.id) %>
+            <h3> <%= sport_chosen.name %>  </h3>
+            <b>Position: </b> <%= sportization_chosen.position %>
+            <br />
+            <%= link_to "delete", sportization_chosen, method: :delete, data: { confirm: "You sure?" } %>
+          </div>
+      <% end %>
+
 
   </div>
 

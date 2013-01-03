@@ -6,10 +6,18 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+
   end
 
   def show
     @user = User.find(params[:id])
+
+    #This is the model used to allow the user to add a sport
+    @sportization = Sportization.new
+
+    #Retrieves all the sports that the user has already chosen
+    @sports_already_chosen = @user.sports
+
   end
 
   def create
@@ -44,8 +52,8 @@ class UsersController < ApplicationController
     end
   end
 
- private
 
+ private
 
     #After checking that the  user is signed, we check that he is trying to update his own information not of someone else
     def correct_user

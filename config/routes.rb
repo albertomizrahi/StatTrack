@@ -1,7 +1,10 @@
 StatHub::Application.routes.draw do
 
+  get "sportizations/create"
+
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
+  resources :sportizations, only: [:create, :destroy]
 
   root to: 'static_pages#home'
 
