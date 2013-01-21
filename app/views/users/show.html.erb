@@ -1,6 +1,6 @@
 <% provide(:title, @user.name) %>
 <div class="row" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
-  <aside class="span3">
+  <aside class="span2">
     <section>
       <h1>
         <%= gravatar_for @user %>
@@ -10,9 +10,11 @@
   </aside>
 
 
-  <div class="span9">
+  <div class="span10">
 
-    <a onclick="document.getElementById('AddSport').style.display = 'block';" >
+    <% if correct_user? %>
+
+    <a href="#" onclick="document.getElementById('AddSport').style.display = 'block';return false;" >
       Add Sport
     </a>
 
@@ -28,6 +30,7 @@
 
           <% end %>
 
+          <% #The positions listed (depending on the sport) is changed through javascript %>
           <div id="position_selector" style="display: none;">
           <%= f.select :position, "", {}, :onchange => "enable_submit_button(this.value);" %>
           </div>
@@ -40,16 +43,30 @@
 
     </div>
 
+    <% end %>
+
 
 
       <% @sports_already_chosen.each do |sport_chosen| %>
           <div class="stats">
+
             <% sportization_chosen = @user.sportizations.find_by_sport_id(sport_chosen.id) %>
             <h3> <%= sport_chosen.name %>  </h3>
             <b>Position: </b> <%= sportization_chosen.position %>
             <br />
             <%= link_to "delete", sportization_chosen, method: :delete, data: { confirm: "You sure?" } %>
+
+            <% if sport_chosen.name == "Basketball" %>
+
+               <%=  render 'basketball_stats/add' %>
+
+               <% basketball_stats = current_user.basketball_stats %>
+               <%=  render  :partial => 'basketball_stats/show', :locals => { :basketball_stats_recorded => basketball_stats} %>
+
+            <% end %>
+
           </div>
+
       <% end %>
 
 

@@ -18,6 +18,9 @@ class UsersController < ApplicationController
     #Retrieves all the sports that the user has already chosen
     @sports_already_chosen = @user.sports
 
+    @basketball_stat = BasketballStat.new
+    #@basketball_stats_recorded = current_user.basketball_stats
+
   end
 
   def create
