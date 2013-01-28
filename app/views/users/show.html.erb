@@ -54,14 +54,23 @@
             <h3> <%= sport_chosen.name %>  </h3>
             <b>Position: </b> <%= sportization_chosen.position %>
             <br />
-            <%= link_to "delete", sportization_chosen, method: :delete, data: { confirm: "You sure?" } %>
+            <%= link_to "delete", sportization_chosen, method: :delete, data: { confirm: "Are you sure?" } %>
 
             <% if sport_chosen.name == "Basketball" %>
 
                <%=  render 'basketball_stats/add' %>
 
-               <% basketball_stats = current_user.basketball_stats %>
-               <%=  render  :partial => 'basketball_stats/show', :locals => { :basketball_stats_recorded => basketball_stats} %>
+               <% basketball_stats_recorded = current_user.basketball_stats %>
+               <%=  render  :partial => 'basketball_stats/show', :locals => { :basketball_stats => basketball_stats_recorded} %>
+
+
+
+            <% elsif sport_chosen.name == "Football" and sportization_chosen.position == "Quarterback" %>
+
+                <%= render 'football_quarterback_stats/add' %>
+
+                <% football_quarterback_stats_recorded = current_user.football_quarterback_stats %>
+                <%=  render  :partial => 'football_quarterback_stats/show', :locals => { :football_qb_stats => football_quarterback_stats_recorded} %>
 
             <% end %>
 

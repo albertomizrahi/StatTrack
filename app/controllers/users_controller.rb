@@ -19,6 +19,7 @@ class UsersController < ApplicationController
     @sports_already_chosen = @user.sports
 
     @basketball_stat = BasketballStat.new
+    @football_quarterback_stat = FootballQuarterbackStat.new
     #@basketball_stats_recorded = current_user.basketball_stats
 
   end

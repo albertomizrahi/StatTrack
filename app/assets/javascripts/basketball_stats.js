@@ -13,9 +13,9 @@ $(document).ready(function(){
 
         //Check if there is any input field empty and stops the submit event
         var errorCount = 0;
-        $('input').each(function(){
+        $('#new_basketball_stat input').each(function(){
             var $this = $(this);
-            if($this.val() === ''){
+            if($this.val() == ''){
 
                 errorCount = errorCount + 1;
             }

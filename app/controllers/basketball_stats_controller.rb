@@ -29,7 +29,7 @@ class BasketballStatsController < ApplicationController
       redirect_to current_user
 
     else
-      flash[:error] = "The was an error adding your stat."
+      flash[:error] = "There was an error adding your stat."
       redirect_to current_user
     end
 

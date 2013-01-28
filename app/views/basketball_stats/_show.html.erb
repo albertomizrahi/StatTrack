@@ -1,6 +1,6 @@
 
 <!-- If no stats have been added -->
-<% if basketball_stats_recorded.blank? %>
+<% if basketball_stats.blank? %>
     <b> No basketball stats have been added.</b>
 
 
@@ -10,7 +10,7 @@
 
       <tr>
         <td colspan="4"></td>
-        <td colspan="3"> FG</td>
+        <td colspan="3">FG</td>
         <td colspan="3">FT</td>
         <td colspan="3">3PT</td>
         <td colspan="3">Rebounds</td>
@@ -18,31 +18,31 @@
       </tr>
 
       <tr>
-        <td>Date played</td>
-        <td>Opponent</td>
-        <td>Minutes</td>
-        <td>M</td>
-        <td>A</td>
-        <td>%</td>
-        <td>M</td>
-        <td>A</td>
-        <td>%</td>
-        <td>M</td>
-        <td>A</td>
-        <td>%</td>
-        <td>Off</td>
-        <td>Def</td>
-        <td>Total</td>
-        <td>Ast</td>
-        <td>TO</td>
-        <td>Stl</td>
-        <td>Blk</td>
-        <td>PF</td>
-        <td>Pts</td>
-        <td></td>
+        <th>Date played</th>
+        <th>Opponent</th>
+        <th>Minutes</th>
+        <th title="Field goals made">M</th>
+        <th title="Field goals attempted">A</th>
+        <th title="Field goal percentage">%</th>
+        <th title="Free throws made">M</th>
+        <th title="Free throws attempted">A</th>
+        <th title="Free throw percentage">%</th>
+        <th title="3 pointers made">M</th>
+        <th title="3 pointers attempted">A</th>
+        <th title="3 pointer percentage">%</th>
+        <th title="Offensive rebounds">Off</th>
+        <th title="Defensive rebounds">Def</th>
+        <th title="Total rebounds">Total</th>
+        <th title="Assists">Ast</th>
+        <th title="Turnovers">TO</th>
+        <th title="Steals">Stl</th>
+        <th title="Blocks">Blk</th>
+        <th title="Personal fouls">PF</th>
+        <th title="Points">Pts</th>
       </tr>
 
-    <% basketball_stats_recorded.each do |stat| %>
+    <!-- Loop through each of the stats objects and displays its attributes -->
+    <% basketball_stats.each do |stat| %>
           <tr>
 
             <td><%= link_to "delete", stat, method: :delete, data: { confirm: "You sure?" } %><%= stat.date_played_on %></td>
@@ -76,49 +76,49 @@
 
 
     <% #Variables for all the average of all the types of stats
-       average_time_played = basketball_stats_recorded.collect(&:time_played_in_seconds).sum.to_f/basketball_stats_recorded.length
-       average_field_goals_made = basketball_stats_recorded.collect(&:field_goals_made).sum.to_f/basketball_stats_recorded.length
-       average_field_goals_attempted = basketball_stats_recorded.collect(&:field_goals_attempted).sum.to_f/basketball_stats_recorded.length
-       average_field_goal_percentage = (basketball_stats_recorded.collect(&:field_goals_made).sum.to_f/basketball_stats_recorded.collect(&:field_goals_attempted).sum)*100 unless basketball_stats_recorded.collect(&:field_goals_attempted) == 0
-       average_free_throws_made = basketball_stats_recorded.collect(&:free_throws_made).sum.to_f/basketball_stats_recorded.length
-       average_free_throws_attempted = basketball_stats_recorded.collect(&:free_throws_attempted).sum.to_f/basketball_stats_recorded.length
-       average_free_throw_percentage = (basketball_stats_recorded.collect(&:free_throws_made).sum.to_f/basketball_stats_recorded.collect(&:free_throws_attempted).sum)*100 unless basketball_stats_recorded.collect(&:free_throws_attempted) == 0
-       average_threepts_made = basketball_stats_recorded.collect(&:threepts_made).sum.to_f/basketball_stats_recorded.length
-       average_threepts_attempted = basketball_stats_recorded.collect(&:threepts_attempted).sum.to_f/basketball_stats_recorded.length
-       average_threept_percentage = (basketball_stats_recorded.collect(&:threepts_made).sum.to_f/basketball_stats_recorded.collect(&:threepts_attempted).sum)*100 unless basketball_stats_recorded.collect(&:threepts_attempted) == 0
-       average_offensive_rebounds = basketball_stats_recorded.collect(&:offensive_rebounds).sum.to_f/basketball_stats_recorded.length
-       average_defensive_rebounds = basketball_stats_recorded.collect(&:defensive_rebounds).sum.to_f/basketball_stats_recorded.length
-       average_total_rebounds = basketball_stats_recorded.collect(&:total_rebounds).sum.to_f/basketball_stats_recorded.length
-       average_assists = basketball_stats_recorded.collect(&:assists).sum.to_f/basketball_stats_recorded.length
-       average_turnovers = basketball_stats_recorded.collect(&:turnovers).sum.to_f/basketball_stats_recorded.length
-       average_steals = basketball_stats_recorded.collect(&:steals).sum.to_f/basketball_stats_recorded.length
-       average_blocks = basketball_stats_recorded.collect(&:blocks).sum.to_f/basketball_stats_recorded.length
-       average_personal_fouls = basketball_stats_recorded.collect(&:personal_fouls).sum.to_f/basketball_stats_recorded.length
-       average_total_points = basketball_stats_recorded.collect(&:total_points).sum.to_f/basketball_stats_recorded.length
+       average_time_played = basketball_stats.collect(&:time_played_in_seconds).sum.to_f/basketball_stats.length
+       average_field_goals_made = basketball_stats.collect(&:field_goals_made).sum.to_f/basketball_stats.length
+       average_field_goals_attempted = basketball_stats.collect(&:field_goals_attempted).sum.to_f/basketball_stats.length
+       average_field_goal_percentage = (basketball_stats.collect(&:field_goals_made).sum.to_f/basketball_stats.collect(&:field_goals_attempted).sum)*100 unless basketball_stats.collect(&:field_goals_attempted) == 0
+       average_free_throws_made = basketball_stats.collect(&:free_throws_made).sum.to_f/basketball_stats.length
+       average_free_throws_attempted = basketball_stats.collect(&:free_throws_attempted).sum.to_f/basketball_stats.length
+       average_free_throw_percentage = (basketball_stats.collect(&:free_throws_made).sum.to_f/basketball_stats.collect(&:free_throws_attempted).sum)*100 unless basketball_stats.collect(&:free_throws_attempted) == 0
+       average_threepts_made = basketball_stats.collect(&:threepts_made).sum.to_f/basketball_stats.length
+       average_threepts_attempted = basketball_stats.collect(&:threepts_attempted).sum.to_f/basketball_stats.length
+       average_threept_percentage = (basketball_stats.collect(&:threepts_made).sum.to_f/basketball_stats.collect(&:threepts_attempted).sum)*100 unless basketball_stats.collect(&:threepts_attempted) == 0
+       average_offensive_rebounds = basketball_stats.collect(&:offensive_rebounds).sum.to_f/basketball_stats.length
+       average_defensive_rebounds = basketball_stats.collect(&:defensive_rebounds).sum.to_f/basketball_stats.length
+       average_total_rebounds = basketball_stats.collect(&:total_rebounds).sum.to_f/basketball_stats.length
+       average_assists = basketball_stats.collect(&:assists).sum.to_f/basketball_stats.length
+       average_turnovers = basketball_stats.collect(&:turnovers).sum.to_f/basketball_stats.length
+       average_steals = basketball_stats.collect(&:steals).sum.to_f/basketball_stats.length
+       average_blocks = basketball_stats.collect(&:blocks).sum.to_f/basketball_stats.length
+       average_personal_fouls = basketball_stats.collect(&:personal_fouls).sum.to_f/basketball_stats.length
+       average_total_points = basketball_stats.collect(&:total_points).sum.to_f/basketball_stats.length
     %>
 
       <!-- This is the row for all the average -->
     <tr>
       <td colspan="2"> <b>Average</b></td>
-      <td><b> <%= convert_seconds_to_time (average_time_played) %> </b></td>
-      <td><b> <%= number_with_precision average_field_goals_made,:precision => 1 %> </b></td>
-      <td><b> <%= number_with_precision average_field_goals_attempted,:precision => 1 %> </b></td>
-      <td><b> <%= number_with_precision average_field_goal_percentage,:precision => 1 %>% </b></td>
-      <td><b> <%= number_with_precision average_free_throws_made,:precision => 1 %> </b></td>
-      <td><b> <%= number_with_precision average_free_throws_attempted,:precision => 1 %> </b></td>
-      <td><b> <%= number_with_precision average_free_throw_percentage,:precision => 1 %>% </b></td>
-      <td><b> <%= number_with_precision average_threepts_made,:precision => 1 %> </b></td>
-      <td><b> <%= number_with_precision average_threepts_attempted,:precision => 1 %> </b></td>
-      <td><b> <%= number_with_precision average_threept_percentage,:precision => 1 %>% </b></td>
-      <td><b> <%= number_with_precision average_offensive_rebounds,:precision => 1 %> </b></td>
-      <td><b> <%= number_with_precision average_defensive_rebounds,:precision => 1 %> </b></td>
-      <td><b> <%= number_with_precision average_total_rebounds,:precision => 1 %> </b></td>
-      <td><b> <%= number_with_precision average_assists,:precision => 1 %> </b></td>
-      <td><b> <%= number_with_precision average_turnovers,:precision => 1 %> </b></td>
-      <td><b> <%= number_with_precision average_steals,:precision => 1 %> </b></td>
-      <td><b> <%= number_with_precision average_blocks,:precision => 1 %> </b></td>
-      <td><b> <%= number_with_precision average_personal_fouls,:precision => 1 %> </b></td>
-      <td><b> <%= number_with_precision average_total_points,:precision => 1 %> </b></td>
+      <td><b><%= convert_seconds_to_time (average_time_played) %></b></td>
+      <td><b><%= number_with_precision average_field_goals_made,:precision => 1 %></b></td>
+      <td><b><%= number_with_precision average_field_goals_attempted,:precision => 1 %></b></td>
+      <td><b><%= number_with_precision average_field_goal_percentage,:precision => 1 %>%</b></td>
+      <td><b><%= number_with_precision average_free_throws_made,:precision => 1 %></b></td>
+      <td><b><%= number_with_precision average_free_throws_attempted,:precision => 1 %></b></td>
+      <td><b><%= number_with_precision average_free_throw_percentage,:precision => 1 %>%</b></td>
+      <td><b><%= number_with_precision average_threepts_made,:precision => 1 %></b></td>
+      <td><b><%= number_with_precision average_threepts_attempted,:precision => 1 %></b></td>
+      <td><b><%= number_with_precision average_threept_percentage,:precision => 1 %>%</b></td>
+      <td><b><%= number_with_precision average_offensive_rebounds,:precision => 1 %></b></td>
+      <td><b><%= number_with_precision average_defensive_rebounds,:precision => 1 %></b></td>
+      <td><b><%= number_with_precision average_total_rebounds,:precision => 1 %></b></td>
+      <td><b><%= number_with_precision average_assists,:precision => 1 %></b></td>
+      <td><b><%= number_with_precision average_turnovers,:precision => 1 %></b></td>
+      <td><b><%= number_with_precision average_steals,:precision => 1 %></b></td>
+      <td><b><%= number_with_precision average_blocks,:precision => 1 %></b></td>
+      <td><b><%= number_with_precision average_personal_fouls,:precision => 1 %></b></td>
+      <td><b><%= number_with_precision average_total_points,:precision => 1 %></b></td>
     </tr>
 
     </table>

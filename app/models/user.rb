@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
   has_many :sports, :through => :sportizations
 
   has_many :basketball_stats
+  has_many :football_quarterback_stats
 
 
   before_save { |user| user.email = email.downcase }

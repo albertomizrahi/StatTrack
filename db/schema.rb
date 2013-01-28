@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130106050801) do
+ActiveRecord::Schema.define(:version => 20130121200144) do
 
   create_table "basketball_stats", :force => true do |t|
     t.date     "date_played_on"
@@ -41,6 +41,29 @@ ActiveRecord::Schema.define(:version => 20130106050801) do
   end
 
   add_index "basketball_stats", ["user_id"], :name => "index_basketball_stats_on_user_id"
+
+  create_table "football_quarterback_stats", :force => true do |t|
+    t.date     "date_played_on"
+    t.string   "opponent"
+    t.integer  "completions"
+    t.integer  "passing_attempts"
+    t.decimal  "completion_percentage"
+    t.integer  "passing_yards"
+    t.decimal  "yards_per_attempt"
+    t.integer  "passing_touchdowns"
+    t.integer  "interceptions"
+    t.integer  "rushing_attempts"
+    t.integer  "rushing_yards"
+    t.integer  "fumbles"
+    t.integer  "rushing_touchdowns"
+    t.decimal  "yards_per_rush"
+    t.decimal  "quarterback_rating"
+    t.integer  "user_id"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
+
+  add_index "football_quarterback_stats", ["user_id"], :name => "index_football_quarterback_stats_on_user_id"
 
   create_table "sportizations", :force => true do |t|
     t.integer  "user_id"
