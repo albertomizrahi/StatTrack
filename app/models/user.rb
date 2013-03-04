@@ -12,14 +12,21 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :name, :email, :password, :password_confirmation
+  attr_accessible :name, :email, :password, :password_confirmation, :profile_picture
   has_secure_password
+
+  has_attached_file :profile_picture, :styles => { :small => "125x150!" }
+  validates_attachment_size :profile_picture, :less_than => 3.megabytes
+  validates_attachment_content_type :profile_picture, :content_type => ['image/jpeg', 'image/png', 'image/pjpeg', 'image/jpg']
 
   has_many :sportizations
   has_many :sports, :through => :sportizations
 
   has_many :basketball_stats
   has_many :football_quarterback_stats
+  has_many :football_receiver_stats
+  has_many :football_runningback_stats
+  has_many :football_defense_stats
 
 
   before_save { |user| user.email = email.downcase }

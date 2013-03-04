@@ -1,0 +1,62 @@
+<tr>
+<%= form_for(@basketball_stat) do |f| %>
+
+    <td><%=f.date_select :date_played_on, :start_year => Time.now.year, :end_year => Time.now.year - 20, :order => [:day, :month, :year],:class => "date" %></td>
+
+    <td><%= f.text_field :opponent %></td>
+
+
+    <td><%= f.number_field :minutes_played, :class => "number_field_only" %>
+    <%= f.number_field :seconds_played, :class => "number_field_only" %></td>
+
+
+
+
+
+    <td><%= f.number_field :field_goals_made, :class => "number_field_only" %></td>
+
+
+    <td><%= f.number_field :field_goals_attempted, :class => "number_field_only" %></td>
+    <td></td>
+
+
+    <td><%= f.number_field :threepts_made, :class => "number_field_only" %></td>
+
+
+    <td><%= f.number_field :threepts_attempted, :class => "number_field_only" %></td>
+    <td></td>
+
+    <td><%= f.number_field :free_throws_made, :class => "number_field_only" %></td>
+
+
+    <td><%= f.number_field :free_throws_attempted, :class => "number_field_only" %></td>
+    <td></td>
+
+      <td><%= f.number_field :offensive_rebounds, :class => "number_field_only" %></td>
+
+
+    <td><%= f.number_field :defensive_rebounds, :class => "number_field_only" %></td>
+
+    <td></td>
+
+    <td><%= f.number_field :assists, :class => "number_field_only" %></td>
+
+
+    <td><%= f.number_field :turnovers, :class => "number_field_only" %> </td>
+
+
+    <td><%= f.number_field :steals, :class => "number_field_only" %></td>
+
+
+    <td><%= f.number_field :blocks, :class => "number_field_only" %></td>
+
+
+    <td><%= f.number_field :personal_fouls, :class => "number_field_only" %></td>
+
+    <td></td>
+
+    <%= f.submit "Add Basketball Stat", class: "btn" %>
+
+<% end %>
+
+</tr>

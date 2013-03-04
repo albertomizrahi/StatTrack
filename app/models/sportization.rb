@@ -20,4 +20,5 @@ class Sportization < ActiveRecord::Base
   validates :sport_id, presence: true
   validates :position, presence: true
 
+
 end

@@ -34,4 +34,7 @@ StatHub::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  #In order for Paperclip to work properly
+  Paperclip.options[:command_path] = "/usr/bin/"
 end

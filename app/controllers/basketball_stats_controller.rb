@@ -1,9 +1,7 @@
 class BasketballStatsController < ApplicationController
 
-  before_filter :signed_in_user, only: [:new, :create]
+  before_filter :signed_in_user, only: [:create, :destroy]
 
-  def new
-  end
 
   def create
 
@@ -11,9 +9,9 @@ class BasketballStatsController < ApplicationController
 
     #We calculate the percentage of each type of field goal by dividing the total made by the total attempted
     # .nonzero? | 1 is used in order to avoid dividing by zero
-    @basketball_stat.field_goal_percentage = @basketball_stat.field_goals_made.to_f/(@basketball_stat.field_goals_attempted.nonzero? || 1)
-    @basketball_stat.threept_percentage = @basketball_stat.threepts_made.to_f/(@basketball_stat.threepts_attempted.nonzero? || 1)
-    @basketball_stat.free_throw_percentage = @basketball_stat.free_throws_made.to_f/(@basketball_stat.free_throws_attempted.nonzero? || 1)
+    @basketball_stat.field_goal_percentage = @basketball_stat.field_goals_made.to_f/(@basketball_stat.field_goals_attempted.nonzero? || 10000)
+    @basketball_stat.threept_percentage = @basketball_stat.threepts_made.to_f/(@basketball_stat.threepts_attempted.nonzero? || 10000)
+    @basketball_stat.free_throw_percentage = @basketball_stat.free_throws_made.to_f/(@basketball_stat.free_throws_attempted.nonzero? || 10000)
 
     #The total points are calculated by multiplying the amount of fields goals made by the value of each type of field ( two-pointer, three-pointer, free throw)
     @basketball_stat.total_points = 1*@basketball_stat.free_throws_made + 2*@basketball_stat.field_goals_made + 3*@basketball_stat.threepts_made

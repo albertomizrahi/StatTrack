@@ -16,8 +16,15 @@ function show_position_selection(sport_name) {
     var footballPositions = {
         "" : "",
         "Quarterback": "Quarterback",
-        "Halfback": "Halfback",
-        "Receiver": "Receiver"
+        "Runningback": "Runningback",
+        "Receiver": "Receiver",
+        "Tight end": "Tight end",
+        "Defensive tackle": "Defensive tackle",
+        "Defensive end": "Defensive end",
+        "Middle linebacker": "Middle linebacker",
+        "Outside linebacker": "Outside linebacker",
+        "Cornerback": "Cornerback",
+        "Safety": "Safety"
     };
 
 
@@ -76,4 +83,19 @@ $(document).ready(function() {
             }
         }
     });
+
+    //Automatically activates the first tab and its corresponding pane
+    $('.nav-tabs li:first').addClass('active');
+    $('.tab-content div:first').addClass('active');
+
+    //Styles the stat tables
+    /*$('table').each(function() {
+        var child = $(this);
+        child.children('tr:first').addClass('top-row');
+    }); */
+
+    //$('table tr:odd').addClass('alternate-row');
+    $( "table" ).children("tbody").children('tr:first-child').addClass( "top-row" );
+    $( "table" ).children("tbody").children('tr:nth-child(even)').addClass( "alternate-row" );
 });
+

@@ -18,8 +18,22 @@ class SportizationsController < ApplicationController
   end
 
   def destroy
+
+    sportization = Sportization.find(params[:id])
+
+    #We make sure to delete all the stats of the sport deleted
+    if Sport.find(sportization.sport_id).name == "Basketball"
+      BasketballStat.find_all_by_user_id(sportization.user_id).each(&:delete)
+    elsif sportization.position == "Quarterback"
+      FootballQuarterbackStat.find_all_by_user_id(sportization.user_id).each(&:delete)
+    elsif sportization.position == "Runningback"
+      FootballRunningbackStat.find_all_by_user_id(sportization.user_id).each(&:delete)
+    elsif sportization.position == "Receiver" or sportization.position == "Tight end"
+      FootballReceiverStat.find_all_by_user_id(sportization.user_id).each(&:delete)
+    end
+
     #Deletes the sportization for the given sport and the association between the user and the sport
-    Sportization.find(params[:id]).delete
+    sportization.destroy
 
     redirect_to current_user
   end

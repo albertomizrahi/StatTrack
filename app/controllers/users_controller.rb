@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
 
-    #This is the model used to allow the user to add a sport
+    #This is the model used to allow the user to add a sport to their account
     @sportization = Sportization.new
 
     #Retrieves all the sports that the user has already chosen
@@ -20,6 +20,9 @@ class UsersController < ApplicationController
 
     @basketball_stat = BasketballStat.new
     @football_quarterback_stat = FootballQuarterbackStat.new
+    @football_receiver_stat = FootballReceiverStat.new
+    @football_runningback_stat = FootballRunningbackStat.new
+    @football_defense_stat = FootballDefenseStat.new
     #@basketball_stats_recorded = current_user.basketball_stats
 
   end

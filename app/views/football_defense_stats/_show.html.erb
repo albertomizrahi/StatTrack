@@ -1,0 +1,119 @@
+
+<!-- If no stats have been added -->
+<% if defense_stats.blank? %>
+    <b> No stats have been added yet.</b>
+
+
+    <!-- If stats have been added, create a table and display them -->
+<% else %>
+    <table class="table table-condensed" style="font-size: 10px;">
+
+      <tr>
+        <td colspan="2"></td>
+        <td colspan="6">Tackles</td>
+        <td colspan="5">Fumbles</td>
+        <td colspan="6">Interceptions</td>
+      </tr>
+
+
+      <tr>
+        <th>Date played</th>
+        <th>Opponent</th>
+        <th title="Solo tackles">Solo</th>
+        <th title="Assisted tackles">Ast</th>
+        <th title="Total tackles">Total</th>
+        <th title="Stuffs">Stf</th>
+        <th title="Stuff yards">StfYds</th>
+        <th title="Sacks">Sack</th>
+        <th title="Safeties">Sfty</th>
+        <th title="Forced fumbles">FF</th>
+        <th title="Fumbles recovered">FR</th>
+        <th title="Fumbles returned for touchdown">TD</th>
+        <th title="Kicks blocked">KB</th>
+        <th title="Interceptions">Int</th>
+        <th title="Intercepted returned yards">Yds</th>
+        <th title="Average intercepted return yards">Avg</th>
+        <th title="Longest interception return">Lng</th>
+        <th title="Interceptions returned for touchdown">TD</th>
+        <th title="Passes defended">PD</th>
+      </tr>
+
+
+      <!-- Loop through each of the stats objects and displays its attributes -->
+      <% defense_stats.each do |stat| %>
+          <tr>
+
+            <td><%= link_to "delete", stat, method: :delete, data: { confirm: "You sure?" } %><%= stat.date_played_on %></td>
+            <td><%= stat.opponent %></td>
+            <td><%= stat.solo_tackles %></td>
+            <td><%= stat.assisted_tackles %></td>
+            <td><%= stat.total_tackles %></td>
+            <td><%= stat.stuffs %></td>
+            <td><%= stat.stuff_yards %></td>
+            <td><%= number_with_precision(stat.sacks, :precision => 1) %></td>
+            <td><%= stat.safeties %></td>
+            <td><%= stat.forced_fumbles %></td>
+            <td><%= stat.fumbles_recovered %></td>
+            <td><%= stat.fumbles_returned_for_touchdown  %></td>
+            <td><%= stat.kicks_blocked  %></td>
+            <td><%= stat.interceptions %></td>
+            <td><%= stat.intercepted_returned_yards %></td>
+            <td><%= number_with_precision(stat.average_intercepted_return_yards, :precision => 1) %></td>
+            <td><%= stat.longest_interception_return %></td>
+            <td><%= stat.interceptions_returned_for_touchdown %></td>
+            <td><%= stat.passes_defended %></td>
+          </tr>
+
+
+
+      <% end %>
+
+
+      <% #Variables for all of the totals for each stat
+
+         total_solo_tackles = defense_stats.collect(&:solo_tackles).sum
+         total_assisted_tackles = defense_stats.collect(&:assisted_tackles).sum
+         total_tackles = total_solo_tackles + total_assisted_tackles
+         total_stuffs = defense_stats.collect(&:stuffs).sum
+         total_stuff_yards = defense_stats.collect(&:stuff_yards).sum
+         total_sacks = defense_stats.collect(&:sacks).sum
+         total_safeties = defense_stats.collect(&:safeties).sum
+         total_forced_fumbles = defense_stats.collect(&:forced_fumbles).sum
+         total_fumbles_recovered = defense_stats.collect(&:fumbles_recovered).sum
+         total_fumbles_returned_for_touchdown = defense_stats.collect(&:fumbles_returned_for_touchdown).sum
+         total_kicks_blocked = defense_stats.collect(&:kicks_blocked).sum
+         total_interceptions = defense_stats.collect(&:interceptions).sum
+         total_intercepted_returned_yards = defense_stats.collect(&:intercepted_returned_yards).sum
+         average_intercepted_return_yards =  total_intercepted_returned_yards.to_f/(total_interceptions.nonzero? || 10000)
+         longest_interception_return = defense_stats.collect(&:longest_interception_return).max
+         total_interceptions_returned_for_touchdown = defense_stats.collect(&:interceptions_returned_for_touchdown).sum
+         total_passes_defended = defense_stats.collect(&:passes_defended).sum
+
+      %>
+
+
+      <!-- This is the row for all the totals -->
+      <tr>
+        <td colspan="2"> <b>Totals</b></td>
+        <td><b><%= total_solo_tackles %></b></td>
+        <td><b><%= total_assisted_tackles %></b></td>
+        <td><b><%= total_tackles %></b></td>
+        <td><b><%= total_stuffs %></b></td>
+        <td><b><%= total_stuff_yards %></b></td>
+        <td><b><%= total_sacks %></b></td>
+        <td><b><%= total_safeties %></b></td>
+        <td><b><%= total_forced_fumbles %></b></td>
+        <td><b><%= total_fumbles_recovered %></b></td>
+        <td><b><%= total_fumbles_returned_for_touchdown %></b></td>
+        <td><b><%= total_kicks_blocked %></b></td>
+        <td><b><%= total_interceptions %></b></td>
+        <td><b><%= total_intercepted_returned_yards %></b></td>
+        <td><b><%= number_with_precision(average_intercepted_return_yards, :precision => 1) %></b></td>
+        <td><b><%= longest_interception_return %></b></td>
+        <td><b><%= total_interceptions_returned_for_touchdown %></b></td>
+        <td><b><%= total_passes_defended %></b></td>
+      </tr>
+
+    </table>
+
+<% end %>

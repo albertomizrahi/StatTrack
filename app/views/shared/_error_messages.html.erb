@@ -9,6 +9,17 @@
        if error_messages.include? ("Password can't be blank")
          error_messages.delete("Password is too short (minimum is 6 characters)")
        end
+
+       #Modifies error message when user attaches file with invalid input or/and file size too big
+       if error_messages.include? ("Profile picture content type is invalid")
+         error_messages.delete("Profile picture content type is invalid")
+         error_messages.push("Attached file type is invalid. Only use .jpg or .png files")
+       end
+
+       if error_messages.include? ("Profile picture file size must be less than 3145728 Bytes")
+         error_messages.delete("Profile picture file size must be less than 3145728 Bytes")
+         error_messages.push("Attached file size must be less than 3 megabytes")
+       end
     %>
     <div id="error_explanation">
       <div class="alert alert-error">

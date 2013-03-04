@@ -1,38 +1,37 @@
 
 <!-- If no stats have been added -->
 <% if basketball_stats.blank? %>
-    <b> No basketball stats have been added.</b>
+    <b xmlns="http://www.w3.org/1999/html"> No stats have been added yet.</b>
 
 
 <!-- If stats have been added, create a table and display them -->
 <% else %>
-    <table class="table table-condensed" style="font-size: 10px;">
-
+    <table class="table table-condensed " style="font-size: 10px;">
       <tr>
-        <td colspan="4"></td>
-        <td colspan="3">FG</td>
-        <td colspan="3">FT</td>
-        <td colspan="3">3PT</td>
-        <td colspan="3">Rebounds</td>
+        <td colspan="3" class="border-right"></td>
+        <td colspan="3" class="border-right">FG</td>
+        <td colspan="3" class="border-right">FT</td>
+        <td colspan="3" class="border-right">3PT</td>
+        <td colspan="3" class="border-right">Rebounds</td>
         <td colspan="6">Misc</td>
       </tr>
 
       <tr>
         <th>Date played</th>
         <th>Opponent</th>
-        <th>Minutes</th>
+        <th class="border-right">Minutes</th>
         <th title="Field goals made">M</th>
         <th title="Field goals attempted">A</th>
-        <th title="Field goal percentage">%</th>
+        <th title="Field goal percentage" class="border-right">%</th>
         <th title="Free throws made">M</th>
         <th title="Free throws attempted">A</th>
-        <th title="Free throw percentage">%</th>
+        <th title="Free throw percentage" class="border-right">%</th>
         <th title="3 pointers made">M</th>
         <th title="3 pointers attempted">A</th>
-        <th title="3 pointer percentage">%</th>
+        <th title="3 pointer percentage" class="border-right">%</th>
         <th title="Offensive rebounds">Off</th>
         <th title="Defensive rebounds">Def</th>
-        <th title="Total rebounds">Total</th>
+        <th title="Total rebounds" class="border-right">Total</th>
         <th title="Assists">Ast</th>
         <th title="Turnovers">TO</th>
         <th title="Steals">Stl</th>
@@ -47,26 +46,25 @@
 
             <td><%= link_to "delete", stat, method: :delete, data: { confirm: "You sure?" } %><%= stat.date_played_on %></td>
             <td><%= stat.opponent %></td>
-            <td><%= convert_seconds_to_time (stat.time_played_in_seconds) %></td>
+            <td class="border-right"><%= convert_seconds_to_time (stat.time_played_in_seconds) %></td>
             <td><%= stat.field_goals_made %></td>
             <td><%= stat.field_goals_attempted %></td>
-            <td><%= number_with_precision(stat.field_goal_percentage*100, :precision => 1) %>%</td>
+            <td class="border-right"><%= number_with_precision(stat.field_goal_percentage*100, :precision => 1) %>%</td>
             <td><%= stat.free_throws_made %></td>
             <td><%= stat.free_throws_attempted %></td>
-            <td><%= number_with_precision(stat.free_throw_percentage*100, :precision => 1) %>%</td>
+            <td class="border-right"><%= number_with_precision(stat.free_throw_percentage*100, :precision => 1) %>%</td>
             <td><%= stat.threepts_made %></td>
             <td><%= stat.threepts_attempted %></td>
-            <td><%= number_with_precision(stat.threept_percentage*100, :precision => 1) %>%</td>
+            <td class="border-right"><%= number_with_precision(stat.threept_percentage*100, :precision => 1) %>%</td>
             <td><%= stat.offensive_rebounds %></td>
             <td><%= stat.defensive_rebounds %></td>
-            <td><%= stat.total_rebounds %></td>
+            <td class="border-right"><%= stat.total_rebounds %></td>
             <td><%= stat.assists %></td>
             <td><%= stat.turnovers %></td>
             <td><%= stat.steals %></td>
             <td><%= stat.blocks %></td>
             <td><%= stat.personal_fouls %></td>
             <td><%= stat.total_points %></td>
-            <td></td>
           </tr>
 
 
@@ -100,19 +98,19 @@
       <!-- This is the row for all the average -->
     <tr>
       <td colspan="2"> <b>Average</b></td>
-      <td><b><%= convert_seconds_to_time (average_time_played) %></b></td>
+      <td class="border-right"><b><%= convert_seconds_to_time (average_time_played) %></b></td>
       <td><b><%= number_with_precision average_field_goals_made,:precision => 1 %></b></td>
       <td><b><%= number_with_precision average_field_goals_attempted,:precision => 1 %></b></td>
-      <td><b><%= number_with_precision average_field_goal_percentage,:precision => 1 %>%</b></td>
+      <td class="border-right"><b><%= number_with_precision average_field_goal_percentage,:precision => 1 %>%</b></td>
       <td><b><%= number_with_precision average_free_throws_made,:precision => 1 %></b></td>
       <td><b><%= number_with_precision average_free_throws_attempted,:precision => 1 %></b></td>
-      <td><b><%= number_with_precision average_free_throw_percentage,:precision => 1 %>%</b></td>
+      <td class="border-right"><b><%= number_with_precision average_free_throw_percentage,:precision => 1 %>%</b></td>
       <td><b><%= number_with_precision average_threepts_made,:precision => 1 %></b></td>
       <td><b><%= number_with_precision average_threepts_attempted,:precision => 1 %></b></td>
-      <td><b><%= number_with_precision average_threept_percentage,:precision => 1 %>%</b></td>
+      <td class="border-right"><b><%= number_with_precision average_threept_percentage,:precision => 1 %>%</b></td>
       <td><b><%= number_with_precision average_offensive_rebounds,:precision => 1 %></b></td>
       <td><b><%= number_with_precision average_defensive_rebounds,:precision => 1 %></b></td>
-      <td><b><%= number_with_precision average_total_rebounds,:precision => 1 %></b></td>
+      <td class="border-right"><b><%= number_with_precision average_total_rebounds,:precision => 1 %></b></td>
       <td><b><%= number_with_precision average_assists,:precision => 1 %></b></td>
       <td><b><%= number_with_precision average_turnovers,:precision => 1 %></b></td>
       <td><b><%= number_with_precision average_steals,:precision => 1 %></b></td>
@@ -121,6 +119,6 @@
       <td><b><%= number_with_precision average_total_points,:precision => 1 %></b></td>
     </tr>
 
-    </table>
+   </table>
 
 <% end %>

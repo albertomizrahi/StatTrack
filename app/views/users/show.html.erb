@@ -1,76 +1,103 @@
 <% provide(:title, @user.name) %>
-<div class="row" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
-  <aside class="span2">
-    <section>
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
-      </h1>
-    </section>
-  </aside>
 
+<div class="row" xmlns="http://www.w3.org/1999/html">
+  <section class="span2 user-panel">
+    <h1>
+      <%= image_tag @user.profile_picture.url(:small)  %>
+
+    </h1>
+  </section>
+
+  <section class="span8 user-panel">
+    <h1 style="text-align: center;">
+      <%= @user.name %>
+    </h1>
+    <p>Height:</p>
+    <p>Weight:</p>
+    <p>Born:</p>
+    <p>High School/College:</p>
+  </section>
+
+</div>
+
+<div class="row" xmlns="http://www.w3.org/1999/html">
 
   <div class="span10">
 
     <% if correct_user? %>
 
-    <a href="#" onclick="document.getElementById('AddSport').style.display = 'block';return false;" >
-      Add Sport
-    </a>
-
-    <div id="AddSport" style="display: none;" >
-
-      <%= form_for(@sportization) do |f| %>
-
-          <% Sport.all.each do |sport| %>
-              <%= render 'shared/error_messages', object: f.object %>
-
-              <%= f.radio_button :sport_id, sport.id, :class => "radio", :onclick => "show_position_selection('" + sport.name + "');" %>
-              <%= f.label :name, sport.name, :value => sport.name %>
-
-          <% end %>
-
-          <% #The positions listed (depending on the sport) is changed through javascript %>
-          <div id="position_selector" style="display: none;">
-          <%= f.select :position, "", {}, :onchange => "enable_submit_button(this.value);" %>
-          </div>
-
-          <div id="submit_button_div"  style="display: none;">
-          <%= f.submit "Add Sport", class: "btn btn-large btn-primary" %>
-          </div>
-      <% end %>
-
-
-    </div>
-
     <% end %>
 
 
+    <ul class="nav nav-tabs" data-tabs="tabs">
+    <% @sports_already_chosen.each_with_index do |sport_chosen, index| %>
+              <li><a data-toggle="tab" href="#<%= sport_chosen.name %>">
+                <%= sport_icon(sport_chosen.name)%>
+                <%= sport_chosen.name %>
+              </a></li>
+    <% end %>
 
-      <% @sports_already_chosen.each do |sport_chosen| %>
-          <div class="stats">
+      <li><a data-toggle="tab" href="#AddSport"><%= image_tag "plus_icon.png", :size => "20x20", :alt => "Plus icon" %>
+        Add Sport
+      </a></li>
+    </ul>
+
+
+    <div class="tab-content">
+    <% @sports_already_chosen.each do |sport_chosen| %>
+          <div class="tab-pane" id="<%= sport_chosen.name %>">
+
 
             <% sportization_chosen = @user.sportizations.find_by_sport_id(sport_chosen.id) %>
             <h3> <%= sport_chosen.name %>  </h3>
             <b>Position: </b> <%= sportization_chosen.position %>
             <br />
-            <%= link_to "delete", sportization_chosen, method: :delete, data: { confirm: "Are you sure?" } %>
+            <%= link_to "delete", sportization_chosen, method: :delete, data: { confirm: "Are you sure? All your stats will be deleted." } %>
 
             <% if sport_chosen.name == "Basketball" %>
 
-               <%=  render 'basketball_stats/add' %>
+
+                <%=  render 'basketball_stats/add' %>
 
                <% basketball_stats_recorded = current_user.basketball_stats %>
                <%=  render  :partial => 'basketball_stats/show', :locals => { :basketball_stats => basketball_stats_recorded} %>
 
 
 
+
             <% elsif sport_chosen.name == "Football" and sportization_chosen.position == "Quarterback" %>
+
 
                 <%= render 'football_quarterback_stats/add' %>
 
                 <% football_quarterback_stats_recorded = current_user.football_quarterback_stats %>
                 <%=  render  :partial => 'football_quarterback_stats/show', :locals => { :football_qb_stats => football_quarterback_stats_recorded} %>
+
+
+
+            <% elsif sport_chosen.name == "Football" and (sportization_chosen.position == "Receiver" or sportization_chosen.position == "Tight end") %>
+
+                <%= render 'football_receiver_stats/add' %>
+
+                <% receiver_stats_recorded = current_user.football_receiver_stats %>
+                <%=  render  :partial => 'football_receiver_stats/show', :locals => { :receiver_stats => receiver_stats_recorded} %>
+
+
+
+
+            <% elsif sport_chosen.name == "Football" and sportization_chosen.position == "Runningback" %>
+
+                <%= render 'football_runningback_stats/add' %>
+
+                <% runningback_stats_recorded = current_user.football_runningback_stats %>
+                <%=  render  :partial => 'football_runningback_stats/show', :locals => { :runningback_stats => runningback_stats_recorded} %>
+
+            <% elsif sport_chosen.name == "Football" and (sportization_chosen.position == "Defensive tackle" or sportization_chosen.position == "Defensive end" or sportization_chosen.position == "Middle linebacker" or sportization_chosen.position == "Outside linebacker" or sportization_chosen.position == "Cornerback" or sportization_chosen.position == "Safety")  %>
+
+                <%= render 'football_defense_stats/add' %>
+
+                <% defense_stats = current_user.football_defense_stats %>
+            <%=  render  :partial => 'football_defense_stats/show', :locals => { :defense_stats => defense_stats} %>
 
             <% end %>
 
@@ -79,6 +106,32 @@
       <% end %>
 
 
+      <div id="AddSport" class="tab-pane">
+
+        <%= form_for(@sportization) do |f| %>
+
+            <% Sport.all.each do |sport| %>
+                <%= render 'shared/error_messages', object: f.object %>
+
+                <%= f.radio_button :sport_id, sport.id, :class => "radio", :onclick => "show_position_selection('" + sport.name + "');" %>
+                <%= f.label :name, sport.name, :value => sport.name %>
+
+            <% end %>
+
+            <% #The positions listed (depending on the sport) is changed through javascript %>
+            <div id="position_selector" style="display: none;">
+              <%= f.select :position, "", {}, :onchange => "enable_submit_button(this.value);" %>
+            </div>
+
+            <div id="submit_button_div"  style="display: none;">
+              <%= f.submit "Add Sport", class: "btn btn-large btn-primary" %>
+            </div>
+        <% end %>
+
+      </div>
+
+
   </div>
 
 </div>
+    </div>
