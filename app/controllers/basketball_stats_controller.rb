@@ -24,7 +24,7 @@ class BasketballStatsController < ApplicationController
 
     if @basketball_stat.save
       flash[:success] = "The stat was successfully added!"
-      redirect_to current_user
+      redirect_to current_user, :anchor => "Basketball"
 
     else
       flash[:error] = "There was an error adding your stat."

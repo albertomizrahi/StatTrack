@@ -65,6 +65,8 @@ function enable_submit_button(value) {
 
 $(document).ready(function() {
 
+
+
     //Only allows for numbers to be written in input fields with class number_field_only
     $(".number_field_only").keydown(function(event) {
         // Allow: backspace, delete, tab, escape, and enter
@@ -85,16 +87,10 @@ $(document).ready(function() {
     });
 
     //Automatically activates the first tab and its corresponding pane
-    $('.nav-tabs li:first').addClass('active');
-    $('.tab-content div:first').addClass('active');
+    //$('.nav-tabs li:first').addClass('active');
+    //$('.tab-content div:first').addClass('active');
 
     //Styles the stat tables
-    /*$('table').each(function() {
-        var child = $(this);
-        child.children('tr:first').addClass('top-row');
-    }); */
-
-    //$('table tr:odd').addClass('alternate-row');
     $( "table" ).children("tbody").children('tr:first-child').addClass( "top-row" );
     $( "table" ).children("tbody").children('tr:nth-child(even)').addClass( "alternate-row" );
 });

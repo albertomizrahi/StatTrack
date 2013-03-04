@@ -9,15 +9,15 @@
     <table class="table table-condensed" style="font-size: 10px;">
 
       <tr>
-        <td colspan="2"></td>
-        <td colspan="8">Passing</td>
-        <td colspan="5">Rushing</td>
+        <td colspan="2" class="border-right"></td>
+        <td colspan="8" class="border-right">Passing</td>
+        <td colspan="5" class="border-right">Rushing</td>
       </tr>
 
 
       <tr>
         <th>Date played</th>
-        <th>Opponent</th>
+        <th class="border-right">Opponent</th>
         <th title="Passes completed">Comp</th>
         <th title="Passes attempted">Att</th>
         <th title="Completion percentage">Pct</th>
@@ -25,7 +25,7 @@
         <th title="Yards per attempt">Yds/Att</th>
         <th title="Passing touchdowns">TD</th>
         <th title="Interceptions">Int</th>
-        <th title="Passer rating">Rating</th>
+        <th title="Passer rating" class="border-right">Rating</th>
         <th title="Rushing attempts">Att</th>
         <th title="Rushing yards">Yds</th>
         <th title="Average yards per carry">Avg</th>
@@ -38,7 +38,7 @@
           <tr>
 
             <td><%= link_to "delete", stat, method: :delete, data: { confirm: "You sure?" } %><%= stat.date_played_on %></td>
-            <td><%= stat.opponent %></td>
+            <td class="border-right"><%= stat.opponent %></td>
             <td><%= stat.completions %></td>
             <td><%= stat.passing_attempts %></td>
             <td><%= number_with_precision(stat.completion_percentage*100, :precision => 1) %>%</td>
@@ -46,7 +46,7 @@
             <td><%= number_with_precision(stat.yards_per_attempt, :precision => 1) %></td>
             <td><%= stat.passing_touchdowns %></td>
             <td><%= stat.interceptions %></td>
-            <td><%= number_with_precision(stat.quarterback_rating, :precision => 1) %></td>
+            <td class="border-right"><%= number_with_precision(stat.quarterback_rating, :precision => 1) %></td>
             <td><%= stat.rushing_attempts %></td>
             <td><%= stat.rushing_yards %></td>
             <td><%= number_with_precision(stat.yards_per_rush, :precision => 1) %></td>
@@ -80,7 +80,7 @@
 
       <!-- This is the row for all the totals -->
       <tr>
-        <td colspan="2"> <b>Totals</b></td>
+        <td colspan="2" class="border-right"> <b>Totals</b></td>
         <td><b><%= total_completions %></b></td>
         <td><b><%= total_passing_attempts %></b></td>
         <td><b><%= number_with_precision average_completion_percentage,:precision => 1 %>%</b></td>
@@ -88,7 +88,7 @@
         <td><b><%= number_with_precision average_yards_per_attempt,:precision => 1 %></b></td>
         <td><b><%= total_passing_touchdowns %></b></td>
         <td><b><%= total_interceptions %></b></td>
-        <td><b><%= number_with_precision average_quarterback_rating,:precision => 1 %></b></td>
+        <td class="border-right"><b><%= number_with_precision average_quarterback_rating,:precision => 1 %></b></td>
         <td><b><%= total_rushing_attempts %></b></td>
         <td><b><%= total_rushing_yards %></b></td>
         <td><b><%= number_with_precision average_yards_per_rush,:precision => 1 %></b></td>

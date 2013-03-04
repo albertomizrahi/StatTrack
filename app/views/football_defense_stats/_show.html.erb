@@ -9,27 +9,27 @@
     <table class="table table-condensed" style="font-size: 10px;">
 
       <tr>
-        <td colspan="2"></td>
-        <td colspan="6">Tackles</td>
-        <td colspan="5">Fumbles</td>
-        <td colspan="6">Interceptions</td>
+        <td colspan="2" class="border-right"></td>
+        <td colspan="7" class="border-right">Tackles</td>
+        <td colspan="4" class="border-right">Fumbles</td>
+        <td colspan="6" class="border-right">Interceptions</td>
       </tr>
 
 
       <tr>
         <th>Date played</th>
-        <th>Opponent</th>
+        <th class="border-right">Opponent</th>
         <th title="Solo tackles">Solo</th>
         <th title="Assisted tackles">Ast</th>
         <th title="Total tackles">Total</th>
         <th title="Stuffs">Stf</th>
         <th title="Stuff yards">StfYds</th>
         <th title="Sacks">Sack</th>
-        <th title="Safeties">Sfty</th>
+        <th title="Safeties" class="border-right">Sfty</th>
         <th title="Forced fumbles">FF</th>
         <th title="Fumbles recovered">FR</th>
         <th title="Fumbles returned for touchdown">TD</th>
-        <th title="Kicks blocked">KB</th>
+        <th title="Kicks blocked" class="border-right">KB</th>
         <th title="Interceptions">Int</th>
         <th title="Intercepted returned yards">Yds</th>
         <th title="Average intercepted return yards">Avg</th>
@@ -44,18 +44,18 @@
           <tr>
 
             <td><%= link_to "delete", stat, method: :delete, data: { confirm: "You sure?" } %><%= stat.date_played_on %></td>
-            <td><%= stat.opponent %></td>
+            <td class="border-right"><%= stat.opponent %></td>
             <td><%= stat.solo_tackles %></td>
             <td><%= stat.assisted_tackles %></td>
             <td><%= stat.total_tackles %></td>
             <td><%= stat.stuffs %></td>
             <td><%= stat.stuff_yards %></td>
             <td><%= number_with_precision(stat.sacks, :precision => 1) %></td>
-            <td><%= stat.safeties %></td>
+            <td class="border-right"><%= stat.safeties %></td>
             <td><%= stat.forced_fumbles %></td>
             <td><%= stat.fumbles_recovered %></td>
             <td><%= stat.fumbles_returned_for_touchdown  %></td>
-            <td><%= stat.kicks_blocked  %></td>
+            <td class="border-right"><%= stat.kicks_blocked  %></td>
             <td><%= stat.interceptions %></td>
             <td><%= stat.intercepted_returned_yards %></td>
             <td><%= number_with_precision(stat.average_intercepted_return_yards, :precision => 1) %></td>
@@ -94,18 +94,18 @@
 
       <!-- This is the row for all the totals -->
       <tr>
-        <td colspan="2"> <b>Totals</b></td>
+        <td colspan="2" class="border-right"> <b>Totals</b></td>
         <td><b><%= total_solo_tackles %></b></td>
         <td><b><%= total_assisted_tackles %></b></td>
         <td><b><%= total_tackles %></b></td>
         <td><b><%= total_stuffs %></b></td>
         <td><b><%= total_stuff_yards %></b></td>
         <td><b><%= total_sacks %></b></td>
-        <td><b><%= total_safeties %></b></td>
+        <td class="border-right"><b><%= total_safeties %></b></td>
         <td><b><%= total_forced_fumbles %></b></td>
         <td><b><%= total_fumbles_recovered %></b></td>
         <td><b><%= total_fumbles_returned_for_touchdown %></b></td>
-        <td><b><%= total_kicks_blocked %></b></td>
+        <td class="border-right"><b><%= total_kicks_blocked %></b></td>
         <td><b><%= total_interceptions %></b></td>
         <td><b><%= total_intercepted_returned_yards %></b></td>
         <td><b><%= number_with_precision(average_intercepted_return_yards, :precision => 1) %></b></td>

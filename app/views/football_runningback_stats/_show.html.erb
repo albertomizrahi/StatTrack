@@ -9,26 +9,26 @@
     <table class="table table-condensed" style="font-size: 10px;">
 
       <tr>
-        <td colspan="2"></td>
-        <td colspan="5">Rushing</td>
-        <td colspan="5">Receiving</td>
+        <td colspan="2" class="border-right"></td>
+        <td colspan="5" class="border-right">Rushing</td>
+        <td colspan="5" class="border-right">Receiving</td>
         <td colspan="2">Fumbles</td>
       </tr>
 
 
       <tr>
         <th>Date played</th>
-        <th>Opponent</th>
+        <th class="border-right">Opponent</th>
         <th title="Rushing attempts">Att</th>
         <th title="Rushing yards">Yds</th>
         <th title="Average yards per carry">Avg</th>
         <th title="Longest run">Lng</th>
-        <th title="Rushing touchdowns">TD</th>
+        <th title="Rushing touchdowns" class="border-right">TD</th>
         <th title="Receptions">Rec</th>
         <th title="Receiving yards">Yds</th>
         <th title="Receiving yards per reception">Avg</th>
         <th title="Longest reception">Lng</th>
-        <th title="Receiving touchdowns">TD</th>
+        <th title="Receiving touchdowns" class="border-right">TD</th>
         <th title="Fumbles">Fum</th>
         <th title="Fumbles lost">Lst</th>
       </tr>
@@ -38,17 +38,17 @@
           <tr>
 
             <td><%= link_to "delete", stat, method: :delete, data: { confirm: "You sure?" } %><%= stat.date_played_on %></td>
-            <td><%= stat.opponent %></td>
+            <td class="border-right"><%= stat.opponent %></td>
             <td><%= stat.rushing_attempts %></td>
             <td><%= stat.rushing_yards %></td>
             <td><%= number_with_precision(stat.rushing_average, :precision => 1) %></td>
             <td><%= stat.longest_run %></td>
-            <td><%= stat.rushing_touchdowns %></td>
+            <td class="border-right"><%= stat.rushing_touchdowns %></td>
             <td><%= stat.receptions %></td>
             <td><%= stat.receiving_yards %></td>
             <td><%= number_with_precision(stat.receiving_average, :precision => 1) %></td>
             <td><%= stat.longest_reception %></td>
-            <td><%= stat.receiving_touchdowns %></td>
+            <td class="border-right"><%= stat.receiving_touchdowns %></td>
             <td><%= stat.fumbles %></td>
             <td><%= stat.fumbles_lost %></td>
           </tr>
@@ -78,17 +78,17 @@
 
       <!-- This is the row for all the totals -->
       <tr>
-        <td colspan="2"> <b>Totals</b></td>
+        <td colspan="2" class="border-right"> <b>Totals</b></td>
         <td><b><%= total_rushing_attempts %></b></td>
         <td><b><%= total_rushing_yards %></b></td>
         <td><b><%= number_with_precision average_yards_per_rush,:precision => 1 %></b></td>
         <td><b><%= longest_run %></b></td>
-        <td><b><%= total_rushing_touchdowns %></b></td>
+        <td class="border-right"><b><%= total_rushing_touchdowns %></b></td>
         <td><b><%= total_receptions %></b></td>
         <td><b><%= total_receiving_yards %></b></td>
         <td><b><%= number_with_precision average_yards_per_reception,:precision => 1 %></b></td>
         <td><b><%= longest_reception %></b></td>
-        <td><b><%= total_receiving_touchdowns %></b></td>
+        <td class="border-right"><b><%= total_receiving_touchdowns %></b></td>
         <td><b><%= total_fumbles %></b></td>
         <td><b><%= total_fumbles_lost %></b></td>
       </tr>
