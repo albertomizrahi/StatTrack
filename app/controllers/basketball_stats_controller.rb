@@ -24,11 +24,11 @@ class BasketballStatsController < ApplicationController
 
     if @basketball_stat.save
       flash[:success] = "The stat was successfully added!"
-      redirect_to current_user, :anchor => "Basketball"
+      redirect_to user_path(current_user.id, tab:"Basketball")
 
     else
       flash[:error] = "There was an error adding your stat."
-      redirect_to current_user
+      redirect_to user_path(current_user.id, tab:"Basketball")
     end
 
   end
@@ -37,7 +37,7 @@ class BasketballStatsController < ApplicationController
   def destroy
     BasketballStat.find(params[:id]).delete
 
-    redirect_to current_user
+    redirect_to user_path(current_user.id, tab:"Basketball")
   end
 
 end

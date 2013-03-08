@@ -86,9 +86,21 @@ $(document).ready(function() {
         }
     });
 
-    //Automatically activates the first tab and its corresponding pane
-    //$('.nav-tabs li:first').addClass('active');
-    //$('.tab-content div:first').addClass('active');
+    //The following set of code checks to see if any tab is already active (this occurs if a parameter to tab would be passed)
+    //If no tab is active, make the first tab and tab-pane active
+    var elementAlreadyActive = false;
+    $('.nav-tabs li').each(function(index, li) {
+        var element = $(li);
+         if (element.attr("class") == "active"){
+              elementAlreadyActive = true;
+         }
+
+    });
+    if (!elementAlreadyActive){
+        $('.nav-tabs li:first').addClass('active');
+        $('.tab-content div:first').addClass('active');
+    }
+
 
     //Styles the stat tables
     $( "table" ).children("tbody").children('tr:first-child').addClass( "top-row" );

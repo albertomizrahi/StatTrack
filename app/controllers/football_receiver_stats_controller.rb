@@ -11,16 +11,20 @@ class FootballReceiverStatsController < ApplicationController
 
     if @football_receiver_stat.save
       flash[:success] = "The stat was successfully added!"
-      redirect_to current_user
+      redirect_to user_path(current_user.id, tab:"Football")
     else
       flash[:error] = "There was an error adding your stat."
-      redirect_to current_user
+      redirect_to user_path(current_user.id, tab:"Football")
     end
 
   end
 
 
   def destroy
+
+    FootballReceiverStat.find(params[:id]).delete
+
+    redirect_to user_path(current_user.id, tab:"Football")
 
   end
   

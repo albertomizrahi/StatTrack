@@ -12,10 +12,10 @@ class FootballQuarterbackStatsController < ApplicationController
     @football_quarterback_stat.yards_per_rush = @football_quarterback_stat.rushing_yards.to_f/(@football_quarterback_stat.rushing_attempts.nonzero? || 10000)
     if @football_quarterback_stat.save
       flash[:success] = "The stat was successfully added!"
-      redirect_to current_user
+      redirect_to user_path(current_user.id, tab:"Football")
     else
       flash[:error] = "There was an error adding your stat."
-      redirect_to current_user
+      redirect_to user_path(current_user.id, tab:"Football")
     end
 
   end
@@ -25,7 +25,7 @@ class FootballQuarterbackStatsController < ApplicationController
   def destroy
     FootballQuarterbackStat.find(params[:id]).delete
 
-    redirect_to current_user
+    redirect_to user_path(current_user.id, tab:"Football")
   end
 
 

@@ -27,7 +27,8 @@ body {
 
 
 section {
-  overflow: auto;
+  //overflow: auto;
+
 }
 
 textarea {
@@ -95,8 +96,6 @@ p {
 
 
 .navbar-inner {
-
-
   background-image:url('background.png');
   background-repeat: repeat;
 }
@@ -182,7 +181,7 @@ aside {
 }
 
 .gravatar {
-  float: left;
+
   margin-right: 10px;
 }
 
@@ -192,16 +191,13 @@ aside {
 
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
-  width: 100%;
+  //width: 100%;
   @include box_sizing;
 }
 
 input {
   height: auto !important;
-
-
 }
-
 
 #error_explanation {
   color: #f00;
@@ -228,7 +224,9 @@ input {
 }
 
 .user-panel {
-  margin-bottom: 20px;
+  float: left;
+
+  p { font-size: 85%;}
 }
 
 

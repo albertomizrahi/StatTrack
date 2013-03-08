@@ -4,6 +4,9 @@ class UsersController < ApplicationController
   before_filter :correct_user,   only: [:edit, :update]
   before_filter :signed_user_unnecessary_pages, only: [:new, :create]
 
+  #In order to deal with the situation in which the user adds a sport he has already added
+  rescue_from ActiveRecord::RecordNotFound, :with => :user_not_found
+
   def new
     @user = User.new
 
@@ -12,18 +15,20 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
 
-    #This is the model used to allow the user to add a sport to their account
-    @sportization = Sportization.new
+      #This is the model used to allow the user to add a sport to their account
+      @sportization = Sportization.new
 
-    #Retrieves all the sports that the user has already chosen
-    @sports_already_chosen = @user.sports
+      #Retrieves all the sports that the user has already chosen
+      @sports_already_chosen = @user.sports
 
-    @basketball_stat = BasketballStat.new
-    @football_quarterback_stat = FootballQuarterbackStat.new
-    @football_receiver_stat = FootballReceiverStat.new
-    @football_runningback_stat = FootballRunningbackStat.new
-    @football_defense_stat = FootballDefenseStat.new
-    #@basketball_stats_recorded = current_user.basketball_stats
+      @basketball_stat = BasketballStat.new
+      @football_quarterback_stat = FootballQuarterbackStat.new
+      @football_receiver_stat = FootballReceiverStat.new
+      @football_runningback_stat = FootballRunningbackStat.new
+      @football_defense_stat = FootballDefenseStat.new
+      #@basketball_stats_recorded = current_user.basketball_stats
+
+
 
   end
 
@@ -73,6 +78,11 @@ class UsersController < ApplicationController
       if signed_in?
         redirect_to(root_path)
       end
+    end
+
+    def user_not_found
+      redirect_to root_url
+
     end
 
 end

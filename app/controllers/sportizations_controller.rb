@@ -9,7 +9,7 @@ class SportizationsController < ApplicationController
 
     if @sportization.save
       flash[:success] = "Sport added!"
-      redirect_to current_user
+      redirect_to user_path(current_user.id, tab:Sport.find(@sportization.sport_id).name)
 
     else
 

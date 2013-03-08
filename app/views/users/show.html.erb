@@ -1,22 +1,23 @@
 <% provide(:title, @user.name) %>
 
 <div class="row" xmlns="http://www.w3.org/1999/html">
-  <section class="span2 user-panel">
-    <h1>
-      <%= image_tag @user.profile_picture.url(:small)  %>
+  <div class="user-panel">
+    <section class="span2">
+        <h1>
+         <%= image_tag @user.profile_picture.url(:small)  %>
+        </h1>
+    </section>
 
-    </h1>
-  </section>
-
-  <section class="span8 user-panel">
-    <h1 style="text-align: center;">
-      <%= @user.name %>
-    </h1>
-    <p>Height:</p>
-    <p>Weight:</p>
-    <p>Born:</p>
-    <p>High School/College:</p>
-  </section>
+  <section class="span8">
+        <h1 style="text-align: center;">
+            <%= @user.name %>
+        </h1>
+        <p>Height:</p>
+        <p>Weight:</p>
+        <p>Born:</p>
+        <p>High School/College:</p>
+    </section>
+  </div>
 
 </div>
 
@@ -31,7 +32,7 @@
 
     <ul class="nav nav-tabs" data-tabs="tabs">
     <% @sports_already_chosen.each_with_index do |sport_chosen, index| %>
-              <li><a data-toggle="tab" href="#<%= sport_chosen.name %>">
+              <li class="<%= 'active' if params[:tab] == sport_chosen.name %>"><a data-toggle="tab" href="#<%= sport_chosen.name %>">
                 <%= sport_icon(sport_chosen.name)%>
                 <%= sport_chosen.name %>
               </a></li>
@@ -45,7 +46,7 @@
 
     <div class="tab-content">
     <% @sports_already_chosen.each do |sport_chosen| %>
-          <div class="tab-pane" id="<%= sport_chosen.name %>">
+          <div class="<%= if params[:tab] == sport_chosen.name then 'tab-pane active'  else 'tab-pane' end%>" id="<%= sport_chosen.name %>">
 
 
             <% sportization_chosen = @user.sportizations.find_by_sport_id(sport_chosen.id) %>
