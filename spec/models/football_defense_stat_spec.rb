@@ -22,6 +22,7 @@
 #  interceptions_returned_for_touchdown :integer
 #  passes_defended                      :integer
 #  safeties                             :integer
+#  status                               :string(255)
 #  user_id                              :integer
 #  created_at                           :datetime         not null
 #  updated_at                           :datetime         not null

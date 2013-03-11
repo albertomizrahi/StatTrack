@@ -8,6 +8,8 @@ class FootballDefenseStatsController < ApplicationController
     @football_defense_stat.total_tackles = @football_defense_stat.solo_tackles + @football_defense_stat.assisted_tackles
     @football_defense_stat.average_intercepted_return_yards = @football_defense_stat.intercepted_returned_yards.to_f/(@football_defense_stat.interceptions.nonzero? || 10000)
 
+    @football_defense_stat.status = "Active"
+
     if @football_defense_stat.save
       flash[:success] = "The stat was successfully added!"
       redirect_to user_path(current_user.id, tab:"Football")
@@ -20,7 +22,7 @@ class FootballDefenseStatsController < ApplicationController
   end
 
   def destroy
-    FootballDefenseStat.find(params[:id]).delete
+    FootballDefenseStat.find(params[:id]).update_attribute(:status, "deleted")
 
     redirect_to user_path(current_user.id, tab:"Football")
 

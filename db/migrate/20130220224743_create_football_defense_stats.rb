@@ -20,6 +20,7 @@ class CreateFootballDefenseStats < ActiveRecord::Migration
           t.integer :interceptions_returned_for_touchdown
           t.integer :passes_defended
           t.integer :safeties
+          t.string  :status
           t.references :user
 
           t.timestamps

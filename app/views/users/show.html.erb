@@ -25,9 +25,7 @@
 
   <div class="span10">
 
-    <% if correct_user? %>
 
-    <% end %>
 
 
     <ul class="nav nav-tabs" data-tabs="tabs">
@@ -38,9 +36,11 @@
               </a></li>
     <% end %>
 
+      <% if correct_user? %>
       <li><a data-toggle="tab" href="#AddSport"><%= image_tag "plus_icon.png", :size => "20x20", :alt => "Plus icon" %>
         Add Sport
       </a></li>
+      <% end %>
     </ul>
 
 
@@ -53,14 +53,16 @@
             <h3> <%= sport_chosen.name %>  </h3>
             <b>Position: </b> <%= sportization_chosen.position %>
             <br />
+            <% if correct_user? %>
             <%= link_to "delete", sportization_chosen, method: :delete, data: { confirm: "Are you sure? All your stats will be deleted." } %>
+            <% end %>
 
             <% if sport_chosen.name == "Basketball" %>
 
 
                 <%=  render 'basketball_stats/add' %>
 
-               <% basketball_stats_recorded = current_user.basketball_stats %>
+               <% basketball_stats_recorded =   @user.basketball_stats.visible %>
                <%=  render  :partial => 'basketball_stats/show', :locals => { :basketball_stats => basketball_stats_recorded} %>
 
 
@@ -71,7 +73,7 @@
 
                 <%= render 'football_quarterback_stats/add' %>
 
-                <% football_quarterback_stats_recorded = current_user.football_quarterback_stats %>
+                <% football_quarterback_stats_recorded = @user.football_quarterback_stats.visible %>
                 <%=  render  :partial => 'football_quarterback_stats/show', :locals => { :football_qb_stats => football_quarterback_stats_recorded} %>
 
 
@@ -80,7 +82,7 @@
 
                 <%= render 'football_receiver_stats/add' %>
 
-                <% receiver_stats_recorded = current_user.football_receiver_stats %>
+                <% receiver_stats_recorded = @user.football_receiver_stats.visible %>
                 <%=  render  :partial => 'football_receiver_stats/show', :locals => { :receiver_stats => receiver_stats_recorded} %>
 
 
@@ -90,14 +92,14 @@
 
                 <%= render 'football_runningback_stats/add' %>
 
-                <% runningback_stats_recorded = current_user.football_runningback_stats %>
+                <% runningback_stats_recorded = @user.football_runningback_stats.visible %>
                 <%=  render  :partial => 'football_runningback_stats/show', :locals => { :runningback_stats => runningback_stats_recorded} %>
 
             <% elsif sport_chosen.name == "Football" and (sportization_chosen.position == "Defensive tackle" or sportization_chosen.position == "Defensive end" or sportization_chosen.position == "Middle linebacker" or sportization_chosen.position == "Outside linebacker" or sportization_chosen.position == "Cornerback" or sportization_chosen.position == "Safety")  %>
 
                 <%= render 'football_defense_stats/add' %>
 
-                <% defense_stats = current_user.football_defense_stats %>
+                <% defense_stats = @user.football_defense_stats.visible %>
             <%=  render  :partial => 'football_defense_stats/show', :locals => { :defense_stats => defense_stats} %>
 
             <% end %>
@@ -106,7 +108,7 @@
 
       <% end %>
 
-
+      <% if correct_user? %>
       <div id="AddSport" class="tab-pane">
 
         <%= form_for(@sportization) do |f| %>
@@ -130,9 +132,10 @@
         <% end %>
 
       </div>
+      <% end %>
 
 
   </div>
 
+ </div>
 </div>
-    </div>

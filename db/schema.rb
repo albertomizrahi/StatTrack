@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(:version => 20130224184221) do
     t.decimal  "threept_percentage"
     t.decimal  "free_throw_percentage"
     t.integer  "total_points"
+    t.string   "status"
     t.integer  "user_id"
     t.datetime "created_at",             :null => false
     t.datetime "updated_at",             :null => false
@@ -62,6 +63,7 @@ ActiveRecord::Schema.define(:version => 20130224184221) do
     t.integer  "interceptions_returned_for_touchdown"
     t.integer  "passes_defended"
     t.integer  "safeties"
+    t.string   "status"
     t.integer  "user_id"
     t.datetime "created_at",                           :null => false
     t.datetime "updated_at",                           :null => false
@@ -85,35 +87,13 @@ ActiveRecord::Schema.define(:version => 20130224184221) do
     t.integer  "rushing_touchdowns"
     t.decimal  "yards_per_rush"
     t.decimal  "quarterback_rating"
+    t.string   "status"
     t.integer  "user_id"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
   end
 
   add_index "football_quarterback_stats", ["user_id"], :name => "index_football_quarterback_stats_on_user_id"
-
-  create_table "football_receiver_runningback_stats", :force => true do |t|
-    t.date     "date_played_on"
-    t.string   "opponent"
-    t.integer  "rushing_attempts"
-    t.integer  "rushing_yards"
-    t.decimal  "rushing_average"
-    t.integer  "longest_run"
-    t.integer  "rushing_touchdowns"
-    t.integer  "receptions"
-    t.integer  "reception_targets"
-    t.integer  "receiving_yards"
-    t.decimal  "receiving_average"
-    t.integer  "longest_reception"
-    t.integer  "receiving_touchdowns"
-    t.integer  "fumbles"
-    t.integer  "fumbles_lost"
-    t.integer  "user_id"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
-  end
-
-  add_index "football_receiver_runningback_stats", ["user_id"], :name => "index_football_receiver_runningback_stats_on_user_id"
 
   create_table "football_receiver_stats", :force => true do |t|
     t.date     "date_played_on"
@@ -131,6 +111,7 @@ ActiveRecord::Schema.define(:version => 20130224184221) do
     t.integer  "receiving_touchdowns"
     t.integer  "fumbles"
     t.integer  "fumbles_lost"
+    t.string   "status"
     t.integer  "user_id"
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
@@ -153,6 +134,7 @@ ActiveRecord::Schema.define(:version => 20130224184221) do
     t.integer  "receiving_touchdowns"
     t.integer  "fumbles"
     t.integer  "fumbles_lost"
+    t.string   "status"
     t.integer  "user_id"
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false

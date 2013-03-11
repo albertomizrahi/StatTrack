@@ -22,6 +22,7 @@
 #  interceptions_returned_for_touchdown :integer
 #  passes_defended                      :integer
 #  safeties                             :integer
+#  status                               :string(255)
 #  user_id                              :integer
 #  created_at                           :datetime         not null
 #  updated_at                           :datetime         not null
@@ -29,5 +30,8 @@
 
 class FootballDefenseStat < ActiveRecord::Base
   belongs_to :user
-  attr_accessible :date_played_on, :opponent, :assisted_tackles, :average_intercepted_return_yards, :kicks_blocked, :solo_tackles, :forced_fumbles, :fumbles_recovered, :fumbles_returned_for_touchdown, :intercepted_returned_yards, :interceptions, :interceptions_returned_for_touchdown, :longest_interception_return, :passes_defended, :sacks, :safeties, :stuff_yards, :stuffs, :total_tackles
+  attr_accessible :date_played_on, :opponent, :status, :assisted_tackles, :average_intercepted_return_yards, :kicks_blocked, :solo_tackles, :forced_fumbles, :fumbles_recovered, :fumbles_returned_for_touchdown, :intercepted_returned_yards, :interceptions, :interceptions_returned_for_touchdown, :longest_interception_return, :passes_defended, :sacks, :safeties, :stuff_yards, :stuffs, :total_tackles
+
+  #Scope than only shows models whose status is not "deleted"
+  scope :visible, where("status != ?", "deleted")
 end

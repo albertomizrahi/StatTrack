@@ -24,6 +24,7 @@
 #  threept_percentage     :decimal(, )
 #  free_throw_percentage  :decimal(, )
 #  total_points           :integer
+#  status                 :string(255)
 #  user_id                :integer
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null

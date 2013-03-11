@@ -8,7 +8,6 @@ class SportizationsController < ApplicationController
     @sportization = current_user.sportizations.build(params[:sportization])
 
     if @sportization.save
-      flash[:success] = "Sport added!"
       redirect_to user_path(current_user.id, tab:Sport.find(@sportization.sport_id).name)
 
     else
@@ -23,13 +22,25 @@ class SportizationsController < ApplicationController
 
     #We make sure to delete all the stats of the sport deleted
     if Sport.find(sportization.sport_id).name == "Basketball"
-      BasketballStat.find_all_by_user_id(sportization.user_id).each(&:delete)
+      BasketballStat.find_all_by_user_id(sportization.user_id).each do |s|
+        s.update_attribute(:status, "deleted")
+      end
     elsif sportization.position == "Quarterback"
-      FootballQuarterbackStat.find_all_by_user_id(sportization.user_id).each(&:delete)
+      FootballQuarterbackStat.find_all_by_user_id(sportization.user_id).each do |s|
+        s.update_attribute(:status, "deleted")
+      end
     elsif sportization.position == "Runningback"
-      FootballRunningbackStat.find_all_by_user_id(sportization.user_id).each(&:delete)
+      FootballRunningbackStat.find_all_by_user_id(sportization.user_id).each do |s|
+        s.update_attribute(:status, "deleted")
+      end
     elsif sportization.position == "Receiver" or sportization.position == "Tight end"
-      FootballReceiverStat.find_all_by_user_id(sportization.user_id).each(&:delete)
+      FootballReceiverStat.find_all_by_user_id(sportization.user_id).each do |s|
+        s.update_attribute(:status, "deleted")
+      end
+    elsif sportization.position == "Defensive tackle"  or sportization.position == "Defensive end" or sportization.position == "Middle linebacker" or sportization.position == "Outside linebacker" or sportization.position == "Cornerback" or sportization.position == "Safety"
+      FootballDefenseStat.find_all_by_user_id(sportization.user_id).each do |s|
+        s.update_attribute(:status, "deleted")
+      end
     end
 
     #Deletes the sportization for the given sport and the association between the user and the sport

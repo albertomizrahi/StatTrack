@@ -9,6 +9,8 @@ class FootballRunningbackStatsController < ApplicationController
     @football_runningback_stat.rushing_average = @football_runningback_stat.rushing_yards.to_f/(@football_runningback_stat.rushing_attempts.nonzero? || 10000)
     @football_runningback_stat.receiving_average = @football_runningback_stat.receiving_yards.to_f/(@football_runningback_stat.receptions.nonzero? || 10000)
 
+    @football_runningback_stat.status = "Active"
+
     if @football_runningback_stat.save
       flash[:success] = "The stat was successfully added!"
       redirect_to user_path(current_user.id, tab:"Football")
@@ -22,7 +24,7 @@ class FootballRunningbackStatsController < ApplicationController
 
   def destroy
 
-    FootballRunningbackStat.find(params[:id]).delete
+    FootballRunningbackStat.find(params[:id]).update_attribute(:status, "deleted")
 
     redirect_to user_path(current_user.id, tab:"Football")
 

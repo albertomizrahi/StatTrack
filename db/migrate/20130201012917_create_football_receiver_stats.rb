@@ -16,6 +16,7 @@ class CreateFootballReceiverStats < ActiveRecord::Migration
       t.integer :receiving_touchdowns
       t.integer :fumbles
       t.integer :fumbles_lost
+      t.string  :status
       t.references :user
 
       t.timestamps

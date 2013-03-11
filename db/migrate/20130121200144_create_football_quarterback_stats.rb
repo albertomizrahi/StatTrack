@@ -16,6 +16,7 @@ class CreateFootballQuarterbackStats < ActiveRecord::Migration
       t.integer :rushing_touchdowns
       t.decimal :yards_per_rush
       t.decimal :quarterback_rating
+      t.string  :status
       t.references :user
 
       t.timestamps

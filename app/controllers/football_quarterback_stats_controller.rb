@@ -9,6 +9,8 @@ class FootballQuarterbackStatsController < ApplicationController
     @football_quarterback_stat.completion_percentage = @football_quarterback_stat.completions.to_f/(@football_quarterback_stat.passing_attempts.nonzero? || 10000)
     @football_quarterback_stat.yards_per_attempt = @football_quarterback_stat.passing_yards.to_f/(@football_quarterback_stat.passing_attempts.nonzero? || 10000)
 
+    @football_quarterback_stat.status = "Active"
+
     @football_quarterback_stat.yards_per_rush = @football_quarterback_stat.rushing_yards.to_f/(@football_quarterback_stat.rushing_attempts.nonzero? || 10000)
     if @football_quarterback_stat.save
       flash[:success] = "The stat was successfully added!"
@@ -23,7 +25,7 @@ class FootballQuarterbackStatsController < ApplicationController
 
 
   def destroy
-    FootballQuarterbackStat.find(params[:id]).delete
+    FootballQuarterbackStat.find(params[:id]).update_attribute(:status, "deleted")
 
     redirect_to user_path(current_user.id, tab:"Football")
   end

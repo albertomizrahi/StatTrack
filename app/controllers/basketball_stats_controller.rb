@@ -22,6 +22,8 @@ class BasketballStatsController < ApplicationController
     #Converts the minutes into seconds and assigns the total seconds played to the variable
     @basketball_stat.time_played_in_seconds = 60*@basketball_stat.minutes_played.to_i + @basketball_stat.seconds_played.to_i
 
+    @basketball_stat.status = "Active"
+
     if @basketball_stat.save
       flash[:success] = "The stat was successfully added!"
       redirect_to user_path(current_user.id, tab:"Basketball")
@@ -35,7 +37,7 @@ class BasketballStatsController < ApplicationController
 
 
   def destroy
-    BasketballStat.find(params[:id]).delete
+    BasketballStat.find(params[:id]).update_attribute(:status, "deleted")
 
     redirect_to user_path(current_user.id, tab:"Basketball")
   end

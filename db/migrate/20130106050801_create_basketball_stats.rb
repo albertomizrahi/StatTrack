@@ -22,6 +22,7 @@ class CreateBasketballStats < ActiveRecord::Migration
       t.decimal :threept_percentage
       t.decimal :free_throw_percentage
       t.integer :total_points
+      t.string  :status
       t.references :user
 
       t.timestamps
