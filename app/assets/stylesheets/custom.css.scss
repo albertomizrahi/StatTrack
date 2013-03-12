@@ -229,6 +229,10 @@ input {
   p { font-size: 85%;}
 }
 
+//Removes dotted outline on tabs after they are clicked
+.nav-tabs > .active > a, .nav-tabs > .active > a:hover {
+  outline:none;
+}
 
 .alternate-row {
   //background-color: #d3d3d3;

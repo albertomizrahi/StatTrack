@@ -5,8 +5,8 @@ class FootballDefenseStatsController < ApplicationController
   def create
     @football_defense_stat = current_user.football_defense_stats.new(params[:football_defense_stat])
 
-    @football_defense_stat.total_tackles = @football_defense_stat.solo_tackles + @football_defense_stat.assisted_tackles
-    @football_defense_stat.average_intercepted_return_yards = @football_defense_stat.intercepted_returned_yards.to_f/(@football_defense_stat.interceptions.nonzero? || 10000)
+    @football_defense_stat.total_tackles = @football_defense_stat.solo_tackles.to_i + @football_defense_stat.assisted_tackles.to_i
+    @football_defense_stat.average_intercepted_return_yards = @football_defense_stat.intercepted_returned_yards.to_f/(@football_defense_stat.interceptions.to_i.nonzero? || 10000)
 
     @football_defense_stat.status = "Active"
 
@@ -14,7 +14,7 @@ class FootballDefenseStatsController < ApplicationController
       flash[:success] = "The stat was successfully added!"
       redirect_to user_path(current_user.id, tab:"Football")
     else
-      flash[:error] = "There was an error adding your stat."
+      flash[:error] = "We're sorry but we encountered an error while adding your stat."
       redirect_to user_path(current_user.id, tab:"Football")
     end
 

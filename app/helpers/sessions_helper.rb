@@ -29,7 +29,7 @@ module SessionsHelper
 
   #Calls the find_by_remember_token method the first time current_user is called but on subsequent invocations returns @current_user without hitting the database
   def current_user
-    @current_user ||= User.find_by_remember_token(cookies[:remember_token])
+    @current_user ||= User.find_by_remember_token(cookies[:remember_token]) if cookies[:remember_token]
   end
 
   #Signs the user out

@@ -38,6 +38,7 @@ class BasketballStat < ActiveRecord::Base
   attr_accessor :minutes_played, :seconds_played
 
   validates :assists, :blocks, :date_played_on, :defensive_rebounds, :field_goal_percentage, :field_goals_attempted, :field_goals_made, :free_throw_percentage, :free_throws_attempted, :free_throws_made, :minutes_played, :offensive_rebounds, :opponent, :personal_fouls, :steals, :threept_percentage, :threepts_attempted, :threepts_made, :total_points, :turnovers, :presence => true
+  validates :assists, :blocks, :defensive_rebounds, :field_goal_percentage, :field_goals_attempted, :field_goals_made, :free_throw_percentage, :free_throws_attempted, :free_throws_made, :minutes_played, :offensive_rebounds, :personal_fouls, :steals, :threept_percentage, :threepts_attempted, :threepts_made, :total_points, :turnovers, :numericality => true
 
   #Scope than only shows models whose status is not "deleted"
   scope :visible, where("status != ?", "deleted")

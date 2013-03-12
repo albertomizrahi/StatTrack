@@ -28,6 +28,9 @@ class FootballQuarterbackStat < ActiveRecord::Base
   belongs_to :user
   attr_accessible :passing_attempts, :status, :completion_percentage, :completions, :date_played_on, :fumbles, :interceptions, :opponent, :passing_touchdowns, :quarterback_rating, :rushing_attempts, :rushing_touchdowns, :passing_yards, :rushing_yards, :yards_per_attempt, :yards_per_rush
 
+  validates :passing_attempts, :completion_percentage, :completions, :date_played_on, :fumbles, :interceptions, :opponent, :passing_touchdowns, :quarterback_rating, :rushing_attempts, :rushing_touchdowns, :passing_yards, :rushing_yards, :yards_per_attempt, :yards_per_rush, :presence => true
+  validates :passing_attempts, :completion_percentage, :completions, :fumbles, :interceptions, :passing_touchdowns, :quarterback_rating, :rushing_attempts, :rushing_touchdowns, :passing_yards, :rushing_yards, :yards_per_attempt, :yards_per_rush, :numericality => true
+
   #Scope than only shows models whose status is not "deleted"
   scope :visible, where("status != ?", "deleted")
 

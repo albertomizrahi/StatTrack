@@ -28,6 +28,9 @@ class FootballReceiverStat < ActiveRecord::Base
   belongs_to :user
   attr_accessible :date_played_on, :status, :fumbles, :fumbles_lost, :longest_reception, :longest_run, :opponent, :receiving_average, :receiving_touchdowns, :receiving_yards, :reception_targets, :receptions, :rushing_attempts, :rushing_average, :rushing_touchdowns, :rushing_yards
 
+  validates :date_played_on, :fumbles, :fumbles_lost, :longest_reception, :longest_run, :opponent, :receiving_average, :receiving_touchdowns, :receiving_yards, :reception_targets, :receptions, :rushing_attempts, :rushing_average, :rushing_touchdowns, :rushing_yards, :presence => true
+  validates :fumbles, :fumbles_lost, :longest_reception, :longest_run, :receiving_average, :receiving_touchdowns, :receiving_yards, :reception_targets, :receptions, :rushing_attempts, :rushing_average, :rushing_touchdowns, :rushing_yards, :numericality => true
+
   #Scope than only shows models whose status is not "deleted"
   scope :visible, where("status != ?", "deleted")
 

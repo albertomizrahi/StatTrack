@@ -6,8 +6,8 @@ class FootballRunningbackStatsController < ApplicationController
 
     @football_runningback_stat = current_user.football_runningback_stats.new(params[:football_runningback_stat])
 
-    @football_runningback_stat.rushing_average = @football_runningback_stat.rushing_yards.to_f/(@football_runningback_stat.rushing_attempts.nonzero? || 10000)
-    @football_runningback_stat.receiving_average = @football_runningback_stat.receiving_yards.to_f/(@football_runningback_stat.receptions.nonzero? || 10000)
+    @football_runningback_stat.rushing_average = @football_runningback_stat.rushing_yards.to_f/(@football_runningback_stat.rushing_attempts.to_i.nonzero? || 10000)
+    @football_runningback_stat.receiving_average = @football_runningback_stat.receiving_yards.to_f/(@football_runningback_stat.receptions.to_i.nonzero? || 10000)
 
     @football_runningback_stat.status = "Active"
 
@@ -15,7 +15,7 @@ class FootballRunningbackStatsController < ApplicationController
       flash[:success] = "The stat was successfully added!"
       redirect_to user_path(current_user.id, tab:"Football")
     else
-      flash[:error] = "There was an error adding your stat."
+      flash[:error] = "We're sorry but we encountered an error while adding your stat."
       redirect_to user_path(current_user.id, tab:"Football")
     end
 
