@@ -21,7 +21,20 @@ body {
   -webkit-box-shadow: #666 0px 3px 8px;
   -moz-box-shadow: #666 0px 3px 8px;
   box-shadow: #666 0px 3px 8px;
-  behavior: url(assets/stylesheets/PIE.htc);
+  /*behavior: url(../assets/PIE.htc);
+  position: relative;
+  z-index: 1; */
+
+  zoom: 1;
+
+  filter:
+  progid:DXImageTransform.Microsoft.Shadow(color=#444444,direction=45,strength=1),
+  progid:DXImageTransform.Microsoft.Shadow(color=#444444,direction=90,strength=2),
+  progid:DXImageTransform.Microsoft.Shadow(color=#444444,direction=135,strength=4),
+  progid:DXImageTransform.Microsoft.Shadow(color=#444444,direction=180,strength=6),
+  progid:DXImageTransform.Microsoft.Shadow(color=#444444,direction=225,strength=4),
+  progid:DXImageTransform.Microsoft.Shadow(color=#444444,direction=270,strength=3),
+  progid:DXImageTransform.Microsoft.Shadow(color=#444444,direction=315,strength=2);
 
 }
 
@@ -98,6 +111,9 @@ p {
 .navbar-inner {
   background-image:url('background.png');
   background-repeat: repeat;
+
+  //Fixes problem with IE
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
 }
 
 #navbar-link {

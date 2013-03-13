@@ -4,7 +4,8 @@
   <div class="user-panel">
     <section class="span2">
         <h1>
-         <%= image_tag @user.profile_picture.url(:small)  %>
+         <!-- Use this tag for paperclip image_tag @user.profile_picture.url(:small)  -->
+         <%=  gravatar_for(@user) %>
         </h1>
     </section>
 
@@ -12,8 +13,6 @@
         <h1 style="text-align: center;">
             <%= @user.name %>
         </h1>
-        <p>Height:</p>
-        <p>Weight:</p>
         <p>Born:</p>
         <p>High School/College:</p>
     </section>
@@ -21,12 +20,10 @@
 
 </div>
 
+
 <div class="row" xmlns="http://www.w3.org/1999/html">
 
   <div class="span10">
-
-
-
 
     <ul class="nav nav-tabs" data-tabs="tabs">
     <% @sports_already_chosen.each_with_index do |sport_chosen, index| %>
