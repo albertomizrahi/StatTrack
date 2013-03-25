@@ -37,7 +37,7 @@
       <% football_qb_stats.each do |stat| %>
           <tr>
 
-            <td><%= link_to "delete", stat, method: :delete, data: { confirm: "You sure?" } %><%= stat.date_played_on %></td>
+            <td><%= link_to "Edit", edit_football_quarterback_stat_path(stat), :remote => true %> -<%= link_to "delete", stat, method: :delete, data: { confirm: "You sure?" } %><%= stat.date_played_on %></td>
             <td class="border-right"><%= stat.opponent %></td>
             <td><%= stat.completions %></td>
             <td><%= stat.passing_attempts %></td>
@@ -63,7 +63,7 @@
 
          total_completions = football_qb_stats.collect(&:completions).sum
          total_passing_attempts = football_qb_stats.collect(&:passing_attempts).sum
-         average_completion_percentage = (total_completions.to_f/(total_passing_attempts.nonzero? || 1))*100
+         average_completion_percentage = (total_completions.to_f/(total_passing_attempts.to_i.nonzero? || 1))*100
          total_passing_yards = football_qb_stats.collect(&:passing_yards).sum
          average_yards_per_attempt = total_passing_yards.to_f/(total_passing_attempts.nonzero? || 1)
          total_passing_touchdowns = football_qb_stats.collect(&:passing_touchdowns).sum

@@ -42,4 +42,7 @@ class BasketballStat < ActiveRecord::Base
 
   #Scope than only shows models whose status is not "deleted"
   scope :visible, where("status != ?", "deleted")
+
+
+
 end

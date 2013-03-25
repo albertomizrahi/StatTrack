@@ -1,0 +1,22 @@
+$('.edit_stat_window').html("<%= escape_javascript(render  :partial => 'football_runningback_stats/edit', :locals => { :football_runningback_stat => @football_runningback_stat}) %>");
+$('.edit_stat_window').modal();
+
+$('.add_football_runningback_stat').on('submit', function(e){
+
+    //Check if there is any input field empty and stops the submit event
+    var errorCount = 0;
+    $('.add_football_runningback_stat input').each(function(){
+        var $this = $(this);
+        if($this.val() == ''){
+
+            errorCount = errorCount + 1;
+        }
+    });
+
+    if(errorCount != 0) {
+        e.preventDefault();
+        alert("You must complete all the fields.");
+    }
+
+
+});

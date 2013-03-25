@@ -215,6 +215,10 @@ input {
   height: auto !important;
 }
 
+select {
+  width: 110px;
+}
+
 #error_explanation {
   color: #f00;
   ul {

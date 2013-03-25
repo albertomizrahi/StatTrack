@@ -38,7 +38,7 @@
       <% receiver_stats.each do |stat| %>
           <tr>
 
-            <td><%= link_to "delete", stat, method: :delete, data: { confirm: "You sure?" } %><%= stat.date_played_on %></td>
+            <td><%= link_to "Edit", edit_football_receiver_stat_path(stat), :remote => true %> -<%= link_to "delete", stat, method: :delete, data: { confirm: "You sure?" } %><%= stat.date_played_on %></td>
             <td class="border-right"><%= stat.opponent %></td>
             <td><%= stat.receptions %></td>
             <td><%= stat.reception_targets %></td>

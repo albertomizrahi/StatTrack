@@ -1,4 +1,4 @@
-<%= form_for(@football_quarterback_stat) do |f| %>
+<%= form_for(football_quarterback_stat) do |f| %>
 
     <%= f.label :date_played, "Date:" %>
     <%=f.date_select :date_played_on, :start_year => Time.now.year, :end_year => Time.now.year - 20, :order => [:day, :month, :year], :class => "date"  %>
