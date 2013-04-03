@@ -6,12 +6,11 @@ StatHub::Application.routes.draw do
 
   resources :sessions, only: [:new, :create, :destroy]
   resources :sportizations, only: [:create, :destroy]
-  resources :basketball_stats, only: [:create, :destroy]
-  resources :football_quarterback_stats, only: [:create, :destroy]
-  resources :football_receiver_runningback_stats, only: [:create, :destroy]
-  resources :football_runningback_stats, only: [:create, :destroy]
-  resources :football_receiver_stats, only: [:create, :destroy]
-  resources :football_defense_stats, only: [:create, :destroy]
+  resources :basketball_stats
+  resources :football_quarterback_stats
+  resources :football_runningback_stats
+  resources :football_receiver_stats
+  resources :football_defense_stats
 
   root to: 'static_pages#home'
 

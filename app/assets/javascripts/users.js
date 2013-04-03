@@ -105,5 +105,8 @@ $(document).ready(function() {
     //Styles the stat tables
     $( "table" ).children("tbody").children('tr:first-child').addClass( "top-row" );
     $( "table" ).children("tbody").children('tr:nth-child(even)').addClass( "alternate-row" );
-});
 
+
+
+
+});

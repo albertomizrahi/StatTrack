@@ -10,4 +10,6 @@
  *
  *= require_self
  *= require_tree .
+ *= require simplemodal_basic
+ *= require simplemodal_basic_ie
  */

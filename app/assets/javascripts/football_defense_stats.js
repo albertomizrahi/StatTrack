@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-
+    //Validate the input
     $('#new_football_defense_stat').on('submit', function(e){
 
         //Check if there is any input field empty and stops the submit event
@@ -19,5 +19,13 @@ $(document).ready(function(){
         }
 
 
+    });
+
+
+    // Load add football defense stat window on click
+    $('.add_football_defense_stat_button').click(function (e) {
+        $('.add_football_defense_stat_window').modal();
+
+        return false;
     });
 });

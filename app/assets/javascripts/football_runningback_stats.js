@@ -20,4 +20,12 @@ $(document).ready(function(){
 
 
     });
+
+    // Load add football quarterback stat window on click
+    $('.add_football_runningback_stat_button').click(function (e) {
+        $('.add_football_runningback_stat_window').modal();
+
+        return false;
+    });
+
 });

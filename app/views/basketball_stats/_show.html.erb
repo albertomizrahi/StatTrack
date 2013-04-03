@@ -44,7 +44,7 @@
     <% basketball_stats.each do |stat| %>
           <tr>
 
-            <td><%= link_to "delete", stat, method: :delete, data: { confirm: "You sure?" } %><%= stat.date_played_on %></td>
+            <td> <%= link_to "Edit", edit_basketball_stat_path(stat), :remote => true %> - <%= link_to "delete", stat, method: :delete, data: { confirm: "You sure?" } %><%= stat.date_played_on %></td>
             <td><%= stat.opponent %></td>
             <td class="border-right"><%= convert_seconds_to_time (stat.time_played_in_seconds) %></td>
             <td><%= stat.field_goals_made %></td>

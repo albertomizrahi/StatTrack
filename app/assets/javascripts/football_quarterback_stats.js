@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-
+   //Validate the input
     $('#new_football_quarterback_stat').on('submit', function(e){
 
         //Check if there is any input field empty and stops the submit event
@@ -31,6 +31,21 @@ $(document).ready(function(){
             alert("There can not be more passes completed than attempted.");
         }
 
+    });
+
+
+    // Load add football quarterback stat window on click
+    $('.add_football_quarterback_stat_button').click(function (e) {
+        $('.add_football_quarterback_stat_window').modal();
+
+        return false;
+    });
+
+    // Load add football quarterback stat window on click
+    $('.test-button').click(function (e) {
+        $('.test').modal();
+
+        return false;
     });
 });
 
