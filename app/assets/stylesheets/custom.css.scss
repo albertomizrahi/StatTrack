@@ -120,6 +120,32 @@ p {
   color: white;
 }
 
+#search-field{
+  float: left;
+  height: 23px;
+  margin-top: 10px;
+  margin-left: 100px;
+
+}
+
+input::-webkit-input-placeholder {
+  font-size: 75%;
+}
+
+input:-moz-placeholder {
+  font-size: 75%;
+}
+
+input::-moz-placeholder {
+  font-size: 75%;
+}
+
+input:-ms-input-placeholder {
+  font-size: 75%;
+}
+
+
+
 
 
 /* footer */
@@ -211,9 +237,8 @@ input, textarea, select, .uneditable-input {
   @include box_sizing;
 }
 
-input {
-  height: auto !important;
-}
+
+
 
 #error_explanation {
   color: #f00;
@@ -294,3 +319,19 @@ th {
   border-right: 1px solid #ffffff;
 }
 
+
+
+/* users search page */
+
+.users {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-top: 1px solid $grayLighter;
+    &:last-child {
+      border-bottom: 1px solid $grayLighter;
+    }
+  }
+}

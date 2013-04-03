@@ -1,36 +1,36 @@
 class UsersController < ApplicationController
 
-  before_filter :signed_in_user, only: [:edit, :update]
+  before_filter :signed_in_user, only: [:edit, :update, :search]
   before_filter :correct_user,   only: [:edit, :update]
   before_filter :signed_user_unnecessary_pages, only: [:new, :create]
 
   #In order to deal with the situation in which the user adds a sport he has already added
   rescue_from ActiveRecord::RecordNotFound, :with => :user_not_found
 
+
   def new
     @user = User.new
 
   end
 
+
   def show
     @user = User.find(params[:id])
 
-      #This is the model used to allow the user to add a sport to their account
-      @sportization = Sportization.new
+    #This is the model used to allow the user to add a sport to their account
+    @sportization = Sportization.new
 
-      #Retrieves all the sports that the user has already chosen
-      @sports_already_chosen = @user.sports
+    #Retrieves all the sports that the user has already chosen
+    @sports_already_chosen = @user.sports
 
-      @basketball_stat = BasketballStat.new
-      @football_quarterback_stat = FootballQuarterbackStat.new
-      @football_receiver_stat = FootballReceiverStat.new
-      @football_runningback_stat = FootballRunningbackStat.new
-      @football_defense_stat = FootballDefenseStat.new
-      #@basketball_stats_recorded = current_user.basketball_stats
-
-
+    @basketball_stat = BasketballStat.new
+    @football_quarterback_stat = FootballQuarterbackStat.new
+    @football_receiver_stat = FootballReceiverStat.new
+    @football_runningback_stat = FootballRunningbackStat.new
+    @football_defense_stat = FootballDefenseStat.new
 
   end
+
 
   def create
     @user = User.new(params[:user])
@@ -65,7 +65,14 @@ class UsersController < ApplicationController
   end
 
 
- private
+  def search
+    @users = User.search(params[:search])
+    @users.delete_if{|user| user == current_user}
+  end
+
+
+
+  private
 
     #After checking that the  user is signed, we check that he is trying to update his own information not of someone else
     def correct_user
@@ -82,7 +89,6 @@ class UsersController < ApplicationController
 
     def user_not_found
       redirect_to root_url
-
     end
 
 end

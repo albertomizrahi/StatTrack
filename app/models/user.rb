@@ -47,6 +47,12 @@ class User < ActiveRecord::Base
   validates :password_confirmation, presence: true
 
 
+  def self.search search_term
+
+   search_term.present? and where(['name LIKE ?', "%#{search_term}%"])
+
+  end
+
   private
     #Creates a random Base64 string that will be used as the remember token for the user
     def create_remember_token

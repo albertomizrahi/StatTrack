@@ -1,0 +1,13 @@
+<% provide(:title, 'Search') %>
+
+
+<% if @users.blank? %>
+   <h3>No results were found.</h3>
+
+<% else %>
+  <h4>Results found</h4>
+  <ul class="users">
+    <%= render @users %>
+  </ul>
+
+<% end %>

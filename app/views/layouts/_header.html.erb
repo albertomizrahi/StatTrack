@@ -2,7 +2,18 @@
   <div class="navbar-inner" style="-webkit-border-radius: 0; -moz-border-radius: 0; border-radius: 0;">
     <div class="container">
       <%= link_to "StatHub.me", root_path , id: "logo" %>
+
       <nav>
+        <% if signed_in? %>
+        <ul class="nav">
+          <li>
+            <%= form_tag search_users_path, :method => 'get' do %>
+                <%= text_field_tag :search, params[:search], :id => "search-field", :placeholder => "Search for a person" %>
+            <% end %>
+           </li>
+          <% end %>
+        </ul>
+
         <ul class="nav pull-right">
 
 
@@ -11,7 +22,6 @@
               <li><%= link_to "Settings", edit_user_path(current_user), id: "navbar-link" %></li>
               <li><%= link_to "Help", help_path, id: "navbar-link" %></li>
               <li> <%= link_to "Sign out", signout_path, method: "delete", id: "navbar-link" %> </li>
-
 
           <% else %>
               <li><%= link_to "Home", root_path, id: "navbar-link" %></li>

@@ -1,9 +1,9 @@
 StatHub::Application.routes.draw do
 
+  resources :users  do
+    get 'search', :on => :collection
+  end
 
-  get "users/new"
-
-  resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :sportizations, only: [:create, :destroy]
   resources :basketball_stats, only: [:create, :destroy]
