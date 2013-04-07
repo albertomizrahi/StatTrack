@@ -7,31 +7,31 @@
     <%= f.text_field :opponent %>
 
     <%= f.label :comp, "Passes completed:" %>
-    <%= f.number_field :completions, :class => "number_field_only" %>
+    <%= f.text_field :completions, :class => "number_field_only" %>
 
     <%= f.label :att, "Passes attempted:" %>
-    <%= f.number_field :passing_attempts, :class => "number_field_only" %>
+    <%= f.text_field :passing_attempts, :class => "number_field_only" %>
 
     <%= f.label :totalpassingyards, "Passing yards:" %>
-    <%= f.number_field :passing_yards, :class => "number_field_only" %>
+    <%= f.text_field :passing_yards, :class => "number_field_only" %>
 
     <%= f.label :tds, "Touchdown:" %>
-    <%= f.number_field :passing_touchdowns, :class => "number_field_only" %>
+    <%= f.text_field :passing_touchdowns, :class => "number_field_only" %>
 
     <%= f.label :ints, "Interceptions:" %>
-    <%= f.number_field :interceptions, :class => "number_field_only" %>
+    <%= f.text_field :interceptions, :class => "number_field_only" %>
 
     <%= f.label :fum, "Fumbles:" %>
-    <%= f.number_field :fumbles, :class => "number_field_only" %>
+    <%= f.text_field :fumbles, :class => "number_field_only" %>
 
     <%= f.label :rush, "Rushes:" %>
-    <%= f.number_field :rushing_attempts, :class => "number_field_only" %>
+    <%= f.text_field :rushing_attempts, :class => "number_field_only" %>
 
     <%= f.label :rushingyards, "Rushing yards:" %>
-    <%= f.number_field :rushing_yards, :class => "number_field_only" %>
+    <%= f.text_field :rushing_yards, :class => "number_field_only" %>
 
     <%= f.label :rushingtds, "Rushing touchdowns:" %>
-    <%= f.number_field :rushing_touchdowns, :class => "number_field_only" %>
+    <%= f.text_field :rushing_touchdowns, :class => "number_field_only" %>
 
 
     <%= f.submit "Add Stat", class: "btn" %>
