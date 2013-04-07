@@ -122,7 +122,7 @@ p {
 
 #search-field{
   float: left;
-  height: 23px;
+  height: 15px;
   margin-top: 10px;
   margin-left: 100px;
 
@@ -234,15 +234,10 @@ aside {
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
   //width: 100%;
-  @include box_sizing;
+  //@include box_sizing;
+  //height: auto !important;
 }
 
-
-
-
-select {
-  width: 110px;
-}
 
 #error_explanation {
   color: #f00;
@@ -323,6 +318,23 @@ th {
   border-right: 1px solid #ffffff;
 }
 
+/* Stat display in the popup window */
+
+#basic-modal-content{
+  input {
+    width: 80px;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+}
+
+
+select {
+  width: 100px;
+}
 
 
 /* users search page */
@@ -333,9 +345,11 @@ th {
   li {
     overflow: auto;
     padding: 10px 0;
-    border-top: 1px solid $grayLighter;
+    border-top: 1px solid #d3d3d3;
     &:last-child {
-      border-bottom: 1px solid $grayLighter;
+      border-bottom: 1px solid #d3d3d3;
     }
   }
 }
+
+

@@ -11,44 +11,82 @@
     <%= f.label :opponent_played, "Opponent played:" %>
     <%= f.text_field :opponent %>
 
-    <%= f.label :fgm, "Field goals made:" %>
-    <%= f.number_field :field_goals_made, :class => "number_field_only" %>
+    <div style="clear: both;"></div>
 
-    <%= f.label :fga, "Field goals attempted:" %>
-    <%= f.number_field :field_goals_attempted, :class => "number_field_only" %>
+    <fieldset style="float: left;">
+      <%= f.label :fgm, "Field goals made:" %>
+      <%= f.number_field :field_goals_made, :class => "number_field_only" %>
+    </fieldset>
 
-    <%= f.label :threeptsmade, "Three pointers made:" %>
-    <%= f.number_field :threepts_made, :class => "number_field_only" %>
+    <fieldset style="float: left; padding-left: 49px;">
+      <%= f.label :fga, "Field goals attempted:" %>
+      <%= f.number_field :field_goals_attempted, :class => "number_field_only" %>
+    </fieldset>
 
-    <%= f.label :threeptsattempted, "Three pointers attempted:" %>
-    <%= f.number_field :threepts_attempted, :class => "number_field_only" %>
+    <div style="clear: both;"></div>
 
-    <%= f.label :freethrowsmade, "Free throws made:" %>
-    <%= f.number_field :free_throws_made, :class => "number_field_only" %>
+    <fieldset style="float: left;">
+      <%= f.label :threeptsmade, "Three pointers made:" %>
+      <%= f.number_field :threepts_made, :class => "number_field_only" %>
+    </fieldset>
 
-    <%= f.label :freethrowsattempted, "Free throws attempted:" %>
-    <%= f.number_field :free_throws_attempted, :class => "number_field_only" %>
+    <fieldset style="float: left; padding-left: 25px;">
+      <%= f.label :threeptsattempted, "Three pointers attempted:" %>
+      <%= f.number_field :threepts_attempted, :class => "number_field_only" %>
+    </fieldset>
 
-    <%= f.label :offensiverebounds, "Offensive rebounds:" %>
-    <%= f.number_field :offensive_rebounds, :class => "number_field_only" %>
+    <div style="clear: both;"></div>
 
-    <%= f.label :defensiverebounds, "Defensive rebounds:" %>
-    <%= f.number_field :defensive_rebounds, :class => "number_field_only" %>
+    <fieldset style="float: left;">
+      <%= f.label :freethrowsmade, "Free throws made:" %>
+      <%= f.number_field :free_throws_made, :class => "number_field_only" %>
+    </fieldset>
 
-    <%= f.label :assistsmade, "Assists:" %>
-    <%= f.number_field :assists, :class => "number_field_only" %>
+    <fieldset style="float: left; padding-left: 42px;">
+      <%= f.label :freethrowsattempted, "Free throws attempted:" %>
+      <%= f.number_field :free_throws_attempted, :class => "number_field_only" %>
+    </fieldset>
 
-    <%= f.label :turnoversmade, "Turnovers:" %>
-    <%= f.number_field :turnovers, :class => "number_field_only" %>
+    <div style="clear: both;"></div>
 
-    <%= f.label :stealsmade, "Steals:" %>
-    <%= f.number_field :steals, :class => "number_field_only" %>
+    <fieldset style="float: left;">
+      <%= f.label :offensiverebounds, "Offensive rebounds:" %>
+      <%= f.number_field :offensive_rebounds, :class => "number_field_only" %>
+    </fieldset>
 
-    <%= f.label :blocksmade, "Blocks:" %>
-    <%= f.number_field :blocks, :class => "number_field_only" %>
+    <fieldset style="float: left; padding-left: 34px;">
+      <%= f.label :defensiverebounds, "Defensive rebounds:" %>
+      <%= f.number_field :defensive_rebounds, :class => "number_field_only" %>
+    </fieldset>
 
-    <%= f.label :personalfoulsmade, "Personal fouls:" %>
-    <%= f.number_field :personal_fouls, :class => "number_field_only" %>
+    <div style="clear: both;"></div>
+
+    <fieldset style="float: left;">
+      <%= f.label :assistsmade, "Assists:" %>
+      <%= f.number_field :assists, :class => "number_field_only" %>
+    </fieldset>
+
+    <fieldset style="float: left; padding-left: 25px;">
+      <%= f.label :turnoversmade, "Turnovers:" %>
+      <%= f.number_field :turnovers, :class => "number_field_only" %>
+    </fieldset>
+
+    <fieldset style="float: left; padding-left: 25px;">
+      <%= f.label :stealsmade, "Steals:" %>
+      <%= f.number_field :steals, :class => "number_field_only" %>
+    </fieldset>
+
+    <fieldset style="float: left; padding-left: 25px;">
+      <%= f.label :blocksmade, "Blocks:" %>
+      <%= f.number_field :blocks, :class => "number_field_only" %>
+    </fieldset>
+
+    <fieldset style="float: left; padding-left: 25px;">
+      <%= f.label :personalfoulsmade, "Personal fouls:" %>
+      <%= f.number_field :personal_fouls, :class => "number_field_only" %>
+    </fieldset>
+
+    <div style="clear: both;"></div>
 
     <%= f.submit "Edit Basketball Stat", class: "btn" %>
 <% end %>

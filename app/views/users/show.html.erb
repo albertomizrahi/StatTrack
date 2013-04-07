@@ -60,7 +60,7 @@
                     <input type='button' name='basic' value='Add Stat' class='add_basketball_stat_button'/>
                 </div>
 
-               <% basketball_stats_recorded =   @user.basketball_stats.visible %>
+               <% basketball_stats_recorded =   @user.basketball_stats.visible.order("date_played_on desc").all %>
                <%=  render  :partial => 'basketball_stats/show', :locals => { :basketball_stats => basketball_stats_recorded} %>
 
 
@@ -76,7 +76,7 @@
                     <input type='button' name='basic' value='Add Stat' class='add_football_quarterback_stat_button'/>
                 </div>
 
-                <% football_quarterback_stats_recorded = @user.football_quarterback_stats.visible %>
+                <% football_quarterback_stats_recorded = @user.football_quarterback_stats.visible.order("date_played_on desc").all %>
                 <%=  render  :partial => 'football_quarterback_stats/show', :locals => { :football_qb_stats => football_quarterback_stats_recorded} %>
 
 
@@ -91,7 +91,7 @@
                   <input type='button' name='basic' value='Add Stat' class='add_football_receiver_stat_button'/>
                 </div>
 
-                <% receiver_stats_recorded = @user.football_receiver_stats.visible %>
+                <% receiver_stats_recorded = @user.football_receiver_stats.visible.order("date_played_on desc").all %>
                 <%=  render  :partial => 'football_receiver_stats/show', :locals => { :receiver_stats => receiver_stats_recorded} %>
 
 
@@ -107,7 +107,7 @@
                   <input type='button' name='basic' value='Add Stat' class='add_football_runningback_stat_button'/>
                 </div>
 
-                <% runningback_stats_recorded = @user.football_runningback_stats.visible %>
+                <% runningback_stats_recorded = @user.football_runningback_stats.visible.order("date_played_on desc").all %>
                 <%=  render  :partial => 'football_runningback_stats/show', :locals => { :runningback_stats => runningback_stats_recorded} %>
 
             <% elsif sport_chosen.name == "Football" and (sportization_chosen.position == "Defensive tackle" or sportization_chosen.position == "Defensive end" or sportization_chosen.position == "Middle linebacker" or sportization_chosen.position == "Outside linebacker" or sportization_chosen.position == "Cornerback" or sportization_chosen.position == "Safety")  %>
@@ -120,7 +120,7 @@
                     <input type='button' name='basic' value='Add Stat' class='add_football_defense_stat_button'/>
                 </div>
 
-                <% defense_stats = @user.football_defense_stats.visible %>
+                <% defense_stats = @user.football_defense_stats.visible.order("date_played_on desc").all%>
                 <%=  render  :partial => 'football_defense_stats/show', :locals => { :defense_stats => defense_stats} %>
 
             <% end %>
