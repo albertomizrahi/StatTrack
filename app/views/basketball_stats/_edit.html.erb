@@ -3,13 +3,12 @@
     <%= f.label :date, "Date:" %>
     <%=f.date_select :date_played_on, {:start_year => Time.now.year, :end_year => Time.now.year - 20, :order => [:day, :month, :year]} %>
 
+    <%= f.label :opponent_played, "Opponent played:" %>
+    <%= f.text_field :opponent %>
 
     <%= f.label :time_played, "Time played:" %>
     <%= f.text_field :minutes_played, :class => "number_field_only" %>
     <%= f.text_field :seconds_played, :class => "number_field_only" %>
-
-    <%= f.label :opponent_played, "Opponent played:" %>
-    <%= f.text_field :opponent %>
 
     <div style="clear: both;"></div>
 
@@ -88,5 +87,5 @@
 
     <div style="clear: both;"></div>
 
-    <%= f.submit "Edit Basketball Stat", class: "btn" %>
+    <%= f.submit "Edit Stat", class: "btn" %>
 <% end %>

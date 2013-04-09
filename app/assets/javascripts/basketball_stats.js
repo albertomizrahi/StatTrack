@@ -47,7 +47,13 @@ $(document).ready(function(){
 
     // Load add basketball stat window on click
     $('.add_basketball_stat_button').click(function (e) {
-        $('.add_basketball_stat_window').modal();
+        $('.add_basketball_stat_window').modal(
+            {
+                containerCss: {
+                    height: 570,
+                    width: 700
+                }
+            });
 
         return false;
     });

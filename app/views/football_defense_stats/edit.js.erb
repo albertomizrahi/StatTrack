@@ -1,5 +1,11 @@
 $('.edit_stat_window').html("<%= escape_javascript(render  :partial => 'football_defense_stats/edit', :locals => { :football_defense_stat => @football_defense_stat}) %>");
-$('.edit_stat_window').modal();
+$('.edit_stat_window').modal(
+        {
+            containerCss: {
+                height: 450,
+                width: 920
+            }
+        });
 
 //Validate the input
 $('.edit_football_defense_stat').on('submit', function(e){

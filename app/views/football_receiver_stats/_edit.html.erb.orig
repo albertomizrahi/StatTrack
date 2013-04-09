@@ -6,54 +6,89 @@
     <%= f.label :opponent_played, "Opponent played:" %>
     <%= f.text_field :opponent %>
 
+<<<<<<< HEAD
+    <%= f.label :rec, "Receptions:" %>
+    <%= f.text_field :receptions, :class => "number_field_only" %>
+
+    <%= f.label :tgts, "Reception Targets:" %>
+    <%= f.text_field :reception_targets, :class => "number_field_only" %>
+
+    <%= f.label :receivingyards, "Receiving yards:" %>
+    <%= f.text_field :receiving_yards, :class => "number_field_only" %>
+
+    <%= f.label :receivingtds, "Receiving Touchdown:" %>
+    <%= f.text_field :receiving_touchdowns, :class => "number_field_only" %>
+
+    <%= f.label :longestcatch, "Longest catch:" %>
+    <%= f.text_field :longest_reception, :class => "number_field_only" %>
+
+    <%= f.label :rushingattempts, "Rushing attempts:" %>
+    <%= f.text_field :rushing_attempts, :class => "number_field_only" %>
+
+    <%= f.label :rushingyards, "Rushing yards:" %>
+    <%= f.text_field :rushing_yards, :class => "number_field_only" %>
+
+    <%= f.label :rushingtds, "Rushing yards:" %>
+    <%= f.text_field :rushing_touchdowns, :class => "number_field_only" %>
+
+    <%= f.label :longestrun, "Longest run:" %>
+    <%= f.text_field :longest_run, :class => "number_field_only" %>
+
+    <%= f.label :fum, "Fumbles:" %>
+    <%= f.text_field :fumbles, :class => "number_field_only" %>
+
+    <%= f.label :fumlost, "Fumbles lost:" %>
+    <%= f.text_field :fumbles_lost, :class => "number_field_only" %>
+=======
     <div style="clear: both;"></div>
 
     <fieldset style="float: left;">
       <%= f.label :rec, "Receptions:" %>
-    <%= f.text_field :receptions, :class => "number_field_only" %>
+      <%= f.number_field :receptions, :class => "number_field_only" %>
     </fieldset>
 
     <fieldset style="float: left; padding-left: 35px;">
       <%= f.label :tgts, "Reception Targets:" %>
-    <%= f.text_field :reception_targets, :class => "number_field_only" %>
+      <%= f.number_field :reception_targets, :class => "number_field_only" %>
     </fieldset>
 
     <fieldset style="float: left; padding-left: 29px;">
       <%= f.label :receivingyards, "Receiving yards:" %>
-    <%= f.text_field :receiving_yards, :class => "number_field_only" %>
+      <%= f.number_field :receiving_yards, :class => "number_field_only" %>
     </fieldset>
 
     <fieldset style="float: left; padding-left: 29px;">
       <%= f.label :receivingtds, "Receiving Touchdown:" %>
-    <%= f.text_field :receiving_touchdowns, :class => "number_field_only" %>
+      <%= f.number_field :receiving_touchdowns, :class => "number_field_only" %>
     </fieldset>
 
     <fieldset style="float: left; padding-left: 29px;">
       <%= f.label :longestcatch, "Longest catch:" %>
-    <%= f.text_field :longest_reception, :class => "number_field_only" %>
+      <%= f.number_field :longest_reception, :class => "number_field_only" %>
     </fieldset>
 
     <div style="clear: both;"></div>
 
     <fieldset style="float: left;">
       <%= f.label :rushingattempts, "Rushing attempts:" %>
-    <%= f.text_field :rushing_attempts, :class => "number_field_only" %>
+      <%= f.number_field :rushing_attempts, :class => "number_field_only" %>
     </fieldset>
 
     <fieldset style="float: left; padding-left: 15px;">
       <%= f.label :rushingyards, "Rushing yards:" %>
-    <%= f.text_field :rushing_yards, :class => "number_field_only" %>
+      <%= f.number_field :rushing_yards, :class => "number_field_only" %>
     </fieldset>
 
     <fieldset style="float: left; padding-left: 29px;">
       <%= f.label :rushingtds, "Rushing yards:" %>
-    <%= f.text_field :rushing_touchdowns, :class => "number_field_only" %>
+      <%= f.number_field :rushing_touchdowns, :class => "number_field_only" %>
     </fieldset>
 
     <fieldset style="float: left; padding-left: 29px;">
       <%= f.label :longestrun, "Longest run:" %>
       <%= f.number_field :longest_run, :class => "number_field_only" %>
     </fieldset>
+>>>>>>> using-popup-to-add-stats
 
     <div style="clear: both;"></div>
 

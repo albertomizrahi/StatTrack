@@ -1,5 +1,11 @@
 $('.edit_stat_window').html("<%= escape_javascript(render  :partial => 'football_receiver_stats/edit', :locals => { :football_receiver_stat => @football_receiver_stat}) %>");
-$('.edit_stat_window').modal();
+$('.edit_stat_window').modal(
+        {
+            containerCss: {
+                height: 380,
+                width: 700
+            }
+        });
 
 $('.edit_football_receiver_stat').on('submit', function(e){
 

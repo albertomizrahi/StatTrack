@@ -6,51 +6,91 @@
     <%= f.label :opponent_played, "Opponent played:" %>
     <%= f.text_field :opponent %>
 
-    <%= f.label :solotackles, "Solo tackles:" %>
+    <div style="clear: both;"></div>
+
+    <fieldset style="float: left;">
+      <%= f.label :solotackles, "Solo tackles:" %>
     <%= f.text_field :solo_tackles, :class => "number_field_only" %>
+    </fieldset>
 
-    <%= f.label :assistedtackles, "Assisted tackles:" %>
+    <fieldset style="float: left; padding-left: 29px;">
+      <%= f.label :assistedtackles, "Assisted tackles:" %>
     <%= f.text_field :assisted_tackles, :class => "number_field_only" %>
+    </fieldset>
 
-    <%= f.label :sacks_made, "Sacks:" %>
+    <fieldset style="float: left; padding-left: 29px;">
+      <%= f.label :sacks_made, "Sacks:" %>
     <%= f.text_field :sacks, :class => "number_field_only" %>
+    </fieldset>
 
-    <%= f.label :stuffs_made, "Stuffs:" %>
+    <fieldset style="float: left; padding-left: 29px;">
+      <%= f.label :stuffs_made, "Stuffs:" %>
     <%= f.text_field :stuffs, :class => "number_field_only" %>
+    </fieldset>
 
-    <%= f.label :stuffyards, "Stuff yards:" %>
+    <fieldset style="float: left; padding-left: 29px;">
+      <%= f.label :stuffyards, "Stuff yards:" %>
     <%= f.text_field :stuff_yards, :class => "number_field_only" %>
+    </fieldset>
 
-    <%= f.label :forcedfumbles, "Forced fumbles:" %>
+    <div style="clear: both;"></div>
+
+    <fieldset style="float: left;">
+      <%= f.label :forcedfumbles, "Forced fumbles:" %>
     <%= f.text_field :forced_fumbles, :class => "number_field_only" %>
+    </fieldset>
 
-    <%= f.label :fumblesrecovered, "Fumbles recovered:" %>
+    <fieldset style="float: left; padding-left: 22px;">
+      <%= f.label :fumblesrecovered, "Fumbles recovered:" %>
     <%= f.text_field :fumbles_recovered, :class => "number_field_only" %>
+    </fieldset>
 
-    <%= f.label :fumblesreturned, "Fumbles returned for touchdown:" %>
+    <fieldset style="float: left; padding-left: 25px;">
+      <%= f.label :fumblesreturned, "Fumbles returned for touchdown:" %>
     <%= f.text_field :fumbles_returned_for_touchdown, :class => "number_field_only" %>
+    </fieldset>
 
-    <%= f.label :kicksblocked, "Blocked kicks:" %>
+    <div style="clear: both;"></div>
     <%= f.text_field :kicks_blocked, :class => "number_field_only" %>
 
-    <%= f.label :ints, "Interceptions:" %>
+    <fieldset style="float: left;">
+      <%= f.label :ints, "Interceptions:" %>
     <%= f.text_field :interceptions, :class => "number_field_only" %>
+    </fieldset>
 
-    <%= f.label :intreturnyards, "Intercepted returned yards:" %>
+    <fieldset style="float: left; padding-left: 32px;">
+      <%= f.label :intreturnyards, "Intercepted returned yards:" %>
     <%= f.text_field :intercepted_returned_yards, :class => "number_field_only" %>
+    </fieldset>
 
-
-    <%= f.label :intsreturnedfortd, "Interceptions returned for touchdown:" %>
+    <fieldset style="float: left; padding-left: 24px;">
+      <%= f.label :intsreturnedfortd, "Interceptions returned for touchdown:" %>
     <%= f.text_field :interceptions_returned_for_touchdown, :class => "number_field_only" %>
+    </fieldset>
 
-    <%= f.label :longestintreturn, "Longest interception return:" %>
+    <fieldset style="float: left; padding-left: 20px;">
+      <%= f.label :longestintreturn, "Longest interception return:" %>
     <%= f.text_field :longest_interception_return, :class => "number_field_only" %>
+    </fieldset>
 
-    <%= f.label :passesdefended, "Passes defended:" %>
+    <fieldset style="float: left; padding-left: 20px;">
+      <%= f.label :passesdefended, "Passes defended:" %>
     <%= f.text_field :passes_defended, :class => "number_field_only" %>
+    </fieldset>
 
-    <%= f.label :sfts, "Safeties:" %>
+    <div style="clear: both;"></div>
+
+    <fieldset style="float: left;">
+      <%= f.label :sfts, "Safeties:" %>
     <%= f.text_field :safeties, :class => "number_field_only" %>
+    </fieldset>
+
+    <fieldset style="float: left; padding-left: 29px;">
+      <%= f.label :kicksblocked, "Blocked kicks:" %>
+      <%= f.number_field :kicks_blocked, :class => "number_field_only" %>
+    </fieldset>
+
+    <div style="clear: both;"></div>
 
 
     <%= f.submit "Add Stat", class: "btn" %>
