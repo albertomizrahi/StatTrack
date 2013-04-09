@@ -36,17 +36,17 @@ $(document).ready(function(){
 
     // Load add football quarterback stat window on click
     $('.add_football_quarterback_stat_button').click(function (e) {
-        $('.add_football_quarterback_stat_window').modal();
+        $('.add_football_quarterback_stat_window').modal(
+            {
+                containerCss: {
+                    height: 380,
+                    width: 600
+                }
+            });
 
         return false;
     });
 
-    // Load add football quarterback stat window on click
-    $('.test-button').click(function (e) {
-        $('.test').modal();
-
-        return false;
-    });
 });
 
 

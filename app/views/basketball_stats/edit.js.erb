@@ -1,5 +1,11 @@
 $('.edit_stat_window').html("<%= escape_javascript(render  :partial => 'basketball_stats/edit', :locals => { :basketball_stat => @basketball_stat}) %>");
-$('.edit_stat_window').modal();
+$('.edit_stat_window').modal(
+        {
+            containerCss: {
+                height: 570,
+                width: 700
+            }
+        });
 
 //Binds to the edit form and validates
 $('.edit_basketball_stat').on('submit', function(e){

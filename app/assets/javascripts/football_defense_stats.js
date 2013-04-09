@@ -24,7 +24,13 @@ $(document).ready(function(){
 
     // Load add football defense stat window on click
     $('.add_football_defense_stat_button').click(function (e) {
-        $('.add_football_defense_stat_window').modal();
+        $('.add_football_defense_stat_window').modal(
+            {
+                containerCss: {
+                    height: 450,
+                    width: 920
+                }
+            });
 
         return false;
     });

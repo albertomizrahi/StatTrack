@@ -6,33 +6,58 @@
     <%= f.label :opponent_played, "Opponent played:" %>
     <%= f.text_field :opponent %>
 
-    <%= f.label :comp, "Passes completed:" %>
-    <%= f.number_field :completions, :class => "number_field_only" %>
+    <div style="clear: both;"></div>
 
-    <%= f.label :att, "Passes attempted:" %>
-    <%= f.number_field :passing_attempts, :class => "number_field_only" %>
+    <fieldset style="float: left;">
+      <%= f.label :comp, "Passes completed:" %>
+      <%= f.number_field :completions, :class => "number_field_only" %>
+    </fieldset>
 
-    <%= f.label :totalpassingyards, "Passing yards:" %>
-    <%= f.number_field :passing_yards, :class => "number_field_only" %>
+    <fieldset style="float: left; padding-left: 18px;">
+      <%= f.label :att, "Passes attempted:" %>
+      <%= f.number_field :passing_attempts, :class => "number_field_only" %>
+    </fieldset>
 
-    <%= f.label :tds, "Touchdown:" %>
-    <%= f.number_field :passing_touchdowns, :class => "number_field_only" %>
+    <fieldset style="float: left; padding-left: 29px;">
+      <%= f.label :totalpassingyards, "Passing yards:" %>
+      <%= f.number_field :passing_yards, :class => "number_field_only" %>
+    </fieldset>
 
-    <%= f.label :ints, "Interceptions:" %>
-    <%= f.number_field :interceptions, :class => "number_field_only" %>
+    <fieldset style="float: left; padding-left: 29px;">
+      <%= f.label :tds, "Touchdown:" %>
+      <%= f.number_field :passing_touchdowns, :class => "number_field_only" %>
+    </fieldset>
 
-    <%= f.label :fum, "Fumbles:" %>
-    <%= f.number_field :fumbles, :class => "number_field_only" %>
+    <div style="clear: both;"></div>
 
-    <%= f.label :rush, "Rushes:" %>
-    <%= f.number_field :rushing_attempts, :class => "number_field_only" %>
+    <fieldset style="float: left;">
+      <%= f.label :ints, "Interceptions:" %>
+      <%= f.number_field :interceptions, :class => "number_field_only" %>
+    </fieldset>
 
-    <%= f.label :rushingyards, "Rushing yards:" %>
-    <%= f.number_field :rushing_yards, :class => "number_field_only" %>
+    <fieldset style="float: left; padding-left: 44px;">
+      <%= f.label :fum, "Fumbles:" %>
+      <%= f.number_field :fumbles, :class => "number_field_only" %>
+    </fieldset>
 
-    <%= f.label :rushingtds, "Rushing touchdowns:" %>
-    <%= f.number_field :rushing_touchdowns, :class => "number_field_only" %>
+    <div style="clear: both;"></div>
 
+    <fieldset style="float: left;">
+      <%= f.label :rush, "Rushes:" %>
+      <%= f.number_field :rushing_attempts, :class => "number_field_only" %>
+    </fieldset>
+
+    <fieldset style="float: left; padding-left: 44px;">
+      <%= f.label :rushingyards, "Rushing yards:" %>
+      <%= f.number_field :rushing_yards, :class => "number_field_only" %>
+    </fieldset>
+
+    <fieldset style="float: left; padding-left: 37px;">
+      <%= f.label :rushingtds, "Rushing touchdowns:" %>
+      <%= f.number_field :rushing_touchdowns, :class => "number_field_only" %>
+    </fieldset>
+
+    <div style="clear: both;"></div>
 
     <%= f.submit "Add Stat", class: "btn" %>
 
