@@ -26,8 +26,8 @@ $(document).ready(function(){
         $('.add_football_runningback_stat_window').modal(
             {
                 containerCss: {
-                    height: 380,
-                    width: 700
+                    height: 400,
+                    width: 720
                 }
             });
 

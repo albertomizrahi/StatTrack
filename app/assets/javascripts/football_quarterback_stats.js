@@ -39,8 +39,8 @@ $(document).ready(function(){
         $('.add_football_quarterback_stat_window').modal(
             {
                 containerCss: {
-                    height: 380,
-                    width: 600
+                    height: 400,
+                    width: 620
                 }
             });
 

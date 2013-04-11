@@ -27,8 +27,8 @@ $(document).ready(function(){
         $('.add_football_defense_stat_window').modal(
             {
                 containerCss: {
-                    height: 450,
-                    width: 920
+                    height: 470,
+                    width: 730
                 }
             });
 
