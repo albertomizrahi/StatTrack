@@ -42,7 +42,6 @@
 
 
             <% sportization_chosen = @user.sportizations.find_by_sport_id(sport_chosen.id) %>
-            <h3> <%= sport_chosen.name %>  </h3>
             <b>Position: </b> <%= sportization_chosen.position %>
             <br />
             <% if correct_user? %>
