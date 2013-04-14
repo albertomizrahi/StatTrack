@@ -22,20 +22,8 @@ body {
   -moz-box-shadow: #666 0px 3px 8px;
   box-shadow: #666 0px 3px 8px;
   behavior: url(/assets/PIE.htc);
-  /*behavior: url(../assets/PIE.htc);
   position: relative;
-  z-index: 1; */
-
   zoom: 1;
-
-  filter:
-  progid:DXImageTransform.Microsoft.Shadow(color=#444444,direction=45,strength=1),
-  progid:DXImageTransform.Microsoft.Shadow(color=#444444,direction=90,strength=2),
-  progid:DXImageTransform.Microsoft.Shadow(color=#444444,direction=135,strength=4),
-  progid:DXImageTransform.Microsoft.Shadow(color=#444444,direction=180,strength=6),
-  progid:DXImageTransform.Microsoft.Shadow(color=#444444,direction=225,strength=4),
-  progid:DXImageTransform.Microsoft.Shadow(color=#444444,direction=270,strength=3),
-  progid:DXImageTransform.Microsoft.Shadow(color=#444444,direction=315,strength=2);
 
 }
 
@@ -128,11 +116,14 @@ p {
 }
 
 .navbar-inner {
+  border-radius: 8px; /* future proofing */
   -moz-border-radius: 8px;
   -webkit-border-radius: 8px;
-  border-radius: 8px; /* future proofing */
   -khtml-border-radius: 8px; /* for old Konqueror browsers */
   behavior: url(/assets/PIE.htc);
+  position: relative;
+  zoom: 1;
+
 
 }
 
