@@ -21,6 +21,7 @@ body {
   -webkit-box-shadow: #666 0px 3px 8px;
   -moz-box-shadow: #666 0px 3px 8px;
   box-shadow: #666 0px 3px 8px;
+  behavior: url(/assets/PIE.htc);
   /*behavior: url(../assets/PIE.htc);
   position: relative;
   z-index: 1; */
@@ -116,6 +117,25 @@ p {
   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
 }
 
+.navbar {
+  margin-top: 15px;
+
+  //Centers the navigation
+  margin-left:auto;
+  margin-right:auto;
+
+  width:968px;
+}
+
+.navbar-inner {
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  border-radius: 8px; /* future proofing */
+  -khtml-border-radius: 8px; /* for old Konqueror browsers */
+  behavior: url(/assets/PIE.htc);
+
+}
+
 #navbar-link {
   color: white;
 }
@@ -124,7 +144,7 @@ p {
   float: left;
   height: 15px;
   margin-top: 10px;
-  margin-left: 100px;
+  //margin-left: 100px;
 
 }
 
