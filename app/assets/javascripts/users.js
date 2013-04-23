@@ -112,7 +112,10 @@ $(document).ready(function() {
 
 
     //Writes the placeholder (for the search input at this moment) and allows for cross-browser compatibility --see vendor files
-    $('input[placeholder]').placeholder();
+    //$('input[placeholder]').placeholder();
+
+
+
 
 
 });
