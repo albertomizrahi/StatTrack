@@ -16,7 +16,7 @@
               </li>
               <li><%= link_to "Profile", current_user, id: "navbar-link" %></li>
               <li><%= link_to "Settings", edit_user_path(current_user), id: "navbar-link" %></li>
-              <li> <%= link_to "Sign out", signout_path, method: "delete", id: "navbar-link" %> </li>
+              <li><%= link_to "Sign out", signout_path, method: "delete", id: "navbar-link" %></li>
 
           <% else %>
               <li><%= link_to "Home", root_path, id: "navbar-link" %></li>

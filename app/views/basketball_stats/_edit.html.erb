@@ -1,7 +1,7 @@
 <%= form_for(basketball_stat) do |f| %>
 
     <%= f.label :date, "Date:" %>
-    <%=f.date_select :date_played_on, {:start_year => Time.now.year, :end_year => Time.now.year - 20, :order => [:day, :month, :year]} %>
+    <%=f.date_select :date_played_on, {:start_year => Time.now.year, :end_year => Time.now.year - 20, :order => [:month, :day, :year]} %>
 
     <%= f.label :opponent_played, "Opponent played:" %>
     <%= f.text_field :opponent %>

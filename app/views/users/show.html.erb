@@ -2,7 +2,7 @@
 
 <div class="row" xmlns="http://www.w3.org/1999/html">
   <aside >
-    <section class="span2">
+    <section class="span2 user-panel">
         <h1>
          <!-- Use this tag for paperclip image_tag @user.profile_picture.url(:small)  -->
          <%=  gravatar_for(@user) %>
@@ -11,8 +11,7 @@
         <h4 style="text-align: center;">
             <%= @user.name %>
         </h4>
-        <p>Born:</p>
-        <p>High School/College:</p>
+        <p>Age: <%= calculate_age(@user.birthday) %></p>
     </section>
   </aside>
 
@@ -42,12 +41,14 @@
 
 
             <% sportization_chosen = @user.sportizations.find_by_sport_id(sport_chosen.id) %>
-            <b>Position: </b> <%= sportization_chosen.position %>
-            <br />
+            <p style="font-size: 150%;"><b>Position: </b> <%= sportization_chosen.position %>
             <% if correct_user? %>
 
-                <%= link_to "delete", sportization_chosen, method: :delete, data: { confirm: "Are you sure? All your stats will be deleted." } %>
+                <%= link_to image_tag("delete.png", :size => "15x15", :alt => "Delete"), sportization_chosen, method: :delete, data: { confirm: "Are you sure? All your stats will be deleted." } %>
             <% end %>
+            </p>
+
+
 
             <% if sport_chosen.name == "Basketball" %>
 
@@ -55,8 +56,9 @@
                     <%=  render 'basketball_stats/add' %>
                 </div>
 
+
                 <div id='basic-modal'>
-                    <input type='button' name='basic' value='Add Stat' class='add_basketball_stat_button'/>
+                    <input type='button' name='basic' value='Add Stat' class='btn add_basketball_stat_button'/>
                 </div>
 
                <% basketball_stats_recorded =   @user.basketball_stats.visible.order("date_played_on desc").all %>
@@ -72,7 +74,7 @@
                 </div>
 
                 <div id='basic-modal'>
-                    <input type='button' name='basic' value='Add Stat' class='add_football_quarterback_stat_button'/>
+                    <input type='button' name='basic' value='Add Stat' class='btn add_football_quarterback_stat_button'/>
                 </div>
 
                 <% football_quarterback_stats_recorded = @user.football_quarterback_stats.visible.order("date_played_on desc").all %>
@@ -87,7 +89,7 @@
                 </div>
 
                 <div id='basic-modal'>
-                  <input type='button' name='basic' value='Add Stat' class='add_football_receiver_stat_button'/>
+                  <input type='button' name='basic' value='Add Stat' class='btn add_football_receiver_stat_button'/>
                 </div>
 
                 <% receiver_stats_recorded = @user.football_receiver_stats.visible.order("date_played_on desc").all %>
@@ -103,7 +105,7 @@
                 </div>
 
                 <div id='basic-modal'>
-                  <input type='button' name='basic' value='Add Stat' class='add_football_runningback_stat_button'/>
+                  <input type='button' name='basic' value='Add Stat' class='btn add_football_runningback_stat_button'/>
                 </div>
 
                 <% runningback_stats_recorded = @user.football_runningback_stats.visible.order("date_played_on desc").all %>
@@ -116,7 +118,7 @@
                 </div>
 
                 <div id='basic-modal'>
-                    <input type='button' name='basic' value='Add Stat' class='add_football_defense_stat_button'/>
+                    <input type='button' name='basic' value='Add Stat' class='btn add_football_defense_stat_button'/>
                 </div>
 
                 <% defense_stats = @user.football_defense_stats.visible.order("date_played_on desc").all%>
@@ -141,7 +143,7 @@
                 <%= render 'shared/error_messages', object: f.object %>
 
                 <%= f.radio_button :sport_id, sport.id, :class => "radio", :onclick => "show_position_selection('" + sport.name + "');" %>
-                <%= f.label :name, sport.name, :value => sport.name %>
+                <%= f.label :name, sport.name, :value => sport.name, :style => "display:inline" %>
 
             <% end %>
 

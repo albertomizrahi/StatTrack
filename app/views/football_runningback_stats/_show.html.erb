@@ -9,35 +9,36 @@
     <table class="table table-condensed" style="font-size: 10px;">
 
       <tr>
-        <td colspan="2" class="border-right"></td>
-        <td colspan="5" class="border-right">Rushing</td>
-        <td colspan="5" class="border-right">Receiving</td>
-        <td colspan="2">Fumbles</td>
+        <th colspan="2" class="border-right"></th>
+        <th colspan="5" class="border-right">Rushing</th>
+        <th colspan="5" class="border-right">Receiving</th>
+        <th colspan="2" class="border-right">Fumbles</th>
+        <th></th>
       </tr>
 
 
       <tr>
-        <th>Date played</th>
-        <th class="border-right">Opponent</th>
-        <th title="Rushing attempts">Att</th>
-        <th title="Rushing yards">Yds</th>
-        <th title="Average yards per carry">Avg</th>
-        <th title="Longest run">Lng</th>
-        <th title="Rushing touchdowns" class="border-right">TD</th>
-        <th title="Receptions">Rec</th>
-        <th title="Receiving yards">Yds</th>
-        <th title="Receiving yards per reception">Avg</th>
-        <th title="Longest reception">Lng</th>
-        <th title="Receiving touchdowns" class="border-right">TD</th>
-        <th title="Fumbles">Fum</th>
-        <th title="Fumbles lost">Lst</th>
+        <td><b>Date played</b></td>
+        <td class="border-right"><b>Opponent</b></td>
+        <td title="Rushing attempts"><b>Att</b></td>
+        <td title="Rushing yards"><b>Yds</b></td>
+        <td title="Average yards per carry"><b>Avg</b></td>
+        <td title="Longest run"><b>Lng</b></td>
+        <td title="Rushing touchdowns" class="border-right"><b>TD</b></td>
+        <td title="Receptions"><b>Rec</b></td>
+        <td title="Receiving yards"><b>Yds</b></td>
+        <td title="Receiving yards per reception"><b>Avg</b></td>
+        <td title="Longest reception"><b>Lng</b></td>
+        <td title="Receiving touchdowns" class="border-right"><b>TD</b></td>
+        <td title="Fumbles"><b>Fum</b></td>
+        <td title="Fumbles lost" class="border-right"><b>Lst</b></td>
+        <td></td>
       </tr>
 
       <!-- Loop through each of the stats objects and displays its attributes -->
       <% runningback_stats.each do |stat| %>
           <tr>
-
-            <td><%= link_to "Edit", edit_football_runningback_stat_path(stat), :remote => true %> -<%= link_to "delete", stat, method: :delete, data: { confirm: "You sure?" } %><%= stat.date_played_on %></td>
+            <td><%= stat.date_played_on %></td>
             <td class="border-right"><%= stat.opponent %></td>
             <td><%= stat.rushing_attempts %></td>
             <td><%= stat.rushing_yards %></td>
@@ -50,7 +51,8 @@
             <td><%= stat.longest_reception %></td>
             <td class="border-right"><%= stat.receiving_touchdowns %></td>
             <td><%= stat.fumbles %></td>
-            <td><%= stat.fumbles_lost %></td>
+            <td class="border-right"><%= stat.fumbles_lost %></td>
+            <td><%= link_to image_tag("pencil.png", :size => "15x15", :alt => "edit"), edit_football_runningback_stat_path(stat), :remote => true %>  <%= link_to image_tag("delete.png", :size => "15x15", :alt => "Delete"), stat, :method => 'delete', data: { confirm: "Are you sure you want to delete this stat?" } %></td>
           </tr>
 
 
@@ -90,7 +92,8 @@
         <td><b><%= longest_reception %></b></td>
         <td class="border-right"><b><%= total_receiving_touchdowns %></b></td>
         <td><b><%= total_fumbles %></b></td>
-        <td><b><%= total_fumbles_lost %></b></td>
+        <td class="border-right"><b><%= total_fumbles_lost %></b></td>
+        <td></td>
       </tr>
 
     </table>

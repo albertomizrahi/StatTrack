@@ -16,8 +16,11 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :name, :email, :password, :password_confirmation, :profile_picture
+  attr_accessible :name, :email, :birthday, :password, :password_confirmation, :profile_picture, :old_password
   has_secure_password
+
+  #Virtual attribute used in the edit form when user wishes to change its password
+  attr_accessor :old_password
 
   has_attached_file :profile_picture, :styles => { :small => "125x150!" }
   validates_attachment_size :profile_picture, :less_than => 3.megabytes
@@ -43,8 +46,10 @@ class User < ActiveRecord::Base
             format: { with: VALID_EMAIL_REGEX },
             uniqueness: { case_sensitive: false }
 
-  validates :password, length: { minimum: 6 }
-  validates :password_confirmation, presence: true
+  validates :password, length: { minimum: 6 }, :on => "create"
+  validates :password_confirmation, presence: true, :on => "create"
+  validates :birthday, presence: true
+
 
 
   def self.search search_term

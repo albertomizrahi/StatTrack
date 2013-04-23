@@ -2,29 +2,54 @@
 <h1>Update your profile</h1>
 
 <div class="row">
-  <div class="span6 offset3">
+  <div class="span10 offset1">
+
     <%= form_for @user, :html => { :multipart => true } do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
 
-        <%= f.label :name %>
-        <%= f.text_field :name %>
+        <div style="float: left;padding-right: 80px;border-right: 1px solid #696969; margin-top: 40px;">
+          <h4 style="text-align: center;"><%= image_tag "people.png", :size => "20x20", :alt => "Personal info icon" %> Personal info</h4>
 
-        <%= f.label :email %>
-        <%= f.text_field :email %>
+          <%= f.label :name, "Name:" %>
+          <%= f.text_field :name %>
 
-        <%= f.label :password %>
-        <%= f.password_field :password %>
+          <%= f.label :email, "Email:" %>
+          <%= f.text_field :email, :readonly => "true" %>
 
-        <%= f.label :password_confirmation, "Confirm Password" %>
-        <%= f.password_field :password_confirmation %>
+          <%= f.label :birthday, "Birthday:" %>
+          <%= f.date_select :birthday, :start_year => Time.now.year, :end_year => Time.now.year - 100, :order => [:month, :day, :year] %>
 
-        <%= f.label :profile_picture, "Profile picture" %>
-        <%= f.file_field :profile_picture %>
+          <div style="clear: both;"></div>
 
-        <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+          <%= gravatar_for @user %>
+          <a href="http://gravatar.com/emails">change</a>
+
+          <% #f.label :profile_picture, "Profile picture" %>
+          <% #f.file_field :profile_picture %>
+
+          <%= f.submit "Update my profile",:name => 'profile_button', class: "btn btn-primary", :style => "display:block;margin-top: 10px;" %>
+
+        </div>
+
+        <div style="float: left;margin-left: 80px;margin-top: 40px;">
+
+          <h4 style="text-align: center;"><%= image_tag "settings.png", :size => "20x20", :alt => "Passwords icon" %>Password settings</h4>
+
+          <%= f.label :old_password, "Old Password:" %>
+          <%= f.password_field :old_password %>
+
+          <%= f.label :password, "New Password:" %>
+          <%= f.password_field :password %>
+
+          <%= f.label :password_confirmation, "Confirm Password:" %>
+          <%= f.password_field :password_confirmation %>
+
+          <%= f.submit "Change my password",:name => 'password_button', class: "btn btn-primary", :style => "display:block;" %>
+        </div>
+
     <% end %>
 
-    <%= gravatar_for @user %>
-    <a href="http://gravatar.com/emails">change</a>
+
+
   </div>
 </div>

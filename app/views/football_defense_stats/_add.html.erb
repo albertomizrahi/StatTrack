@@ -1,7 +1,7 @@
 <%= form_for(@football_defense_stat) do |f| %>
 
     <%= f.label :date_played, "Date:" %>
-    <%=f.date_select :date_played_on, :start_year => Time.now.year, :end_year => Time.now.year - 20, :order => [:day, :month, :year]  %>
+    <%=f.date_select :date_played_on, :start_year => Time.now.year, :end_year => Time.now.year - 20, :order => [:month, :day, :year]  %>
 
     <%= f.label :opponent_played, "Opponent played:" %>
     <%= f.text_field :opponent %>
@@ -18,7 +18,7 @@
     <%= f.text_field :assisted_tackles, :class => "number_field_only" %>
     </fieldset>
 
-    <fieldset style="float: left; padding-left: 29px;">
+    <fieldset style="float: left; padding-left: 40px;">
       <%= f.label :sacks_made, "Sacks:" %>
     <%= f.text_field :sacks, :class => "number_field_only" %>
     </fieldset>
@@ -57,12 +57,12 @@
     <%= f.text_field :interceptions, :class => "number_field_only" %>
     </fieldset>
 
-    <fieldset style="float: left; padding-left: 37px;">
+    <fieldset style="float: left; padding-left: 35px;">
       <%= f.label :intreturnyards, "Returned yards:" %>
     <%= f.text_field :intercepted_returned_yards, :class => "number_field_only" %>
     </fieldset>
 
-    <fieldset style="float: left; padding-left: 24px;">
+    <fieldset style="float: left; padding-left: 43px;">
       <%= f.label :intsreturnedfortd, "Returned for touchdown:" %>
     <%= f.text_field :interceptions_returned_for_touchdown, :class => "number_field_only" %>
     </fieldset>
@@ -81,12 +81,12 @@
     </fieldset>
 
 
-    <fieldset style="float: left; padding-left: 17px;">
+    <fieldset style="float: left; padding-left: 21px;">
       <%= f.label :sfts, "Safeties:" %>
     <%= f.text_field :safeties, :class => "number_field_only" %>
     </fieldset>
 
-    <fieldset style="float: left; padding-left: 29px;">
+    <fieldset style="float: left; padding-left: 47px;">
       <%= f.label :kicksblocked, "Blocked kicks:" %>
       <%= f.number_field :kicks_blocked, :class => "number_field_only" %>
     </fieldset>

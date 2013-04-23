@@ -9,33 +9,35 @@
     <table class="table table-condensed" style="font-size: 10px;">
 
       <tr>
-        <td colspan="2" class="border-right"></td>
-        <td colspan="7" class="border-right">Tackles</td>
-        <td colspan="4" class="border-right">Fumbles</td>
-        <td colspan="6" class="border-right">Interceptions</td>
+        <th colspan="2" class="border-right"></th>
+        <th colspan="7" class="border-right">Tackles</th>
+        <th colspan="4" class="border-right">Fumbles</th>
+        <th colspan="6" class="border-right">Interceptions</th>
+        <th></th>
       </tr>
 
 
       <tr>
-        <th>Date played</th>
-        <th class="border-right">Opponent</th>
-        <th title="Solo tackles">Solo</th>
-        <th title="Assisted tackles">Ast</th>
-        <th title="Total tackles">Total</th>
-        <th title="Stuffs">Stf</th>
-        <th title="Stuff yards">StfYds</th>
-        <th title="Sacks">Sack</th>
-        <th title="Safeties" class="border-right">Sfty</th>
-        <th title="Forced fumbles">FF</th>
-        <th title="Fumbles recovered">FR</th>
-        <th title="Fumbles returned for touchdown">TD</th>
-        <th title="Kicks blocked" class="border-right">KB</th>
-        <th title="Interceptions">Int</th>
-        <th title="Intercepted returned yards">Yds</th>
-        <th title="Average intercepted return yards">Avg</th>
-        <th title="Longest interception return">Lng</th>
-        <th title="Interceptions returned for touchdown">TD</th>
-        <th title="Passes defended">PD</th>
+        <td><b>Date played</b></td>
+        <td class="border-right"><b>Opponent</b></td>
+        <td title="Solo tackles"><b>Solo</b></td>
+        <td title="Assisted tackles"><b>Ast</b></td>
+        <td title="Total tackles"><b>Total</b></td>
+        <td title="Stuffs"><b>Stf</b></td>
+        <td title="Stuff yards"><b>StfYds</b></td>
+        <td title="Sacks"><b>Sack</b></td>
+        <td title="Safeties" class="border-right"><b>Sfty</b></td>
+        <td title="Forced fumbles"><b>FF</b></td>
+        <td title="Fumbles recovered"><b>FR</b></td>
+        <td title="Fumbles returned for touchdown"><b>TD</b></td>
+        <td title="Kicks blocked" class="border-right"><b>KB</b></td>
+        <td title="Interceptions"><b>Int</b></td>
+        <td title="Intercepted returned yards"><b>Yds</b></td>
+        <td title="Average intercepted return yards"><b>Avg</b></td>
+        <td title="Longest interception return"><b>Lng</b></td>
+        <td title="Interceptions returned for touchdown"><b>TD</b></td>
+        <td title="Passes defended" class="border-right"><b>PD</b></td>
+        <td></td>
       </tr>
 
 
@@ -43,7 +45,7 @@
       <% defense_stats.each do |stat| %>
           <tr>
 
-            <td><%= link_to "Edit", edit_football_defense_stat_path(stat), :remote => true %> -<%= link_to "delete", stat, method: :delete, data: { confirm: "You sure?" } %><%= stat.date_played_on %></td>
+            <td><%= stat.date_played_on %></td>
             <td class="border-right"><%= stat.opponent %></td>
             <td><%= stat.solo_tackles %></td>
             <td><%= stat.assisted_tackles %></td>
@@ -61,7 +63,8 @@
             <td><%= number_with_precision(stat.average_intercepted_return_yards, :precision => 1) %></td>
             <td><%= stat.longest_interception_return %></td>
             <td><%= stat.interceptions_returned_for_touchdown %></td>
-            <td><%= stat.passes_defended %></td>
+            <td class="border-right"><%= stat.passes_defended %></td>
+            <td><%= link_to image_tag("pencil.png", :size => "15x15", :alt => "edit"), edit_football_defense_stat_path(stat), :remote => true %>  <%= link_to image_tag("delete.png", :size => "15x15", :alt => "Delete"), stat, :method => 'delete', data: { confirm: "Are you sure you want to delete this stat?" } %></td>
           </tr>
 
 
@@ -111,7 +114,8 @@
         <td><b><%= number_with_precision(average_intercepted_return_yards, :precision => 1) %></b></td>
         <td><b><%= longest_interception_return %></b></td>
         <td><b><%= total_interceptions_returned_for_touchdown %></b></td>
-        <td><b><%= total_passes_defended %></b></td>
+        <td class="border-right"><b><%= total_passes_defended %></b></td>
+        <td></td>
       </tr>
 
     </table>

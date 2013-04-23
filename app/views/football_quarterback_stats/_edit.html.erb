@@ -1,7 +1,7 @@
 <%= form_for(football_quarterback_stat) do |f| %>
 
     <%= f.label :date_played, "Date:" %>
-    <%=f.date_select :date_played_on, :start_year => Time.now.year, :end_year => Time.now.year - 20, :order => [:day, :month, :year], :class => "date"  %>
+    <%=f.date_select :date_played_on, :start_year => Time.now.year, :end_year => Time.now.year - 20, :order => [:month, :day, :year], :class => "date"  %>
 
     <%= f.label :opponent_played, "Opponent played:" %>
     <%= f.text_field :opponent %>
@@ -10,51 +10,51 @@
 
     <fieldset style="float: left;">
       <%= f.label :comp, "Passes completed:" %>
-    <%= f.text_field :completions, :class => "number_field_only" %>
+      <%= f.text_field :completions, :class => "number_field_only" %>
     </fieldset>
 
-    <fieldset style="float: left; padding-left: 18px;">
+    <fieldset style="float: left; padding-left: 21px;">
       <%= f.label :att, "Passes attempted:" %>
-    <%= f.text_field :passing_attempts, :class => "number_field_only" %>
+      <%= f.text_field :passing_attempts, :class => "number_field_only" %>
     </fieldset>
 
     <fieldset style="float: left; padding-left: 29px;">
       <%= f.label :totalpassingyards, "Passing yards:" %>
-    <%= f.text_field :passing_yards, :class => "number_field_only" %>
+      <%= f.text_field :passing_yards, :class => "number_field_only" %>
     </fieldset>
 
     <fieldset style="float: left; padding-left: 29px;">
       <%= f.label :tds, "Touchdown:" %>
-    <%= f.text_field :passing_touchdowns, :class => "number_field_only" %>
+      <%= f.text_field :passing_touchdowns, :class => "number_field_only" %>
     </fieldset>
 
     <div style="clear: both;"></div>
 
     <fieldset style="float: left;">
       <%= f.label :ints, "Interceptions:" %>
-    <%= f.text_field :interceptions, :class => "number_field_only" %>
+      <%= f.text_field :interceptions, :class => "number_field_only" %>
     </fieldset>
 
     <fieldset style="float: left; padding-left: 44px;">
       <%= f.label :fum, "Fumbles:" %>
-    <%= f.text_field :fumbles, :class => "number_field_only" %>
+      <%= f.text_field :fumbles, :class => "number_field_only" %>
     </fieldset>
 
     <div style="clear: both;"></div>
 
     <fieldset style="float: left;">
       <%= f.label :rush, "Rushes:" %>
-    <%= f.text_field :rushing_attempts, :class => "number_field_only" %>
+      <%= f.text_field :rushing_attempts, :class => "number_field_only" %>
     </fieldset>
 
     <fieldset style="float: left; padding-left: 44px;">
       <%= f.label :rushingyards, "Rushing yards:" %>
-    <%= f.text_field :rushing_yards, :class => "number_field_only" %>
+      <%= f.text_field :rushing_yards, :class => "number_field_only" %>
     </fieldset>
 
-    <fieldset style="float: left; padding-left: 37px;">
+    <fieldset style="float: left; padding-left: 51px;">
       <%= f.label :rushingtds, "Rushing touchdowns:" %>
-    <%= f.text_field :rushing_touchdowns, :class => "number_field_only" %>
+      <%= f.text_field :rushing_touchdowns, :class => "number_field_only" %>
     </fieldset>
 
     <div style="clear: both;"></div>

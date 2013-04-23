@@ -98,17 +98,21 @@ $(document).ready(function() {
     });
     if (!elementAlreadyActive){
         $('.nav-tabs li:first').addClass('active');
-        $('.tab-content div:first').addClass('active');
+        $('.tab-pane:first').addClass('active');
     }
 
 
     //Styles the stat tables
-    $( "table" ).children("tbody").children('tr:first-child').addClass( "top-row" );
     $( "table" ).children("tbody").children('tr:nth-child(even)').addClass( "alternate-row" );
+    $( "table" ).children("tbody").children('tr:first-child').addClass( "top-row" );
+    $( "table" ).children("tbody").children('tr:nth-child(2)').addClass( "heading-footer-row" );
+    $( "table" ).children("tbody").children('tr:last-child').addClass( "heading-footer-row" );
+
     //$( "table" ).children("tbody").children('tr').children('td:last-child').addClass( "last-cell" );
 
 
-
+    //Writes the placeholder (for the search input at this moment) and allows for cross-browser compatibility --see vendor files
+    $('input[placeholder]').placeholder();
 
 
 });
