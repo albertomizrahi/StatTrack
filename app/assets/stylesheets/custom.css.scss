@@ -152,7 +152,8 @@ p {
   float: left;
   height: 15px;
   margin-top: 10px;
-  //margin-left: 100px;
+  line-height: 1.2em;
+  line-height: 26px\9; /*for IE */
 
 }
 
@@ -407,7 +408,8 @@ select {
 }
 
 .hasPlaceholder {
-  color: #777;
+  color: #878787;
+  font-size: 75%;
 }
 
 
