@@ -52,7 +52,7 @@
             <td class="border-right"><%= stat.receiving_touchdowns %></td>
             <td><%= stat.fumbles %></td>
             <td class="border-right"><%= stat.fumbles_lost %></td>
-            <td><%= link_to image_tag("pencil.png", :size => "15x15", :alt => "edit"), edit_football_runningback_stat_path(stat), :remote => true %>  <%= link_to image_tag("delete.png", :size => "15x15", :alt => "Delete"), stat, :method => 'delete', data: { confirm: "Are you sure you want to delete this stat?" } %></td>
+            <td><%= link_to image_tag("pencil.png", :size => "15x15", :alt => "Edit"), edit_football_runningback_stat_path(stat), :remote => true %>  <%= link_to image_tag("delete.png", :size => "15x15",:size => "15x15", :alt => "Delete"), stat, :method => 'delete', data: { confirm: "Are you sure you want to delete this stat?" } %></td>
           </tr>
 
 

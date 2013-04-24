@@ -15,4 +15,4 @@
 //= require bootstrap
 //= require_tree .
 //= require simplemodal
-//=require html5placeholder
+//= require placeholder

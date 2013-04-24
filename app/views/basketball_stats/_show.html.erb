@@ -67,7 +67,7 @@
             <td><%= stat.blocks %></td>
             <td><%= stat.personal_fouls %></td>
             <td><%= stat.total_points %></td>
-            <td><%= link_to image_tag("pencil.png", :size => "15x15", :alt => "edit"), edit_basketball_stat_path(stat), :remote => true %>  <%= link_to image_tag("delete.png", :size => "15x15", :alt => "Delete"), stat, :method => 'delete', data: { confirm: "Are you sure you want to delete this stat?" } %></td>
+            <td><%= link_to image_tag("pencil.png",  :size => "15x15", :alt => "Edit"), edit_basketball_stat_path(stat), :remote => true %>  <%= link_to image_tag("delete.png",:size => "15x15", :alt => "Delete"), stat, :method => 'delete', data: { confirm: "Are you sure you want to delete this stat?" } %></td>
           </tr>
 
 

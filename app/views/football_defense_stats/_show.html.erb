@@ -64,7 +64,7 @@
             <td><%= stat.longest_interception_return %></td>
             <td><%= stat.interceptions_returned_for_touchdown %></td>
             <td class="border-right"><%= stat.passes_defended %></td>
-            <td><%= link_to image_tag("pencil.png", :size => "15x15", :alt => "edit"), edit_football_defense_stat_path(stat), :remote => true %>  <%= link_to image_tag("delete.png", :size => "15x15", :alt => "Delete"), stat, :method => 'delete', data: { confirm: "Are you sure you want to delete this stat?" } %></td>
+            <td><%= link_to image_tag("pencil.png",  :size => "15x15", :alt => "Edit"), edit_football_defense_stat_path(stat), :remote => true %>  <%= link_to image_tag("delete.png",:size => "15x15", :alt => "Delete"), stat, :method => 'delete', data: { confirm: "Are you sure you want to delete this stat?" } %></td>
           </tr>
 
 

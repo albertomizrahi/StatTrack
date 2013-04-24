@@ -115,7 +115,7 @@ $(document).ready(function() {
     //$('input[placeholder]').placeholder();
 
 
-
+    $('input, textarea').placeholder();
 
 
 });
