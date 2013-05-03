@@ -1,24 +1,42 @@
 class SportizationsController < ApplicationController
 
-  before_filter :signed_in_user, only: [:create, :destroy]
+  before_filter :signed_in_user, only: [:create, :destroy, :update]
   #In order to deal with the situation in which the user adds a sport he has already added
   rescue_from ActiveRecord::RecordNotUnique, :with => :user_already_added_sport
 
   def create
     @sportization = current_user.sportizations.build(params[:sportization])
 
+    if params[:sportization][:position]
+      @sportization.sport_id = params[:sportization][:sport_id]
+      @sportization.position = params[:sportization][:position]
+    else
+      @sportization.position = ""
+    end
+
     if @sportization.save
       redirect_to user_path(current_user.id, tab:Sport.find(@sportization.sport_id).name)
 
     else
-
-      render 'users/show'
+      redirect_to current_user
     end
   end
+
+
+  def update
+
+    @sportization = current_user.sportizations.find(params[:id])
+
+    @sportization.update_attribute(:position, params[:sportization][:position])
+
+
+  end
+
 
   def destroy
 
     sportization = Sportization.find(params[:id])
+
 
     #We make sure to delete all the stats of the sport deleted
     if Sport.find(sportization.sport_id).name == "Basketball"
@@ -46,7 +64,7 @@ class SportizationsController < ApplicationController
     #Deletes the sportization for the given sport and the association between the user and the sport
     sportization.destroy
 
-    redirect_to current_user
+    redirect_to user_path(current_user.id, tab:Sport.find(sportization.sport_id).name)
   end
 
 

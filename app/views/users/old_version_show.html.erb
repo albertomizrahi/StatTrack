@@ -1,59 +1,168 @@
 <% provide(:title, @user.name) %>
-<div class="row" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
-  <aside class="span4">
-    <section>
+
+<div class="row" xmlns="http://www.w3.org/1999/html">
+  <aside >
+    <section class="span2 user-panel">
       <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
+        <!-- Use this tag for paperclip image_tag @user.profile_picture.url(:small) -->
+        <%= gravatar_for(@user) %>
       </h1>
+
+      <h4 style="text-align: center;">
+        <%= @user.name %>
+      </h4>
+      <p>Age: <%= calculate_age(@user.birthday) %></p>
     </section>
   </aside>
 
 
-  <div class="span8">
 
-    <a href="#" onclick="document.getElementById('AddSport').style.display = 'block'; return false;" >
-      Add Sport
-    </a>
+  <div class="span10">
 
-    <div id="AddSport" style="display: none;" >
+    <ul class="nav nav-tabs" data-tabs="tabs">
+      <% @sports_already_chosen.each_with_index do |sport_chosen, index| %>
+          <li class="<%= 'active' if params[:tab] == sport_chosen.name %>"><a data-toggle="tab" href="#<%= sport_chosen.name %>">
+            <%= sport_icon(sport_chosen.name)%>
+            <%= sport_chosen.name %>
+          </a></li>
+      <% end %>
 
-      <%= form_for(@sportization) do |f| %>
+      <% if correct_user? %>
+          <li><a data-toggle="tab" href="#AddSport"><%= image_tag "plus_icon.png", :size => "20x20", :alt => "Plus icon" %>
+            Add Sport
+          </a></li>
+      <% end %>
+    </ul>
 
-          <% Sport.all.each do |sport| %>
-              <%= f.radio_button :sport_id, sport.id, :class => "radio", :onclick => "show_position_selection('" + sport.name + "');" %>
-              <%= f.label :name, sport.name, :value => sport.name %>
 
-              <% if sport.name == "Basketball" %>
-                  <div id="BasketballPositions" class="positions" style="display: none;">
-                    <% basketball_positions = ["","Guard", "Forward", "Center"] %>
-                    <%= f.select :position, basketball_positions.collect {|position| position} %>
-                  </div>
-              <% elsif sport.name == "Football" %>
-                  <div id="FootballPositions" class="positions" style="display: none;">
-                    <% football_positions = ["","Quarterback", "Runningback", "Reciever"] %>
-                    <%= f.select :position, football_positions.collect {|position| position} %>
-                  </div>
+    <div class="tab-content">
+      <% @sports_already_chosen.each do |sport_chosen| %>
+          <div class="<%= if params[:tab] == sport_chosen.name then 'tab-pane active' else 'tab-pane' end%>" id="<%= sport_chosen.name %>">
+
+
+            <% sportization_chosen = @user.sportizations.find_by_sport_id(sport_chosen.id) %>
+            <p style="font-size: 150%;"><b>Position: </b> <%= sportization_chosen.position %>
+              <% if correct_user? %>
+
+                  <%= link_to image_tag("delete.png",:size => "15x15", :alt => "Delete"), sportization_chosen, method: :delete, data: { confirm: "Are you sure? All your stats will be deleted." } %>
               <% end %>
+            </p>
 
-          <% end %>
 
-          <%= f.submit "Add Sport", class: "btn btn-large btn-primary" %>
+
+            <% if sport_chosen.name == "Basketball" %>
+
+                <div id="basic-modal-content" class="add_basketball_stat_window">
+                  <%= render 'basketball_stats/add' %>
+                </div>
+
+
+                <div id='basic-modal'>
+                  <input type='button' name='basic' value='Add Stat' class='btn add_basketball_stat_button'/>
+                </div>
+
+                <% basketball_stats_recorded = @user.basketball_stats.visible.order("date_played_on desc").all %>
+                <%= render :partial => 'basketball_stats/show', :locals => { :basketball_stats => basketball_stats_recorded} %>
+
+
+
+
+            <% elsif sport_chosen.name == "Football" and sportization_chosen.position == "Quarterback" %>
+
+                <div id="basic-modal-content" class="add_football_quarterback_stat_window">
+                  <%= render 'football_quarterback_stats/add' %>
+                </div>
+
+                <div id='basic-modal'>
+                  <input type='button' name='basic' value='Add Stat' class='btn add_football_quarterback_stat_button'/>
+                </div>
+
+                <% football_quarterback_stats_recorded = @user.football_quarterback_stats.visible.order("date_played_on desc").all %>
+                <%= render :partial => 'football_quarterback_stats/show', :locals => { :football_qb_stats => football_quarterback_stats_recorded} %>
+
+
+
+            <% elsif sport_chosen.name == "Football" and (sportization_chosen.position == "Receiver" or sportization_chosen.position == "Tight end") %>
+
+                <div id="basic-modal-content" class="add_football_receiver_stat_window">
+                  <%= render 'football_receiver_stats/add' %>
+                </div>
+
+                <div id='basic-modal'>
+                  <input type='button' name='basic' value='Add Stat' class='btn add_football_receiver_stat_button'/>
+                </div>
+
+                <% receiver_stats_recorded = @user.football_receiver_stats.visible.order("date_played_on desc").all %>
+                <%= render :partial => 'football_receiver_stats/show', :locals => { :receiver_stats => receiver_stats_recorded} %>
+
+
+
+
+            <% elsif sport_chosen.name == "Football" and sportization_chosen.position == "Runningback" %>
+
+                <div id="basic-modal-content" class="add_football_runningback_stat_window">
+                  <%= render 'football_runningback_stats/add' %>
+                </div>
+
+                <div id='basic-modal'>
+                  <input type='button' name='basic' value='Add Stat' class='btn add_football_runningback_stat_button'/>
+                </div>
+
+                <% runningback_stats_recorded = @user.football_runningback_stats.visible.order("date_played_on desc").all %>
+                <%= render :partial => 'football_runningback_stats/show', :locals => { :runningback_stats => runningback_stats_recorded} %>
+
+            <% elsif sport_chosen.name == "Football" and (sportization_chosen.position == "Defensive tackle" or sportization_chosen.position == "Defensive end" or sportization_chosen.position == "Middle linebacker" or sportization_chosen.position == "Outside linebacker" or sportization_chosen.position == "Cornerback" or sportization_chosen.position == "Safety") %>
+
+                <div id="basic-modal-content" class="add_football_defense_stat_window">
+                  <%= render 'football_defense_stats/add' %>
+                </div>
+
+                <div id='basic-modal'>
+                  <input type='button' name='basic' value='Add Stat' class='btn add_football_defense_stat_button'/>
+                </div>
+
+                <% defense_stats = @user.football_defense_stats.visible.order("date_played_on desc").all%>
+                <%= render :partial => 'football_defense_stats/show', :locals => { :defense_stats => defense_stats} %>
+
+            <% end %>
+
+          </div>
+
+      <% end %>
+
+      <div id="basic-modal-content" class="edit_stat_window">
+      </div>
+
+
+      <% if correct_user? %>
+          <div id="AddSport" class="tab-pane">
+
+            <%= form_for(@sportization) do |f| %>
+
+                <% Sport.all.each do |sport| %>
+                    <%= render 'shared/error_messages', object: f.object %>
+
+                    <%= f.radio_button :sport_id, sport.id, :class => "radio", :onclick => "show_position_selection('" + sport.name + "');" %>
+                    <%= f.label :name, sport.name, :value => sport.name, :style => "display:inline" %>
+
+                <% end %>
+
+                <% #The positions listed (depending on the sport) is changed through javascript %>
+                <div id="position_selector" style="display: none;">
+                  <%= f.select :position, "", {}, :onchange => "enable_submit_button(this.value);" %>
+                </div>
+
+                <div id="submit_button_div" style="display: none;">
+                  <%= f.submit "Add Sport", class: "btn btn-large btn-primary", id: "position_submit" %>
+                </div>
+
+            <% end %>
+
+          </div>
       <% end %>
 
 
     </div>
 
-
-
-    <% @sportizations_already_chosen.each do |sportization_chosen| %>
-        <div class="stats">
-          <h3> <%= Sport.find(1) %>  </h3>
-          <%= link_to "delete", sportization_chosen, method: :delete, data: { confirm: "You sure?" } %>
-        </div>
-    <% end %>
-
-
   </div>
-
 </div>

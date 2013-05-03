@@ -3,5 +3,6 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
   include FootballQuarterbackStatsHelper
   include UsersHelper
+  include SportizationsHelper
 
 end

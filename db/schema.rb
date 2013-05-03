@@ -151,7 +151,7 @@ ActiveRecord::Schema.define(:version => 20130224184221) do
   end
 
   add_index "sportizations", ["sport_id"], :name => "index_sportizations_on_sport_id"
-  add_index "sportizations", ["user_id", "sport_id"], :name => "index_sportizations_on_user_id_and_sport_id", :unique => true
+  add_index "sportizations", ["user_id", "sport_id", "position"], :name => "index_sportizations_on_user_id_and_sport_id_and_position", :unique => true
   add_index "sportizations", ["user_id"], :name => "index_sportizations_on_user_id"
 
   create_table "sports", :force => true do |t|

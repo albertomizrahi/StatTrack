@@ -66,8 +66,8 @@
             <td><%= stat.steals %></td>
             <td><%= stat.blocks %></td>
             <td><%= stat.personal_fouls %></td>
-            <td><%= stat.total_points %></td>
-            <td><%= link_to image_tag("pencil.png",  :size => "15x15", :alt => "Edit"), edit_basketball_stat_path(stat), :remote => true %>  <%= link_to image_tag("delete.png",:size => "15x15", :alt => "Delete"), stat, :method => 'delete', data: { confirm: "Are you sure you want to delete this stat?" } %></td>
+            <td class="border-right"><%= stat.total_points %></td>
+            <td><%= link_to image_tag("pencil.png", :alt => "Edit"), edit_basketball_stat_path(stat), :remote => true %>  <%= link_to image_tag("delete.png", :alt => "Delete"), stat, :method => 'delete', data: { confirm: "Are you sure you want to delete this stat?" } %></td>
           </tr>
 
 
@@ -119,7 +119,7 @@
       <td><b><%= number_with_precision average_steals,:precision => 1 %></b></td>
       <td><b><%= number_with_precision average_blocks,:precision => 1 %></b></td>
       <td><b><%= number_with_precision average_personal_fouls,:precision => 1 %></b></td>
-      <td><b><%= number_with_precision average_total_points,:precision => 1 %></b></td>
+      <td class="border-right"><b><%= number_with_precision average_total_points,:precision => 1 %></b></td>
       <td></td>
     </tr>
 

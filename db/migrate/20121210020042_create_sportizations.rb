@@ -10,7 +10,7 @@ class CreateSportizations < ActiveRecord::Migration
 
     add_index :sportizations, :user_id
     add_index :sportizations, :sport_id
-    add_index :sportizations, [:user_id, :sport_id], unique: true
+    add_index :sportizations, [:user_id, :sport_id, :position], unique: true
 
   end
 end

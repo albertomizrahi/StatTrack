@@ -8,7 +8,7 @@
         <%= render 'shared/error_messages', object: f.object %>
 
         <div style="float: left;padding-right: 80px;border-right: 1px solid #696969; margin-top: 40px;">
-          <h4 style="text-align: center;"><%= image_tag "people.png", :size => "20x20", :alt => "Personal info icon" %> Personal info</h4>
+          <h4 style="text-align: center;"><%= image_tag "people.png", :alt => "Personal info icon" %> Personal info</h4>
 
           <%= f.label :name, "Name:" %>
           <%= f.text_field :name %>
@@ -33,7 +33,7 @@
 
         <div style="float: left;margin-left: 80px;margin-top: 40px;">
 
-          <h4 style="text-align: center;"><%= image_tag "settings.png", :size => "20x20", :alt => "Passwords icon" %>Password settings</h4>
+          <h4 style="text-align: center;"><%= image_tag "settings.png", :alt => "Passwords icon" %>Password settings</h4>
 
           <%= f.label :old_password, "Old Password:" %>
           <%= f.password_field :old_password %>

@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     @sportization = Sportization.new
 
     #Retrieves all the sports that the user has already chosen
-    @sports_already_chosen = @user.sports
+    @sports_already_chosen = @user.sports.uniq
 
     @basketball_stat = BasketballStat.new
     @football_quarterback_stat = FootballQuarterbackStat.new

@@ -5,7 +5,7 @@ StatHub::Application.routes.draw do
   end
 
   resources :sessions, only: [:new, :create, :destroy]
-  resources :sportizations, only: [:create, :destroy]
+  resources :sportizations, only: [:create, :update, :destroy]
   resources :basketball_stats
   resources :football_quarterback_stats
   resources :football_runningback_stats

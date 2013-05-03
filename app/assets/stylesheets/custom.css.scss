@@ -66,18 +66,23 @@ h1 {
 }
 
 h2 {
+  /*
   font-size: 1.7em;
   letter-spacing: -1px;
   margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
-  color: #999;
+  color: #999;    */
 }
 
 p {
   /*
   font-size: 1.1em;
   line-height: 1.7em; */
+}
+
+.text-center {
+  text-align: center;
 }
 
 
@@ -106,6 +111,8 @@ p {
 
   background-color: #0B61A4;
   background-image: none;
+
+
 
   //Fixes problem with IE
   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
@@ -152,8 +159,11 @@ p {
   float: left;
   height: 15px;
   margin-top: 10px;
+  //vertical-align: middle;
+
 
 }
+
 
 
 input::-webkit-input-placeholder {
@@ -171,7 +181,6 @@ input::-moz-placeholder {
 input:-ms-input-placeholder {
   font-size: 75%;
 }
-
 
 
 
@@ -284,11 +293,14 @@ input, textarea, select, .uneditable-input {
 
 /* Stats display */
 
-.stats {
-  border: 3px solid black;
-  margin-top: 40px;
+.position-selector {
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.stat-unit {
+  margin-top: 10px;
   margin-bottom: 40px;
-  padding: 5px;
 }
 
 .table tr{

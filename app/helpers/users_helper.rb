@@ -33,9 +33,9 @@ module UsersHelper
   #Returns the appropriate icon given the sport's name
   def sport_icon(sport_name)
     if sport_name == "Basketball"
-      image_tag "basketball_icon.png", :size => "20x20", :alt => "Basketball icon"
+      image_tag "basketball_icon.png", :alt => "Basketball icon"
     elsif sport_name == "Football"
-      image_tag "football_icon.png", :size => "20x20", :alt => "Football icon"
+      image_tag "football_icon.png", :alt => "Football icon"
     end
   end
 
