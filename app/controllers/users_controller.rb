@@ -56,6 +56,8 @@ class UsersController < ApplicationController
 
   def update
 
+    @user = User.find(params[:id])
+
     #If the user clicks the profile update button
     if params[:profile_button]
 
@@ -70,47 +72,52 @@ class UsersController < ApplicationController
         render 'edit'
       end
 
-    #If the user clicks the change password button
+      #If the user clicks the change password button
     elsif params[:password_button]
 
-      #Will be changed to false if it fails any of the following validations
-      form_is_valid = true
 
-      #If user leaves password blank
-      if params[:user][:password].blank?
-        @user.errors.add(:password, "can't be blank.")
-        form_is_valid = false
-      end
-      #If user leaves password confirmation blank
-      if params[:user][:password_confirmation].blank?
-        @user.errors.add(:password_confirmation, "can't be blank.")
-        form_is_valid = false
-      end
+      user = User.find_by_email(current_user.email).try(:authenticate, params[:user][:old_password])
 
-      #Retrieves the user's password from the database and decrypts it
-      password = BCrypt::Password.new(@user.password_digest)
+      #If old password is correct
+      if user
+        #Will be changed to false if it fails any of the following validations
+        form_is_valid = true
 
-      #If the actual user's password doesn't match the old password
-      if password != params[:user][:old_password]
-        @user.errors.add(:old_password, "is incorrect.")
-        form_is_valid= false
-      end
+        #If user leaves password blank
+        if params[:user][:password].blank?
+          @user.errors.add(:password, "can't be blank.")
+          form_is_valid = false
+        end
+        #If user leaves password confirmation blank
+        if params[:user][:password_confirmation].blank?
+          @user.errors.add(:password_confirmation, "can't be blank.")
+          form_is_valid = false
+        end
 
-      #If the password and and password confirmation do not match
-      if  params[:user][:password] != params[:user][:password_confirmation]
-        @user.errors.add(:password, "and password confirmation don't match.")
-        form_is_valid = false
-      end
+        #If the password and and password confirmation do not match
+        if  params[:user][:password] != params[:user][:password_confirmation]
+          @user.errors.add(:password, "and password confirmation don't match.")
+          form_is_valid = false
+        end
 
-      #If the form is valid, we update the password attributes
-      if form_is_valid and @user.update_attributes(params[:user])
-        flash[:success] = "Profile updated"
-        #Signs the user in again because the remember token is updated too when the update_attributes methods is applied
-        sign_in @user
-        redirect_to @user
+        #If the form is valid, we update the password attributes
+        if form_is_valid and @user.update_attributes(params[:user])
+          flash[:success] = "Profile updated"
+          #Signs the user in again because the remember token is updated too when the update_attributes methods is applied
+          sign_in @user
+          redirect_to @user
 
+        else
+          render 'edit'
+        end
+
+        #If the user input the wrong password
       else
+        sign_in @user
+        @user.errors.add(:old_password, "is incorrect.")
         render 'edit'
+
+
       end
 
     end
@@ -120,6 +127,7 @@ class UsersController < ApplicationController
 
   def search
     @users = User.search(params[:search])
+    #Do not show the current user as part of the search
     @users.delete_if{|user| user == current_user}
   end
 

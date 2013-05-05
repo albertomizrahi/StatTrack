@@ -4,7 +4,7 @@
 <div class="row">
   <div class="span10 offset1">
 
-    <%= form_for @user, :html => { :multipart => true } do |f| %>
+    <%= form_for @user do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
 
         <div style="float: left;padding-right: 80px;border-right: 1px solid #696969; margin-top: 40px;">
@@ -29,11 +29,13 @@
 
           <%= f.submit "Update my profile",:name => 'profile_button', class: "btn btn-primary", :style => "display:block;margin-top: 10px;" %>
 
-        </div>
+    <% end %>
+    </div>
 
-        <div style="float: left;margin-left: 80px;margin-top: 40px;">
+    <div style="float: left;margin-left: 80px;margin-top: 40px;">
 
-          <h4 style="text-align: center;"><%= image_tag "settings.png", :alt => "Passwords icon" %>Password settings</h4>
+      <h4 style="text-align: center;"><%= image_tag "settings.png", :alt => "Passwords icon" %>Password settings</h4>
+      <%= form_for @user do |f| %>
 
           <%= f.label :old_password, "Old Password:" %>
           <%= f.password_field :old_password %>
@@ -45,11 +47,11 @@
           <%= f.password_field :password_confirmation %>
 
           <%= f.submit "Change my password",:name => 'password_button', class: "btn btn-primary", :style => "display:block;" %>
-        </div>
+          </div>
 
-    <% end %>
+      <% end %>
 
 
 
-  </div>
+      </div>
 </div>
