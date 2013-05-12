@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-StatHub::Application.load_tasks
+StatTrack::Application.load_tasks

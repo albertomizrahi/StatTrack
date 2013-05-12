@@ -40,7 +40,7 @@ class UsersController < ApplicationController
       #Sign the user in
       sign_in @user
       #Flashes a message welcoming the new user
-      flash[:success] = "Welcome to StatHub.me!"
+      flash[:success] = "Welcome to StatTrack.me!"
       # Afterwards, it redirects the user to its respective profile page
       redirect_to @user
     else

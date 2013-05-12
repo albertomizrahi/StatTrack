@@ -1,4 +1,4 @@
-StatHub::Application.routes.draw do
+StatTrack::Application.routes.draw do
 
   resources :users  do
     get 'search', :on => :collection
