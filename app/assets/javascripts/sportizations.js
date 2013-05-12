@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-    $(".new_sportization").on('submit', function(e){
+    $(".position-selector .new_sportization").on('submit', function(e){
 
         var position_selected = $("#sportization_position").val();
 

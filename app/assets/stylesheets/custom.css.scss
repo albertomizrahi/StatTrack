@@ -21,6 +21,7 @@ body {
   background-color: white;
   border: 1px solid white;
   padding: 10px;
+  padding-bottom: 20px;
   -webkit-box-shadow: #666 0px 3px 8px;
   -moz-box-shadow: #666 0px 3px 8px;
   box-shadow: #666 0px 3px 8px;
@@ -42,6 +43,10 @@ textarea {
 
 .center {
   text-align: center;
+  color: white;
+  background-image: url("basketball_background.jpg") ;
+  height: 612px;
+  margin-bottom: 10px;
 
   h1 {
     margin-bottom: 10px;
@@ -122,6 +127,7 @@ p {
 
 .navbar {
   margin-top: 15px;
+  margin-bottom: 10px;
 
   //Centers the navigation
   margin-left:auto;

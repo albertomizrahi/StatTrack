@@ -11,7 +11,7 @@
     <h4 style="text-align: center;">
       <%= @user.name %>
     </h4>
-    <p>Age: <%= calculate_age(@user.birthday) %></p>
+    <p><!--Age: <%= calculate_age(@user.birthday) %></p>  -->
   </section>
 </aside>
 
@@ -194,18 +194,18 @@
 
 
   <% if correct_user? %>
-      <div id="AddSport" class="tab-pane" style="margin-right: 5px;">
+      <div id="AddSport" class="tab-pane" style="padding-left: 8px;">
+
 
         <%= form_for(@sportization) do |f| %>
 
             <% Sport.all.each do |sport| %>
                 <%= render 'shared/error_messages', object: f.object %>
 
-                <div>
                 <%= f.radio_button :sport_id, sport.id, :style => "float:left;margin-right: 5px;" %>
                 <%= f.label :name, sport.name, :value => sport.name, :style => "float:left;" %>
                 <div style="clear: both;margin-bottom: 5px;"></div>
-                </div>
+
             <% end %>
 
             <%= f.submit "Add Sport", class: "btn btn-primary" %>
