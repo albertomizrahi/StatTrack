@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130224184221) do
+ActiveRecord::Schema.define(:version => 20130513022649) do
 
   create_table "basketball_stats", :force => true do |t|
     t.date     "date_played_on"
@@ -172,6 +172,8 @@ ActiveRecord::Schema.define(:version => 20130224184221) do
     t.string   "profile_picture_content_type"
     t.integer  "profile_picture_file_size"
     t.datetime "profile_picture_updated_at"
+    t.string   "password_reset_token"
+    t.datetime "password_reset_sent_at"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -58,11 +58,22 @@ class User < ActiveRecord::Base
 
   end
 
+  def send_password_reset
+    self.password_reset_token = SecureRandom.urlsafe_base64
+    self.password_reset_sent_at = Time.zone.now
+    save!
+    UserMailer.password_reset(self).deliver
+  end
+
   private
     #Creates a random Base64 string that will be used as the remember token for the user
     def create_remember_token
       self.remember_token = SecureRandom.urlsafe_base64
     end
+
+
+
+
 
 
 

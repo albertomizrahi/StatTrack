@@ -37,4 +37,7 @@ StatTrack::Application.configure do
 
   #In order for Paperclip to work properly
   Paperclip.options[:command_path] = "/usr/bin/"
+
+
+  config.action_mailer.default_url_options = { :host => "localhost:3000" }
 end

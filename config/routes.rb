@@ -1,5 +1,7 @@
 StatTrack::Application.routes.draw do
 
+  get "password_resets/new"
+
   resources :users  do
     get 'search', :on => :collection
   end
@@ -17,6 +19,7 @@ StatTrack::Application.routes.draw do
   match '/signup',  to: 'users#new'
   match '/signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
+  resources :password_resets
 
   match '/help',    to: 'static_pages#help'
   match '/about',   to: 'static_pages#about'
