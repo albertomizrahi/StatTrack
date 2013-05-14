@@ -24,8 +24,8 @@
           <%= gravatar_for @user %>
           <a href="http://gravatar.com/emails">change</a>
 
-          <% #f.label :profile_picture, "Profile picture" %>
-          <% #f.file_field :profile_picture %>
+          <%= f.label :profile_picture, "Profile picture" %>
+          <%= f.file_field :profile_picture %>
 
           <%= f.submit "Update my profile",:name => 'profile_button', class: "btn btn-primary", :style => "display:block;margin-top: 10px;" %>
 

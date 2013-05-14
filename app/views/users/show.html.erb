@@ -4,8 +4,8 @@
 <aside >
   <section class="span2 user-panel">
     <h1>
-      <!-- Use this tag for paperclip image_tag @user.profile_picture.url(:small)  -->
-      <%=  gravatar_for(@user) %>
+      <%= image_tag @user.profile_picture.url(:small)  %>
+      <% #  gravatar_for(@user) %>
     </h1>
 
     <h4 style="text-align: center;">

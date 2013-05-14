@@ -80,7 +80,7 @@ class UsersController < ApplicationController
 
       #If old password is correct
       if user
-        #Will be changed to false if it fails any of the following validations
+        #Will be changed to false the form input fails any of the following validations
         form_is_valid = true
 
         #If user leaves password blank
