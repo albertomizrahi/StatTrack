@@ -21,8 +21,10 @@
 
           <div style="clear: both;"></div>
 
-          <%= gravatar_for @user %>
-          <a href="http://gravatar.com/emails">change</a>
+          <!--<%= gravatar_for @user %>
+          <a href="http://gravatar.com/emails">change</a> -->
+
+          <%= image_tag @user.profile_picture.url(:medium)  %>
 
           <%= f.label :profile_picture, "Profile picture" %>
           <%= f.file_field :profile_picture %>

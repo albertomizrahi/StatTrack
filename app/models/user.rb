@@ -22,7 +22,10 @@ class User < ActiveRecord::Base
   #Virtual attribute used in the edit form when user wishes to change its password
   attr_accessor :old_password
 
-  has_attached_file :profile_picture, :styles => { :small => "125x150!" }
+  has_attached_file :profile_picture, :styles => { :medium => "170x170>" },
+                    :default_url => ActionController::Base.helpers.asset_path('default_profile_picture.png'),
+                    :convert_options => {:medium => "-gravity center -extent 170x170"}
+
   validates_attachment_size :profile_picture, :less_than => 3.megabytes
   validates_attachment_content_type :profile_picture, :content_type => ['image/jpeg', 'image/png', 'image/pjpeg', 'image/jpg']
 
