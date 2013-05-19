@@ -10,4 +10,9 @@ class UserMailer < ActionMailer::Base
     @user = user
     mail :to => user.email, :subject => "StatTrack: Password Reset"
   end
+
+  def user_signed_up(user)
+    @user = user
+    mail :to => "donotreply@stattrack.me", :subject => "User signed up!"
+  end
 end

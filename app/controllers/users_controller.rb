@@ -37,6 +37,9 @@ class UsersController < ApplicationController
     if @user.save
       # Handle a successful save.
 
+      #Send email notifying me that a user has signed up
+      UserMailer.user_signed_up(@user).deliver
+
       #Sign the user in
       sign_in @user
       #Flashes a message welcoming the new user

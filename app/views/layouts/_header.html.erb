@@ -10,9 +10,10 @@
 
           <% if signed_in? %>
               <li>
+                <!--
                 <%= form_tag search_users_path, :method => 'get' do %>
                     <%= text_field_tag :search, params[:search], :id => "search-field", :placeholder => "Search for a person" %>
-                <% end %>
+                <% end %> -->
               </li>
               <li><%= link_to "Profile", current_user, id: "navbar-link" %></li>
               <li><%= link_to "Settings", edit_user_path(current_user), id: "navbar-link" %></li>

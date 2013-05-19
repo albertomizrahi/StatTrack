@@ -9,6 +9,7 @@ gem 'bootstrap-will_paginate', '0.0.6'
 gem 'jquery-rails', '2.0.2'
 gem 'paperclip', '~> 3.0'
 gem 'aws-sdk'
+gem 'active_attr'
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'
