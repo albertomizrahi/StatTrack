@@ -13,6 +13,6 @@ class UserMailer < ActionMailer::Base
 
   def user_signed_up(user)
     @user = user
-    mail :to => "donotreply@stattrack.me", :subject => "User signed up!"
+    mail :to => user.email, :subject => "User signed up!"
   end
 end
