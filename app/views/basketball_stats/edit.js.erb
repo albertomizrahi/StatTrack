@@ -29,12 +29,12 @@ $('.edit_basketball_stat').on('submit', function(e){
 
 
     //We know check if the user inputted more made shots than attempted in all three categories
-    var field_goals_made = $('.edit_basketball_stat #basketball_stat_field_goals_made').val();
-    var field_goals_attempted = $('.edit_basketball_stat #basketball_stat_field_goals_attempted').val();
-    var threepts_made = $('.edit_basketball_stat #basketball_stat_threepts_made').val();
-    var threepts_attempted = $('.edit_basketball_stat #basketball_stat_threepts_attempted').val();
-    var free_throws_made = $('.edit_basketball_stat #basketball_stat_free_throws_made').val();
-    var free_throws_attempted = $('.edit_basketball_stat #basketball_stat_free_throws_attempted').val();
+    var field_goals_made = parseInt($('.edit_basketball_stat #basketball_stat_field_goals_made').val());
+    var field_goals_attempted = parseInt($('.edit_basketball_stat #basketball_stat_field_goals_attempted').val());
+    var threepts_made = parseInt($('.edit_basketball_stat #basketball_stat_threepts_made').val());
+    var threepts_attempted = parseInt($('.edit_basketball_stat #basketball_stat_threepts_attempted').val());
+    var free_throws_made = parseInt($('.edit_basketball_stat #basketball_stat_free_throws_made').val());
+    var free_throws_attempted = parseInt($('.edit_basketball_stat #basketball_stat_free_throws_attempted').val());
 
     if (field_goals_made > field_goals_attempted || threepts_made > threepts_attempted || free_throws_made > free_throws_attempted){
         e.preventDefault();

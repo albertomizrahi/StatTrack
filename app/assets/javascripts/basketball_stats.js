@@ -30,14 +30,14 @@ $(document).ready(function(){
 
 
         //We know check if the user inputted more made shots than attempted in all three categories
-        var field_goals_made = document.getElementById("basketball_stat_field_goals_made").value;
-        var field_goals_attempted = document.getElementById("basketball_stat_field_goals_attempted").value;
-        var threepts_made = document.getElementById("basketball_stat_threepts_made").value;
-        var threepts_attempted = document.getElementById("basketball_stat_threepts_attempted").value;
-        var free_throws_made = document.getElementById("basketball_stat_free_throws_made").value;
-        var free_throws_attempted = document.getElementById("basketball_stat_free_throws_attempted").value;
+        var field_goals_made = parseInt(document.getElementById("basketball_stat_field_goals_made").value);
+        var field_goals_attempted = parseInt(document.getElementById("basketball_stat_field_goals_attempted").value);
+        var threepts_made = parseInt(document.getElementById("basketball_stat_threepts_made").value);
+        var threepts_attempted = parseInt(document.getElementById("basketball_stat_threepts_attempted").value);
+        var free_throws_made = parseInt(document.getElementById("basketball_stat_free_throws_made").value);
+        var free_throws_attempted = parseInt(document.getElementById("basketball_stat_free_throws_attempted").value);
 
-        if (field_goals_made > field_goals_attempted || threepts_made > threepts_attempted || free_throws_made > free_throws_attempted){
+        if ( (field_goals_made > field_goals_attempted) || (threepts_made > threepts_attempted) || (free_throws_made > free_throws_attempted)){
             e.preventDefault();
             alert("There can not be more made shots than attempted.");
         }

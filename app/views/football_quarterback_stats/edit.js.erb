@@ -29,8 +29,8 @@ $('.edit_football_quarterback_stat').on('submit', function(e){
 
 
     //We know check if the user inputted more passes completed than attempted
-    var passes_completed = $('.edit_football_quarterback_stat #football_quarterback_stat_completions').val();
-    var passes_attempted = $('.edit_football_quarterback_stat #football_quarterback_stat_passing_attempts').val();
+    var passes_completed = parseInt($('.edit_football_quarterback_stat #football_quarterback_stat_completions').val());
+    var passes_attempted = parseInt($('.edit_football_quarterback_stat #football_quarterback_stat_passing_attempts').val());
 
 
     if (passes_completed > passes_attempted){
