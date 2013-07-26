@@ -18,4 +18,12 @@ module BasketballStatsHelper
 
   end
 
+  def calc_average (total_shots_made, total_shots)
+    if total_shots.zero?
+      return "-"
+    end
+
+    "#{number_with_precision (total_shots_made/total_shots.to_f)*100, :precision => 1}%"
+  end
+
 end
